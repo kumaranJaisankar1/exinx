@@ -8,7 +8,7 @@ export default function Loader() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(false), 5000);
+    const timer = setTimeout(() => setIsVisible(false), 4000);
     return () => clearTimeout(timer);
   }, []);
 

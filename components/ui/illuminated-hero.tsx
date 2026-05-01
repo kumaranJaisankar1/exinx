@@ -21,7 +21,7 @@ export function IlluminatedHero({
 				<div className="shadow-bgb absolute size-full translate-[0_-70%] scale-[1.2] animate-[onloadbgb_1s_ease-in-out_forwards] rounded-[100em] opacity-60" />
 			</div>
 
-			<div className="text-center text-4xl md:text-6xl font-semibold z-10 relative" aria-hidden="true">
+			<div className="text-center text-3xl sm:text-4xl md:text-6xl font-semibold z-10 relative px-4" aria-hidden="true">
 				<span className="text-slate-300 font-light">{title}</span>
 				<br />
 				<span
@@ -40,7 +40,7 @@ export function IlluminatedHero({
 				<br />
 			</div>
 
-			<p className="absolute top-0 bottom-0 m-auto h-fit max-w-[28em] translate-y-[12em] bg-gradient-to-t from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent z-10">
+			<p className="absolute top-0 bottom-0 m-auto h-fit w-[90%] md:w-full max-w-[28em] translate-y-[10em] sm:translate-y-[12em] bg-gradient-to-t from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent z-10 text-xs sm:text-sm md:text-base px-4 md:px-0">
 				{description}
 			</p>
 
