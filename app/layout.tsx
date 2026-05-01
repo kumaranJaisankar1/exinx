@@ -23,7 +23,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
         >
           <Navbar />

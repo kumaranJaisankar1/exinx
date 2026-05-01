@@ -38,7 +38,7 @@ export default function ProductDialer({ onProductChange, className }: ProductDia
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
           className={cn(
             "inline-block whitespace-nowrap",
-            currentProduct === 'Nova' && "text-teal-400",
+            currentProduct === 'Nova' && "text-teal-100",
             currentProduct === 'Astra' && "text-amber-400",
             currentProduct === 'Orbis' && "text-slate-300"
           )}

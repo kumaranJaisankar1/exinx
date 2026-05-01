@@ -235,22 +235,22 @@
   @keyframes onloadbgt {
     0% {
       translate: 0 -70%;
-      opacity: 0.3;
+      opacity: 0.2;
     }
     100% {
       translate: 0 -64%;
-      opacity: 0.8;
+      opacity: 0.5;
     }
   }
 
   @keyframes onloadbgb {
     0% {
       translate: 0 70%;
-      opacity: 0.3;
+      opacity: 0.2;
     }
     100% {
       translate: 0 64%;
-      opacity: 0.8;
+      opacity: 0.5;
     }
   }
 

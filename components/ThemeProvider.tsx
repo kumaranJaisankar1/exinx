@@ -5,7 +5,17 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
 export function ThemeProvider({
   children,
+  defaultTheme = "dark",
+  enableSystem = false,
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+  return (
+    <NextThemesProvider 
+      defaultTheme={defaultTheme} 
+      enableSystem={enableSystem} 
+      {...props}
+    >
+      {children}
+    </NextThemesProvider>
+  );
 }

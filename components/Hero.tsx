@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 import ProductDialer, { Product } from './ProductDialer';
 import { GLSLHills } from './GLSLHills';
 import { cn } from '@/lib/utils';
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 export default function Hero() {
   const [activeProduct, setActiveProduct] = useState<Product>('Orbis');
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +20,7 @@ export default function Hero() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
     visible: {
       opacity: 1,
