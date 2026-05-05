@@ -21,7 +21,7 @@ function AnimatedCounter({ value, suffix, label }: { value: number; suffix: stri
       const end = value;
       const duration = 2000; // 2s
       const increment = end / (duration / 16);
-      
+
       const timer = setInterval(() => {
         start += increment;
         if (start >= end) {
@@ -31,7 +31,7 @@ function AnimatedCounter({ value, suffix, label }: { value: number; suffix: stri
           setCount(Math.ceil(start));
         }
       }, 16);
-      
+
       return () => clearInterval(timer);
     }
   }, [isInView, value]);

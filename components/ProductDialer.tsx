@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 
-export type Product = 'Orbis' | 'Nova' | 'Astra';
+export type Product = 'X' | 'Orbis' | 'Nova' | 'Astra';
 
 interface ProductDialerProps {
   onProductChange: (product: Product) => void;
   className?: string;
 }
 
-const products: Product[] = ['Orbis', 'Nova', 'Astra'];
+const products: Product[] = ['X', 'Orbis', 'Nova', 'Astra'];
 
 export default function ProductDialer({ onProductChange, className }: ProductDialerProps) {
   const [index, setIndex] = useState(0);
@@ -28,7 +28,7 @@ export default function ProductDialer({ onProductChange, className }: ProductDia
   const currentProduct = products[index];
 
   return (
-    <div className={cn("inline-flex flex-col h-[1.1em] overflow-hidden align-top", className)}>
+    <div className={cn("inline-flex flex-col h-[1.3em] overflow-hidden align-top pb-1", className)}>
       <AnimatePresence mode="wait">
         <motion.span
           key={currentProduct}
@@ -37,10 +37,11 @@ export default function ProductDialer({ onProductChange, className }: ProductDia
           exit={{ y: "-100%" }}
           transition={{ type: 'spring', stiffness: 100, damping: 20 }}
           className={cn(
-            "inline-block whitespace-nowrap",
-            currentProduct === 'Nova' && "text-teal-100",
-            currentProduct === 'Astra' && "text-amber-400",
-            currentProduct === 'Orbis' && "text-slate-300"
+            "inline-block whitespace-nowrap bg-clip-text text-transparent drop-shadow-sm",
+            currentProduct === 'X' && "bg-gradient-to-r from-accent via-accent-secondary to-nova",
+            currentProduct === 'Nova' && "bg-gradient-to-r from-accent via-accent-secondary to-nova",
+            currentProduct === 'Astra' && "bg-gradient-to-br from-accent via-accent-secondary to-nova",
+            currentProduct === 'Orbis' && "bg-gradient-to-tr from-accent via-accent-secondary to-nova"
           )}
         >
           {currentProduct}

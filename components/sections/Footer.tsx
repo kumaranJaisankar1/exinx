@@ -1,58 +1,52 @@
 "use client";
-import { motion } from "motion/react";
 
-export function Footer() {
+import { siteConfig } from "@/lib/config";
+import Link from "next/link";
+
+export default function Footer() {
   return (
-    <footer className="relative bg-black pt-20 pb-10 border-t border-white/5 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/grid-bg.svg')] bg-cover bg-center opacity-20 pointer-events-none" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold text-white tracking-widest mb-4">EXINX</h3>
-            <p className="text-secondary max-w-sm mb-6">
-              Exponential Intelligence X-Factor. Engineering intelligent digital futures and scalable AI-driven ecosystems.
+    <footer className="border-t border-white/[0.04] py-20 px-6 md:px-12 bg-bg">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-20">
+          <div className="space-y-6">
+            <Link href="/" className="font-syne font-extrabold text-2xl tracking-[0.15em]">
+              EXI<span className="text-accent">NX</span>
+            </Link>
+            <p className="text-[13px] leading-relaxed text-text-dim max-w-xs">
+              {siteConfig.footer.description}
             </p>
-            <div className="flex gap-4">
-              {/* Social Links Placeholders */}
-              {['Twitter', 'LinkedIn', 'GitHub'].map((social) => (
-                <a key={social} href="#" className="text-sm text-secondary hover:text-white transition-colors">
-                  {social}
-                </a>
-              ))}
+          </div>
+
+          {siteConfig.footer.columns.map((col, i) => (
+            <div key={i} className="space-y-6">
+              <h5 className="font-syne font-semibold text-[13px] uppercase tracking-widest">{col.title}</h5>
+              <ul className="space-y-3">
+                {col.links.map((link, j) => (
+                  <li key={j}>
+                    <Link href={link.href} className="text-[12px] text-text-dim hover:text-accent transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-white mb-4">Products</h4>
-            <ul className="space-y-2">
-              {['Orbis', 'Nova', 'Astra', 'Nexus'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-secondary hover:text-accent transition-colors">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-white mb-4">Company</h4>
-            <ul className="space-y-2">
-              {['About Us', 'Careers', 'Blog', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-secondary hover:text-accent transition-colors">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          ))}
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-secondary/60">
-            © {new Date().getFullYear()} EXINX Technologies. All rights reserved.
+        <div className="pt-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[11px] text-text-dim tracking-wider">
+            {siteConfig.footer.copyright}
           </p>
-          <div className="flex items-center gap-2 text-xs font-mono text-secondary/60 uppercase tracking-widest">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            System Status: Operational
+          <div className="flex gap-4">
+            {["𝕏", "in", "⌘", "◆"].map((icon, i) => (
+              <Link 
+                key={i} 
+                href="#" 
+                className="w-9 h-9 rounded-full border border-white/[0.08] flex items-center justify-center text-[13px] text-text-dim hover:border-accent hover:text-accent transition-all"
+              >
+                {icon}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

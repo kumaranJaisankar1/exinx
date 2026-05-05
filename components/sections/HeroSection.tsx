@@ -1,85 +1,123 @@
 "use client";
-import { Button } from "@/components/ui/Button";
-import { motion } from "motion/react";
-import { Canvas } from "@react-three/fiber";
-import { AICore } from "@/components/3d/AICore";
-import { Suspense } from "react";
-import { ArrowRight } from "lucide-react";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import { siteConfig } from "@/lib/config";
+import { useRef, useState } from "react";
+import ProductDialer, { Product } from '../ProductDialer';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any }
+};
 
 export default function HeroSection() {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute inset-0 bg-background pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05)_0%,transparent_70%)] pointer-events-none" />
+  const [activeProduct, setActiveProduct] = useState<Product>('X');
+  const containerRef = useRef(null);
+  const { scrollY } = useScroll();
+  const orbY = useTransform(scrollY, [0, 1000], [0, 150]);
 
-      <div className="container relative z-10 px-6 mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
-        <div className="flex flex-col items-start text-left space-y-8">
+  return (
+    <section ref={containerRef} className="relative min-h-[100svh] flex items-center px-6 md:px-12 pt-24 pb-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+
+        {/* Content */}
+        <div className="relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-accent backdrop-blur-md"
+            {...fadeUp}
+            className="inline-flex items-center gap-2 px-3 py-1 border border-accent/20 rounded-full text-[10px] uppercase tracking-[0.2em] text-accent mb-6"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            Pure EduTech Engineering
+            <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
+            {siteConfig.hero.badge}
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.1]"
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.2 }}
+            className="font-syne font-extrabold text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.05] tracking-[-0.03em] mb-6 flex flex-col items-start"
           >
-            Extended <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-500">
-              Intelligence Ecosystem
-            </span>
+            <span className="block text-white mb-2">EXtended</span>
+            <div className="flex items-center gap-x-3 w-full">
+              <span className="block font-serif italic font-normal text-white">INtelligence</span>
+            </div>
+            <ProductDialer onProductChange={setActiveProduct} />
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-xl text-secondary max-w-xl font-light"
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.4 }}
+            className="text-text-muted text-base md:text-[17px] leading-[1.6] max-w-lg mb-8"
           >
-            Home of <span className="text-white font-medium">Nova</span>, <span className="text-white font-medium">Orbis</span>, and <span className="text-white font-medium">Astra</span>. We engineer high-performance AI solutions designed to revolutionize the educational landscape.
+            {siteConfig.hero.description}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="flex flex-wrap gap-4 pt-4"
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.6 }}
+            className="flex flex-wrap gap-4 mb-10"
           >
-            <Button size="lg" className="gap-2">
-              Explore Solutions <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button variant="secondary" size="lg">
-              Book Consultation
-            </Button>
+            <button className="btn-primary !px-10">{siteConfig.hero.actions.primary}</button>
+            <button className="btn-ghost !px-10">{siteConfig.hero.actions.secondary}</button>
           </motion.div>
+
+          {/* Stats */}
+          {/* <motion.div
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.8 }}
+            className="flex gap-12 pt-8 border-t border-white/[0.04]"
+          >
+            {siteConfig.hero.stats.map((stat, i) => (
+              <div key={i} className="group">
+                <h3 className="font-syne font-extrabold text-3xl text-accent group-hover:scale-105 transition-transform origin-left">
+                  {stat.value}
+                </h3>
+                <p className="text-[10px] uppercase tracking-[0.15em] text-text-dim mt-2 font-mono">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </motion.div> */}
         </div>
 
-        {/* 3D Visualization */}
+        {/* Visual - The CSS Orb */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="relative h-[500px] w-full max-w-[600px] mx-auto hidden lg:block"
+          transition={{ duration: 1.2, delay: 0.4 }}
+          style={{ y: orbY }}
+          className="relative hidden lg:flex justify-center items-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-purple-500/20 blur-[100px] rounded-full" />
-          <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-            <Suspense fallback={null}>
-              <AICore />
-            </Suspense>
-          </Canvas>
+          <div className="relative w-[400px] h-[400px]">
+            {/* Animated Rings */}
+            {[20, 15, 25, 18].map((duration, i) => (
+              <div
+                key={i}
+                className="absolute border border-white/10 rounded-full"
+                style={{
+                  inset: `${i * 30}px`,
+                  animation: `spin ${duration}s linear infinite ${i % 2 === 0 ? '' : 'reverse'}`,
+                  borderColor: i === 0 ? 'rgba(240, 160, 48, 0.15)' :
+                    i === 1 ? 'rgba(96, 208, 240, 0.12)' :
+                      i === 2 ? 'rgba(160, 112, 240, 0.1)' : 'rgba(240, 112, 80, 0.08)'
+                }}
+              />
+            ))}
+            {/* The Core */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-accent to-accent-secondary shadow-[0_0_80px_rgba(240,160,48,0.25)] animate-float" />
+          </div>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); }
+          50% { transform: translate(-50%, -55%) scale(1.05); }
+        }
+      `}</style>
     </section>
   );
 }

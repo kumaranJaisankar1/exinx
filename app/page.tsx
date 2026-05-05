@@ -1,52 +1,41 @@
 "use client";
 
-import { useState } from 'react';
-import HeroSection from '@/components/sections/HeroSection';
-import { TrustedBySection } from '@/components/sections/TrustedBySection';
-import { ServicesSection } from '@/components/sections/ServicesSection';
-import { AIShowcaseSection } from '@/components/sections/AIShowcaseSection';
-import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection';
-import { ProductShowcaseSection } from '@/components/sections/ProductShowcaseSection';
-import ProcessSection from '@/components/ProcessSection';
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { TechStackSection } from '@/components/sections/TechStackSection';
-import { CTASection } from '@/components/sections/CTASection';
-import { Footer } from '@/components/sections/Footer';
-import { CinematicIntro } from '@/components/CinematicIntro';
+import BackgroundCanvas from "@/components/BackgroundCanvas";
+import CustomCursor from "@/components/CustomCursor";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/sections/HeroSection";
+import Marquee from "@/components/sections/Marquee";
+import AboutSection from "@/components/sections/AboutSection";
+import ProductSection from "@/components/sections/ProductSection";
+import HowItWorks from "@/components/sections/HowItWorks";
+import Testimonials from "@/components/sections/Testimonials";
+import Metrics from "@/components/sections/Metrics";
+import CTA from "@/components/sections/CTA";
+import Footer from "@/components/sections/Footer";
 
 export default function Home() {
-  const [introComplete, setIntroComplete] = useState(false);
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "EXINX",
-    "operatingSystem": "Web",
-    "applicationCategory": "EducationalApplication, AIApplication",
-    "description": "Exponential Intelligence X-factor (EXINX) - Advanced educational ecosystem management and AI cognitive layers.",
-  };
-
   return (
     <>
-      <CinematicIntro onComplete={() => setIntroComplete(true)} />
+      <CustomCursor />
+      <BackgroundCanvas />
+      <div className="noise-overlay" />
       
-      <main className={`relative min-h-screen bg-background text-foreground selection:bg-accent/30 selection:text-white transition-opacity duration-1000 ${introComplete ? 'opacity-100' : 'opacity-0'}`}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <HeroSection />
-        <TrustedBySection />
-        <ServicesSection />
-        <AIShowcaseSection />
-        <WhyChooseUsSection />
-        <ProductShowcaseSection />
-        <ProcessSection />
-        <TestimonialsSection />
-        <TechStackSection />
-        <CTASection />
+      <div className="relative z-10">
+        <Navbar />
+        
+        <main>
+          <HeroSection />
+          <Marquee />
+          <AboutSection />
+          <ProductSection />
+          <HowItWorks />
+          <Testimonials />
+          <Metrics />
+          <CTA />
+        </main>
+        
         <Footer />
-      </main>
+      </div>
     </>
   );
 }

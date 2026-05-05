@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
-import Navbar from '@/components/Navbar';
+import ScrollToTop from '@/components/ScrollToTop';
 import './globals.css';
 
 
@@ -30,8 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           disableTransitionOnChange
         >
           <SmoothScrollProvider>
-            <Navbar />
             {children}
+            <ScrollToTop />
           </SmoothScrollProvider>
         </ThemeProvider>
 

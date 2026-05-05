@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, Variants } from 'motion/react';
 import ProductDialer, { Product } from './ProductDialer';
 import { GLSLHills } from './GLSLHills';
+import Navbar from './Navbar';
 import { cn } from '@/lib/utils';
 
 export default function Hero() {
@@ -32,6 +33,8 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+      <Navbar />
+
       {/* GLSL Hills Background - Absolute Full Width/Height */}
       <div className="absolute inset-0 -bottom-64 z-0 pointer-events-none overflow-hidden">
         <GLSLHills speed={0.4} cameraZ={180} planeSize={1024} />
@@ -56,25 +59,19 @@ export default function Hero() {
             )} />
 
             <span className="text-[9px] font-mono text-slate-500 tracking-[0.4em] uppercase">
-              Intelligence Protocol v6.0
+              Now in Private Beta
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] text-white">
-            <motion.span
-              className="block italic font-thin text-2xl md:text-4xl lg:text-5xl text-slate-500/80 mb-4 tracking-tight"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-            >
-              Architecture for
-            </motion.span>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-x-4">
-              <ProductDialer onProductChange={setActiveProduct} className="text-accent" />
-              <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.25)]">
-                Intelligence
-              </span>
+          <h1 className="text-5xl md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[1] text-white flex flex-col items-center justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-x-1">
+              <span>E</span>
+              <ProductDialer onProductChange={setActiveProduct} />
+              <span>ternal</span>
             </div>
+            <span className="text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.25)] mt-2 md:mt-4">
+              Intelligence
+            </span>
           </h1>
 
           <p className="text-xs md:text-lg text-slate-400 max-w-xl mx-auto leading-relaxed font-light tracking-wide px-4 opacity-80">
