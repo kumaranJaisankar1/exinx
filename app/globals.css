@@ -18,18 +18,18 @@
   --foreground: #020617;
   --primary: #000000;
   --secondary: #64748b;
-  --accent: #d4af37;
-   /* --accent: #00D5BE; */
+  --accent: #3b82f6; /* Electric Blue */
+  --accent-foreground: #ffffff;
   --border: #e2e8f0;
 }
 
 [data-theme='dark'] {
-  --background: #000000;
+  --background: #030303; /* Deep Black / Graphite */
   --foreground: #f8fafc;
   --primary: #ffffff;
   --secondary: #94a3b8;
-  --accent: #d4af37;
-   /* --accent: #00D5BE; */
+  --accent: #3b82f6; /* Electric Blue */
+  --accent-foreground: #ffffff;
   --border: #1e293b;
 }
 

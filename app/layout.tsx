@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import Navbar from '@/components/Navbar';
 import './globals.css';
 
@@ -12,8 +13,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'EXINX | The Future of External Intelligence',
-  description: 'Exponential Intelligence X-factor (EXINX) - Orbis, Nova, and Astra ecosystem.',
+  title: 'EXINX | Extended Intelligence • Nova • Orbis • Astra',
+  description: 'Extended Intelligence X-Factor (EXINX) - Pure EduTech Engineering featuring Nova, Orbis, and Astra ecosystems.',
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -25,8 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <Navbar />
-          {children}
+          <SmoothScrollProvider>
+            <Navbar />
+            {children}
+          </SmoothScrollProvider>
         </ThemeProvider>
 
       </body>

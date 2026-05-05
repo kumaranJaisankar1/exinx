@@ -1,16 +1,22 @@
-import Loader from '@/components/Loader';
-import Hero from '@/components/Hero';
-import ProcessSection from '@/components/ProcessSection';
-import BentoGrid from '@/components/BentoGrid';
-import ScrollToTop from '@/components/ScrollToTop';
-import { Metadata } from 'next';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'EXINX | Exponential Intelligence X-Factor',
-  description: 'EXINX is the future of external intelligence, providing powerful AI-driven academic and management tools including Orbis, Nova, and Astra.',
-};
+import { useState } from 'react';
+import HeroSection from '@/components/sections/HeroSection';
+import { TrustedBySection } from '@/components/sections/TrustedBySection';
+import { ServicesSection } from '@/components/sections/ServicesSection';
+import { AIShowcaseSection } from '@/components/sections/AIShowcaseSection';
+import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection';
+import { ProductShowcaseSection } from '@/components/sections/ProductShowcaseSection';
+import ProcessSection from '@/components/ProcessSection';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { TechStackSection } from '@/components/sections/TechStackSection';
+import { CTASection } from '@/components/sections/CTASection';
+import { Footer } from '@/components/sections/Footer';
+import { CinematicIntro } from '@/components/CinematicIntro';
 
 export default function Home() {
+  const [introComplete, setIntroComplete] = useState(false);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -18,50 +24,29 @@ export default function Home() {
     "operatingSystem": "Web",
     "applicationCategory": "EducationalApplication, AIApplication",
     "description": "Exponential Intelligence X-factor (EXINX) - Advanced educational ecosystem management and AI cognitive layers.",
-    "softwareAddOn": [
-      {
-        "@type": "SoftwareApplication",
-        "name": "Orbis",
-        "description": "Educational Ecosystem Management"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "Nova (MindIQX)",
-        "description": "The Intelligent AI Layer"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "Astra",
-        "description": "The Academic Precision Tool"
-      }
-    ]
   };
 
   return (
-    <main className="relative min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <>
+      <CinematicIntro onComplete={() => setIntroComplete(true)} />
       
-      <Loader />
-      <Hero />
-      <ProcessSection />
-      <BentoGrid />
-      <ScrollToTop />
-
-      {/* Footer */}
-      <footer className="relative bg-background pt-24 overflow-hidden">
-         <div className="px-12 py-4 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-slate-700 gap-4">
-          <div>STRUCTURED_DATA: SoftwareApplication / JSON-LD ACTIVE</div>
-          <div className="flex gap-6 uppercase tracking-widest">
-            <span>Latency: 14ms</span>
-            <span>Crawl Status: Indexable</span>
-            <span className="text-slate-800">© 2026 EXINX Technologies</span>
-          </div>
-        </div>
-      </footer>
-    </main>
+      <main className={`relative min-h-screen bg-background text-foreground selection:bg-accent/30 selection:text-white transition-opacity duration-1000 ${introComplete ? 'opacity-100' : 'opacity-0'}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <HeroSection />
+        <TrustedBySection />
+        <ServicesSection />
+        <AIShowcaseSection />
+        <WhyChooseUsSection />
+        <ProductShowcaseSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <TechStackSection />
+        <CTASection />
+        <Footer />
+      </main>
+    </>
   );
 }
-
