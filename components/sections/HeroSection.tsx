@@ -3,7 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { siteConfig } from "@/lib/config";
 import { useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import ProductDialer, { Product } from '../ProductDialer';
+
+const NeuralOrb = dynamic(() => import('../three/NeuralOrb'), { ssr: false });
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -34,7 +37,7 @@ export default function HeroSection() {
           <motion.h1
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.2 }}
-            className="font-syne font-extrabold text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.05] tracking-[-0.03em] mb-6 flex flex-col items-start"
+            className="font-syne font-bold text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.05] tracking-[-0.03em] mb-6 flex flex-col items-start"
           >
             <span className="block text-white mb-2">EXtended</span>
             <div className="flex items-center gap-x-3 w-full">
@@ -79,32 +82,15 @@ export default function HeroSection() {
           </motion.div> */}
         </div>
 
-        {/* Visual - The CSS Orb */}
+        {/* Visual - Premium Three.js Neural Orb */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
           style={{ y: orbY }}
-          className="relative hidden lg:flex justify-center items-center"
+          className="relative hidden lg:flex justify-center items-center h-[600px] w-full"
         >
-          <div className="relative w-[400px] h-[400px]">
-            {/* Animated Rings */}
-            {[20, 15, 25, 18].map((duration, i) => (
-              <div
-                key={i}
-                className="absolute border border-white/10 rounded-full"
-                style={{
-                  inset: `${i * 30}px`,
-                  animation: `spin ${duration}s linear infinite ${i % 2 === 0 ? '' : 'reverse'}`,
-                  borderColor: i === 0 ? 'rgba(240, 160, 48, 0.15)' :
-                    i === 1 ? 'rgba(96, 208, 240, 0.12)' :
-                      i === 2 ? 'rgba(160, 112, 240, 0.1)' : 'rgba(240, 112, 80, 0.08)'
-                }}
-              />
-            ))}
-            {/* The Core */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-accent to-accent-secondary shadow-[0_0_80px_rgba(240,160,48,0.25)] animate-float" />
-          </div>
+          <NeuralOrb />
         </motion.div>
       </div>
 

@@ -1,77 +1,104 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/config";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-[100] py-6 bg-transparent px-6 md:px-12">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link href="/" className="group relative">
-          <Logo /> </Link>
+    <nav className="absolute top-0 left-0 right-0 z-[100] py-10 px-10 bg-transparent">
+      <div className="max-w-[1400px] mx-auto flex justify-between items-center">
+        <Link href="/" className="scale-110">
+          <Logo forceWhite />
+        </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-10">
-          <ul className="flex gap-10 list-none">
-            {siteConfig.nav.links.map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted hover:text-accent transition-colors relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1.5 left-0 w-full h-px bg-accent scale-x-0 group-hover:scale-x-100 transition-transform" />
-                </Link>
-              </li>
-            ))}
+        {/* Desktop Links - Matching Footer Font Style Exactly */}
+        <div className="hidden md:flex items-center gap-12">
+          <ul className="flex gap-8 list-none">
+            {siteConfig.nav.links.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "text-[14px] transition-colors",
+                      isActive ? "text-white font-semibold" : "text-text-dim hover:text-accent"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
-          <Link href="#cta" className="btn-ghost !py-2.5 !px-6 !text-[11px] font-syne font-semibold border-accent text-accent hover:bg-accent hover:text-bg">
-            {siteConfig.nav.cta}
+          
+          <Link 
+            href="#cta" 
+            className="px-6 py-2 border border-white/20 text-white text-[12px] hover:bg-white/10 transition-all rounded-[2px]"
+          >
+            Signel Us
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex flex-col gap-1.5 p-2 z-[110]"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <span className={cn("w-6 h-0.5 bg-text transition-all", isMenuOpen && "rotate-45 translate-y-2")} />
-          <span className={cn("w-6 h-0.5 bg-text transition-all", isMenuOpen && "opacity-0")} />
-          <span className={cn("w-6 h-0.5 bg-text transition-all", isMenuOpen && "-rotate-45 -translate-y-2")} />
+          <span className={cn("w-6 h-0.5 bg-white transition-all", isMenuOpen && "rotate-45 translate-y-2")} />
+          <span className={cn("w-6 h-0.5 bg-white transition-all", isMenuOpen && "opacity-0")} />
+          <span className={cn("w-6 h-0.5 bg-white transition-all", isMenuOpen && "-rotate-45 -translate-y-2")} />
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
-        className="md:hidden overflow-hidden bg-[var(--bg)]/95 backdrop-blur-2xl"
-      >
-        <ul className="flex flex-col gap-6 p-8 list-none">
-          {siteConfig.nav.links.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="font-mono text-sm uppercase tracking-widest text-text-muted"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link href="#cta" className="btn-primary block text-center" onClick={() => setIsMenuOpen(false)}>
-              {siteConfig.nav.cta}
-            </Link>
-          </li>
-        </ul>
-      </motion.div>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            className="fixed inset-0 z-[105] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col items-center justify-center"
+          >
+            <ul className="flex flex-col gap-8 text-center list-none">
+              {siteConfig.nav.links.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "text-lg transition-colors",
+                        isActive ? "text-white font-semibold" : "text-text-dim hover:text-white"
+                      )}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li>
+                <Link 
+                  href="#cta" 
+                  className="px-10 py-4 bg-white text-black font-bold text-xs rounded-full"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Signel Us
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

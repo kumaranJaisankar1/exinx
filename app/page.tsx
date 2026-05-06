@@ -3,6 +3,7 @@
 import BackgroundCanvas from "@/components/BackgroundCanvas";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
+import React, { useRef, useEffect } from 'react';
 import HeroSection from "@/components/sections/HeroSection";
 import Marquee from "@/components/sections/Marquee";
 import AboutSection from "@/components/sections/AboutSection";

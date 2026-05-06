@@ -21,15 +21,14 @@ export const siteConfig = {
   },
   nav: {
     links: [
-      { label: "About", href: "#about" },
-      { label: "Products", href: "#products" },
-      { label: "How It Works", href: "#how" },
-      { label: "Stories", href: "#stories" },
+      { label: "Nova", href: "/nova" },
+      { label: "Orbis", href: "/orbis" },
+      { label: "Astra", href: "/astra" },
     ],
-    cta: "Get Early Access",
+    cta: "Signal Us",
   },
   hero: {
-    badge: "Now in Private Beta",
+    badge: "AI x EdTech",
     title: {
       line1: "The Future of",
       line2: "Learning is",
@@ -207,14 +206,14 @@ export const siteConfig = {
     note: "No credit card required · Early access pricing locked forever · Cancel anytime",
   },
   footer: {
-    description: "Building the intelligence layer for human learning. Three AI products. One mission. Infinite potential for every mind on Earth.",
+    description: "Building the intelligence layer for human learning. Nova, Orbis and Astra. One mission. Infinite potential for every mind on Earth.",
     columns: [
       {
         title: "Products",
         links: [
-          { label: "Nova — AI Companion", href: "#" },
-          { label: "Orbis — Knowledge Platform", href: "#" },
-          { label: "Astra — Smart Assessment", href: "#" },
+          { label: "Nova — AI Companion", href: "/nova" },
+          { label: "Orbis — Knowledge Platform", href: "/orbis" },
+          { label: "Astra — Smart Assessment", href: "/astra" },
           { label: "Pricing", href: "#" },
         ],
       },
