@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
+import VismeFormModal from '@/components/ui/VismeFormModal';
 import './globals.css';
 
 
@@ -46,8 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SmoothScrollProvider>
             {children}
             <ScrollToTop />
+            <VismeFormModal />
           </SmoothScrollProvider>
         </ThemeProvider>
+
 
       </body>
     </html>

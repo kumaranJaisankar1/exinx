@@ -97,7 +97,7 @@ void main(void) {
 
 const useShaderBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number>(undefined);
   
   // Define classes outside the hook for clarity if possible, but keeping logic consistent
   useEffect(() => {
@@ -215,8 +215,8 @@ void main(){gl_Position=position;}`;
         gl.useProgram(program);
         gl.uniform2f((program as any).resolution, canvas.width, canvas.height);
         gl.uniform1f((program as any).time, now * 1e-3);
-        gl.uniform2f((program as any).move, ...this.mouseMove);
-        gl.uniform2f((program as any).touch, ...this.mouseCoords);
+        gl.uniform2f((program as any).move, this.mouseMove[0], this.mouseMove[1]);
+        gl.uniform2f((program as any).touch, this.mouseCoords[0], this.mouseCoords[1]);
         gl.uniform1i((program as any).pointerCount, this.nbrOfPointers);
         // Correctly handle float array for pointers
         const ptrs = new Float32Array(this.pointerCoords.length);
@@ -256,8 +256,8 @@ void main(){gl_Position=position;}`;
       get coords() { 
         return this.pointers.size > 0 ? Array.from(this.pointers.values()).flat() : [0, 0]; 
       }
-      get first() { 
-        return this.pointers.size > 0 ? this.pointers.values().next().value : [0, 0]; 
+      get first(): number[] { 
+        return this.pointers.values().next().value || [0, 0]; 
       }
     }
 

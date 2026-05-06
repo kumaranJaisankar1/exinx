@@ -20,10 +20,10 @@ export default function Home() {
       <CustomCursor />
       <BackgroundCanvas />
       <div className="noise-overlay" />
-      
+
       <div className="relative z-10">
         <Navbar />
-        
+
         <main>
           <HeroSection />
           <Marquee />
@@ -31,10 +31,10 @@ export default function Home() {
           <ProductSection />
           <HowItWorks />
           <Testimonials />
-          <Metrics />
+          {/* <Metrics /> */}
           <CTA />
         </main>
-        
+
         <Footer />
       </div>
     </>

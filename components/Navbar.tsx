@@ -40,12 +40,16 @@ export default function Navbar() {
             })}
           </ul>
           
-          <Link 
-            href="#cta" 
+          <button 
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('open-signal-form', { bubbles: true, detail: { from: 'navbar' } }));
+              }
+            }}
             className="px-6 py-2 border border-white/20 text-white text-[12px] hover:bg-white/10 transition-all rounded-[2px]"
           >
-            Signel Us
-          </Link>
+            Signal Us
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -87,13 +91,17 @@ export default function Navbar() {
                 );
               })}
               <li>
-                <Link 
-                  href="#cta" 
+                <button 
                   className="px-10 py-4 bg-white text-black font-bold text-xs rounded-full"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('open-signal-form', { bubbles: true }));
+                    }
+                  }}
                 >
-                  Signel Us
-                </Link>
+                  Signal Us
+                </button>
               </li>
             </ul>
           </motion.div>

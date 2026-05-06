@@ -87,9 +87,13 @@ const OrbisHero = () => {
               Command Center
             </motion.button>
             <motion.button
+              onClick={() => {
+                const event = new CustomEvent('open-signal-form');
+                window.dispatchEvent(event);
+              }}
               className="px-10 py-4 border border-white text-white font-medium rounded-[2px] hover:bg-white/10 transition-colors duration-300 tracking-wide"
             >
-              Watch Orbis
+              Signal Us
             </motion.button>
           </div>
         </div>
