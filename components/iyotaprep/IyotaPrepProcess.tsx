@@ -87,7 +87,6 @@ export default function IyotaPrepProcess() {
             style={{ background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.08)' }}
           >
             <motion.div
-              style={{ height }}
               className="w-full"
               style={{
                 height,

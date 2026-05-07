@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/config";
 function Particles({ mouse, theme }: { mouse: React.MutableRefObject<[number, number]>, theme?: string }) {
   const ref = useRef<THREE.Points>(null!);
   const count = 2000;
-  
+
   const [positions, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const cols = new Float32Array(count * 3);
@@ -18,7 +18,7 @@ function Particles({ mouse, theme }: { mouse: React.MutableRefObject<[number, nu
       new THREE.Color(siteConfig.colors.accent),
       new THREE.Color(siteConfig.colors.nova),
       new THREE.Color(siteConfig.colors.orbis),
-      new THREE.Color(siteConfig.colors.astra),
+      new THREE.Color(siteConfig.colors.iyotaPrep),
     ];
 
     for (let i = 0; i < count; i++) {
@@ -92,7 +92,7 @@ function Scene({ mouse, theme }: { mouse: React.MutableRefObject<[number, number
       siteConfig.colors.accent,
       siteConfig.colors.nova,
       siteConfig.colors.orbis,
-      siteConfig.colors.astra,
+      siteConfig.colors.iyotaPrep,
     ];
 
     for (let i = 0; i < 10; i++) {
