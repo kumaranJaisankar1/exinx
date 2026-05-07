@@ -227,6 +227,19 @@
   .text-nova-orange { color: #f97316; }
   .text-orbis-blue { color: #3b82f6; }
   .text-astra-red { color: #ef4444; }
+
+  .hero-title-thin {
+    font-family: var(--font-montserrat), sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero-title-bold {
+    font-family: var(--font-montserrat), sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
 }
 
 /* Custom Scrollbar */

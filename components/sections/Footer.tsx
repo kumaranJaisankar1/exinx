@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/config";
 import Link from "next/link";
 import Logo from "../Logo";
 
-export default function Footer() {
+export default function Footer({ tagline }: { tagline?: string }) {
   return (
     <footer className="border-t border-white/[0.04] py-20 px-6 md:px-12 bg-bg">
       <div className="max-w-7xl mx-auto">
@@ -36,6 +36,9 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/[0.04] flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[11px] text-text-dim tracking-wider uppercase font-bold">
+            {tagline || "Extending Intelligence Across Education"}
+          </p>
           <p className="text-[11px] text-text-dim tracking-wider">
             {siteConfig.footer.copyright}
           </p>

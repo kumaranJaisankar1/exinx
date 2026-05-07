@@ -54,8 +54,8 @@ export default function OrbisHero() {
           playsInline
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-40 pointer-events-none"
-          style={{ 
-            transform: 'translateZ(0)', 
+          style={{
+            transform: 'translateZ(0)',
             backfaceVisibility: 'hidden',
             willChange: 'opacity, transform'
           }}
@@ -83,30 +83,26 @@ export default function OrbisHero() {
         className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full h-full flex flex-col justify-center items-start text-left"
       >
         {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
+        <div
+
         >
           <span className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-[#0E76BD]/5 border border-[#0E76BD]/10 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#0E76BD] animate-pulse" />
             <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-[#0E76BD] font-black">
               Institutional ERP Intelligence
             </span>
           </span>
-        </motion.div>
+        </div>
 
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(2.2rem,6.5vw,5rem)] font-bold leading-[1.0] tracking-tighter mb-8 text-slate-900 max-w-4xl"
+          className="mb-8 text-slate-900 max-w-4xl flex flex-col items-start gap-2"
         >
-          The Ultimate School & <br />
-          <span className="font-instrument-serif italic font-normal text-[#0E76BD]">
-            College ERP Solution.
+          <span className="hero-title-thin text-[clamp(1.5rem,4vw,3rem)] tracking-[0.05em]">Run Institutions with</span>
+          <span className="hero-title-bold text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] tracking-tighter text-[#0E76BD]">
+            Clarity & Control
           </span>
         </motion.h1>
 
@@ -117,22 +113,10 @@ export default function OrbisHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed mb-12 font-light"
         >
-          Digitize and streamline admissions, academics, finance, and campus operations with our integrated institutional management platform.
+          Orbis is a unified school and college management platform that simplifies admissions, operations, academics, and communication through a powerful cloud based system.
         </motion.p>
 
-        {/* Stats Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-wrap gap-4 mb-12"
-        >
-          {["2500+ Institutions", "Secure Cloud Infrastructure", "AI-Powered Analytics"].map((stat, i) => (
-            <div key={i} className="px-4 py-2 bg-slate-100 border border-slate-200 rounded-full text-[10px] font-mono uppercase tracking-widest text-slate-500">
-              {stat}
-            </div>
-          ))}
-        </motion.div>
+
 
         {/* CTA Buttons */}
         <motion.div
@@ -142,9 +126,13 @@ export default function OrbisHero() {
           className="flex flex-wrap items-center gap-6"
         >
           <button className="orbis-btn-primary px-12 py-4 text-white rounded-full font-black text-[12px] uppercase tracking-[0.3em] shadow-2xl active:scale-95">
-            Book A Free Demo
+            Explore Orbis
+          </button>
+          <button className=" px-12 py-4 text-slate-900 rounded-full font-black text-[12px] uppercase tracking-[0.3em] shadow-2xl active:scale-95">
+            Request Demo
           </button>
         </motion.div>
+
       </motion.div>
 
       {/* Simplified Decorative Indicators */}

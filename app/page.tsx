@@ -6,12 +6,15 @@ import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import Marquee from "@/components/sections/Marquee";
-import AboutSection from "@/components/sections/AboutSection";
+import BrandIntro from "@/components/sections/BrandIntro";
+import ExInXProcess from "@/components/sections/ExInXProcess";
+import CorePillars from "@/components/sections/CorePillars";
+import WhyExInX from "@/components/sections/WhyExInX";
+import PlatformImpact from "@/components/sections/PlatformImpact";
 import ProductSection from "@/components/sections/ProductSection";
-import HowItWorks from "@/components/sections/HowItWorks";
-import Testimonials from "@/components/sections/Testimonials";
-import Metrics from "@/components/sections/Metrics";
-import CTA from "@/components/sections/CTA";
+import Differentiators from "@/components/sections/Differentiators";
+import VisionSection from "@/components/sections/VisionSection";
+import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -31,12 +34,16 @@ export default function Home() {
         <main>
           <HeroSection />
           <Marquee />
-          <AboutSection />
+          
+          <BrandIntro />
+          <ExInXProcess />
+          <CorePillars />
+          <WhyExInX />
+          <PlatformImpact />
           <ProductSection />
-          <HowItWorks />
-          <Testimonials />
-          {/* <Metrics /> */}
-          <CTA />
+          <Differentiators />
+          <VisionSection />
+          <FinalCTA />
         </main>
 
         <Footer />

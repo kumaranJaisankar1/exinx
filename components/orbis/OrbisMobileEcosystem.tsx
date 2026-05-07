@@ -100,9 +100,9 @@ export default function OrbisMobileEcosystem() {
             className="text-4xl md:text-7xl font-light text-foreground tracking-tighter mb-8"
           >
             Institutional Power, <br />
-            <span className="font-instrument-serif italic text-[#0E76BD]">In Your Pocket</span>
+            <span className="hero-title-bold text-4xl md:text-6xl text-[#0E76BD]">In Your Pocket</span>
           </motion.h2>
-          <p className="text-lg text-foreground/50 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-lg text-foreground max-w-2xl mx-auto font-light leading-relaxed">
             The Orbis mobile ecosystem bridges the gap between administrators, teachers, students, and parents with an integrated, high-performance experience.
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function OrbisMobileEcosystem() {
                   <f.icon className="text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-medium text-foreground mb-3">{f.title}</h3>
-                <p className="text-sm text-foreground/40 font-light leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-foreground/90 font-light leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -198,7 +198,7 @@ export default function OrbisMobileEcosystem() {
                   <f.icon className="text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-medium text-foreground mb-3">{f.title}</h3>
-                <p className="text-sm text-foreground/40 font-light leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-foreground/90 font-light leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
