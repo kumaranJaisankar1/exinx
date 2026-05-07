@@ -38,12 +38,12 @@ const modules = [
 
 export default function OrbisModules() {
   return (
-    <section className="py-24 bg-white dark:bg-background relative">
+    <section className="py-24 bg-background relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-20">
           <span className="section-label !text-[#0E76BD] !border-[#0E76BD]/20">Core Modules</span>
           <h2 className="mt-6 flex flex-col items-start gap-2">
-            <span className="hero-title-thin text-3xl md:text-4xl">Everything You Need to</span>
+            <span className="hero-title-thin text-3xl md:text-4xl text-foreground">Everything You Need to</span>
             <span className="hero-title-bold text-5xl md:text-7xl text-[#0E76BD]">Run an Institution</span>
           </h2>
         </div>
@@ -56,15 +56,15 @@ export default function OrbisModules() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="p-10 rounded-[2rem] bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-[#0E76BD]/40 transition-all duration-500 group"
+              className="p-10 rounded-[2rem] bg-secondary/40 dark:bg-white/[0.03] border border-border transition-all duration-500 group hover:border-[#0E76BD]/40"
             >
               <div className="w-16 h-16 rounded-2xl bg-[#0E76BD]/10 flex items-center justify-center text-[#0E76BD] mb-8 group-hover:scale-110 transition-transform">
                 {mod.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white leading-tight">
+              <h3 className="text-2xl font-bold mb-4 text-foreground leading-tight">
                 {mod.title}
               </h3>
-              <p className=" leading-relaxed font-light">
+              <p className="text-foreground/70 dark:text-white/60 leading-relaxed font-light">
                 {mod.content}
               </p>
             </motion.div>

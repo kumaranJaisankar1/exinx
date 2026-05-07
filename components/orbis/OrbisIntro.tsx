@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function OrbisIntro() {
   return (
-    <section className="py-24 bg-white dark:bg-background overflow-hidden">
+    <section className="py-24 bg-background overflow-hidden transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -15,17 +15,17 @@ export default function OrbisIntro() {
           >
             <div>
               <span className="section-label !text-[#0E76BD] !border-[#0E76BD]/20">Introduction</span>
-              <h2 className="mt-6 flex flex-col items-start gap-2">
-                <span className="hero-title-thin text-2xl md:text-3xl">What is</span>
+              <h2 className="mt-6 flex flex-col items-start gap-1">
+                <span className="hero-title-thin text-2xl md:text-3xl text-foreground">What is</span>
                 <span className="hero-title-bold text-4xl md:text-6xl text-[#0E76BD]">Orbis?</span>
               </h2>
             </div>
-
+            
             <div className="space-y-6">
-              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+              <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light">
                 Orbis is a comprehensive institutional management platform designed to streamline every aspect of school and college operations. It replaces fragmented processes with a single, structured system that improves efficiency, transparency, and control.
               </p>
-              <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+              <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light">
                 Built on a scalable cloud architecture, Orbis eliminates maintenance overhead while delivering a clean and intuitive experience for administrators, educators, and parents.
               </p>
             </div>

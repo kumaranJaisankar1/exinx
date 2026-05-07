@@ -12,7 +12,7 @@ const capabilities = [
 
 export default function OrbisExtended() {
   return (
-    <section className="py-24 bg-slate-50 dark:bg-white/[0.01]">
+    <section className="py-24 bg-background transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -22,18 +22,18 @@ export default function OrbisExtended() {
           >
             <span className="section-label !text-[#0E76BD] !border-[#0E76BD]/20">Extended Capabilities</span>
             <h2 className="mt-6 flex flex-col items-start gap-2 mb-8">
-              <span className="hero-title-thin text-3xl md:text-4xl">Additional Modules and</span>
+              <span className="hero-title-thin text-3xl md:text-4xl text-foreground">Additional Modules and</span>
               <span className="hero-title-bold text-4xl md:text-6xl text-[#0E76BD]">Integrations</span>
             </h2>
-            <p className="text-xl  leading-relaxed font-light mb-10">
+            <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light mb-10">
               Orbis extends beyond core operations with additional modules that enhance institutional management and supports integration with third party systems such as payroll, accounting, and external tools.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
               {capabilities.map((item, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm">
+                <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-secondary/50 dark:bg-white/[0.03] border border-border shadow-sm transition-colors">
                   <div className="text-[#0E76BD]">{item.icon}</div>
-                  <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{item.label}</span>
+                  <span className="text-sm font-bold text-foreground/80">{item.label}</span>
                 </div>
               ))}
             </div>

@@ -19,7 +19,7 @@ const features = [
 
 export default function OrbisSnapshot() {
   return (
-    <section className="py-24 bg-white dark:bg-background">
+    <section className="py-24 bg-background transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#0E76BD]/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
