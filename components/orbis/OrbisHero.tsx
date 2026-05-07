@@ -1,111 +1,141 @@
 "use client";
 
 import React from 'react';
-import { motion } from "framer-motion";
-import Link from 'next/link';
-import Logo from '../Logo';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { useTheme } from "next-themes";
 
-const CornerAccent = ({ className }: { className: string }) => (
-  <div className={`absolute w-[7px] h-[7px] bg-white ${className}`} />
-);
+const ORBIS_BLUE = '#0E76BD';
 
-const OrbisHero = () => {
+export default function OrbisHero() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+
   return (
-    <section className="relative w-full h-screen flex flex-col overflow-hidden font-barlow">
-      {/* 1. Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+    <section 
+      ref={containerRef} 
+      className="relative h-screen w-full overflow-hidden bg-background flex flex-col justify-center items-center transition-colors duration-500 pt-20"
+    >
+      <style jsx global>{`
+        .orbis-btn-primary {
+          background: ${ORBIS_BLUE};
+          box-shadow: 0 0 30px rgba(14, 118, 189, 0.2);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .orbis-btn-primary:hover {
+          box-shadow: 0 0 50px rgba(14, 118, 189, 0.4);
+          transform: translateY(-2px);
+        }
+      `}</style>
+
+      {/* Dynamic Satellite Grid Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-30 dark:opacity-50">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, ${isDark ? 'rgba(14, 118, 189, 0.15)' : 'rgba(14, 118, 189, 0.08)'} 1px, transparent 0)`,
+            backgroundSize: '40px 40px',
+            maskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
+          }}
+        />
+        {/* Orbital Paths - Smaller to reduce noise */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 40 + i * 15, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#0E76BD]/5 rounded-full"
+            style={{ width: `${(i + 1) * 25}vw`, height: `${(i + 1) * 25}vw` }}
+          />
+        ))}
+      </div>
+
+      <motion.div 
+        style={{ y: y1, opacity }}
+        className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col items-center text-center"
       >
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260306_074215_04640ca7-042c-45d6-bb56-58b1e8a42489.mp4" type="video/mp4" />
-      </video>
+        {/* Eyebrow - More compact */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E76BD]/5 border border-[#0E76BD]/10 backdrop-blur-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0E76BD] animate-pulse" />
+            <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-[#0E76BD] font-bold">
+              Institutional Intelligence
+            </span>
+          </span>
+        </motion.div>
 
-      {/* Navbar is now global, so we don't need the local nav block here */}
+        {/* Headline - Refined & Minimal */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-[clamp(1.8rem,5.5vw,3.5rem)] font-light leading-[1.1] tracking-tight mb-6 text-foreground"
+        >
+          Intelligent Operations. <br />
+          <span className="font-instrument-serif italic text-[#0E76BD]">
+            Integrated Education.
+          </span>
+        </motion.h1>
 
-      {/* 3. Main Content Container */}
-      <div className="relative z-10 flex-grow flex flex-col items-center justify-center text-center px-6 pt-[140px] pb-[250px]">
+        {/* Subheading - Smaller font size */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-sm md:text-base text-foreground/50 max-w-xl leading-relaxed mb-10 font-light"
+        >
+          Orbis unifies admissions, academics, finance, and institutional workflows into one seamless digital ecosystem designed for the modern era.
+        </motion.p>
 
-        {/* Central Content Box with Corner Accents */}
-        <div className="relative max-w-5xl">
-          {/* Corner Accents */}
-          <CornerAccent className="top-0 left-0" />
-          <CornerAccent className="top-0 right-0" />
-          <CornerAccent className="bottom-0 left-0" />
-          <CornerAccent className="bottom-0 right-0" />
+        {/* CTA Buttons - More compact */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex items-center justify-center gap-4"
+        >
+          <button className="orbis-btn-primary px-8 py-3.5 text-white rounded-full font-bold text-[9px] uppercase tracking-[0.2em] shadow-xl active:scale-95">
+            Explore Platform
+          </button>
+          <button className="px-8 py-3.5 border border-border dark:border-white/10 text-foreground rounded-full font-bold text-[9px] uppercase tracking-[0.2em] backdrop-blur-md hover:bg-foreground/5 transition-all active:scale-95">
+            Request Demo
+          </button>
+        </motion.div>
+      </motion.div>
 
-          {/* Featured Badge */}
-          <div className="flex justify-center mb-12 pt-8">
-            <div className="relative p-[1px] rounded-full bg-white/10 backdrop-blur-sm overflow-hidden group transition-all duration-500">
-              <div className="relative px-6 py-2 rounded-full bg-white/90 backdrop-blur-md flex items-center gap-3">
-                <span className="text-[10px] font-bold text-black uppercase tracking-widest">Featured in</span>
-                <span className="text-[12px] font-black text-black tracking-tight">FORTUNE</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Dynamic Headline */}
-          <div className="space-y-4 mb-8">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-white font-light text-[64px] leading-tight"
-            >
-              Intelligence that makes your
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-white font-instrument-serif italic text-[64px] leading-tight"
-            >
-              educational vision viral
-            </motion.h1>
-          </div>
-
-          {/* Sub-headline */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-white/75 text-lg max-w-2xl mx-auto mb-12 font-light leading-relaxed"
-          >
-            Orbis is the AI-native institutional operating system that orchestrates
-            administrative, academic, and operational nodes into a unified,
-            high-performance management ecosystem.
-          </motion.p>
-
-          {/* Button Styling */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ backgroundColor: "#FFFFFF" }}
-              className="px-10 py-4 bg-[#f8f8f8] text-[#171717] font-medium rounded-[2px] transition-colors duration-300 tracking-wide"
-            >
-              Command Center
-            </motion.button>
-            <motion.button
-              onClick={() => {
-                const event = new CustomEvent('open-signal-form');
-                window.dispatchEvent(event);
-              }}
-              className="px-10 py-4 border border-white text-white font-medium rounded-[2px] hover:bg-white/10 transition-colors duration-300 tracking-wide"
-            >
-              Signal Us
-            </motion.button>
-          </div>
+      {/* Simplified Decorative Indicators */}
+      <div className="absolute bottom-8 left-8 hidden lg:flex flex-col gap-2 opacity-20">
+        <div className="flex items-center gap-3">
+          <div className="w-1 h-1 rounded-full bg-[#0E76BD]" />
+          <span className="font-mono text-[8px] tracking-widest uppercase text-foreground">Core Sync Active</span>
         </div>
       </div>
 
-      {/* CSS for custom fonts if needed (fallback) */}
-      <style jsx global>{`
-        .font-barlow { font-family: var(--font-barlow), sans-serif; }
-        .font-instrument-serif { font-family: var(--font-instrument-serif), serif; }
-      `}</style>
+      {/* Minimal Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-10">
+        <motion.div 
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-px h-8 bg-gradient-to-b from-foreground to-transparent"
+        />
+      </div>
+
+      {/* Tighter Background Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-[#0E76BD]/5 blur-[100px] rounded-full pointer-events-none" />
     </section>
   );
-};
-
-export default OrbisHero;
+}

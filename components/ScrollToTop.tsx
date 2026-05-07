@@ -35,14 +35,14 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-[100] group flex h-14 w-14 items-center justify-center rounded-full bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-110 active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden"
+          className="fixed bottom-8 right-8 z-[100] group flex h-14 w-14 items-center justify-center rounded-full bg-secondary/80 dark:bg-white/5 backdrop-blur-xl border border-border dark:border-white/10 hover:bg-secondary hover:dark:bg-white/10 hover:scale-110 active:scale-95 transition-all duration-300 shadow-xl dark:shadow-[0_0_20px_rgba(0,0,0,0.5)] overflow-hidden"
           aria-label="Scroll to top"
         >
           {/* Subtle glow effect behind the icon */}
-          <div className="absolute inset-0 rounded-full bg-[var(--accent)]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 rounded-full bg-accent/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           <svg
-            className="w-5 h-5 text-white/80 group-hover:text-[var(--accent)] group-hover:-translate-y-1 transition-all duration-300 relative z-10"
+            className="w-5 h-5 text-foreground/80 group-hover:text-accent group-hover:-translate-y-1 transition-all duration-300 relative z-10"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

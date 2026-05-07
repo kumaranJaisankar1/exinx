@@ -43,7 +43,7 @@ function NeuralNetwork() {
     const pos = new Float32Array(count * 3);
     const cols = new Float32Array(count * 3);
     const colorNova = new THREE.Color("#60d0f0");
-    const colorAccent = new THREE.Color("#f0a030");
+    const colorAccent = new THREE.Color(typeof document !== 'undefined' && document.body.classList.contains('home-theme') ? "#FF0000" : "#f0a030");
     
     for (let i = 0; i < count; i++) {
       // Random points in a sphere volume
@@ -130,6 +130,9 @@ function KnowledgeModules() {
     }
   });
 
+  const isHome = typeof document !== 'undefined' && document.body.classList.contains('home-theme');
+  const moduleColor = isHome ? "#FF0000" : "#f0a030";
+
   return (
     <group ref={group}>
       {[...Array(6)].map((_, i) => (
@@ -142,7 +145,7 @@ function KnowledgeModules() {
             (Math.random() - 0.5) * 2
           ]}
         >
-          <meshStandardMaterial color="#f0a030" emissive="#f0a030" emissiveIntensity={2} wireframe />
+          <meshStandardMaterial color={moduleColor} emissive={moduleColor} emissiveIntensity={2} wireframe />
         </Icosahedron>
       ))}
     </group>

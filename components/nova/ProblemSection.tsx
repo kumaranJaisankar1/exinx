@@ -92,12 +92,12 @@ const NarrativeBlock = ({ title, highlight, description, label, opacity, y }: an
         <span className="font-mono text-xs text-orange-400 tracking-[0.4em] uppercase">{label}</span>
       </div>
       
-      <h2 className="text-6xl md:text-8xl font-bold font-syne leading-[0.9] tracking-tighter text-white">
+      <h2 className="text-4xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-foreground uppercase tracking-[0.1em]">
         {title} <br />
-        <span className="text-white/20 italic">{highlight}</span>
+        <span className="font-extrabold text-primary block mt-2">{highlight}</span>
       </h2>
       
-      <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-md">
+      <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-md">
         {description}
       </p>
 
@@ -132,35 +132,35 @@ const ProblemSection = () => {
   const y3 = useTransform(smoothProgress, [0.8, 0.95], [20, 0]);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] text-white">
+    <section id="product-section" ref={targetRef} className="relative h-[400vh] bg-background">
       {/* Removed overflow-hidden from sticky container to prevent clipping */}
       <div className="sticky top-0 h-screen flex flex-col lg:flex-row items-center justify-between px-6 md:px-12 max-w-7xl mx-auto">
         
         {/* Left Side: Cinematic Narrative */}
         <div className="w-full lg:w-1/2 relative h-[60vh] lg:h-full flex flex-col justify-center z-10">
           <NarrativeBlock 
-            label="The Static Era"
-            title="Learning Is"
-            highlight="Broken."
-            description="Traditional education forces complex minds into rigid, linear containers. It ignores how you actually think."
+            label="Product"
+            title="A Learning System That"
+            highlight="Thinks Like You Do."
+            description="Traditional learning systems are designed around content. Nova is designed around the student."
             opacity={opacity1}
             y={y1}
           />
 
           <NarrativeBlock 
-            label="The Friction"
-            title="Mastery Is"
-            highlight="Lost."
-            description="When pacing is fixed, gaps in understanding become permanent. Real potential is buried under memorization."
+            label="Cognitive Patterns"
+            title="Processing is"
+            highlight="Multifaceted."
+            description="Every learner has a unique way of processing information. Some require simplified breakdowns, others need structured logic or conceptual depth. Nova identifies these patterns and adapts continuously."
             opacity={opacity2}
             y={y2}
           />
 
           <NarrativeBlock 
-            label="The Evolution"
-            title="Nova Is"
-            highlight="The Core."
-            description="A living intelligence that identifies your cognitive signature and rewrites the learning path in real-time."
+            label="Personalized Layer"
+            title="Meaningful"
+            highlight="Understanding."
+            description="Instead of forcing a uniform explanation, Nova builds a personalized learning layer around each student. It understands your pace, response patterns, and clarity, refining its teaching accordingly."
             opacity={opacity3}
             y={y3}
           />
@@ -205,7 +205,7 @@ const ProblemSection = () => {
 
       {/* Subtle Background Text Decal */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.02]">
-        <h2 className="text-[25vw] font-syne font-black uppercase leading-none">NOVA</h2>
+        <h2 className="text-[25vw] font-black uppercase leading-none">NOVA</h2>
       </div>
     </section>
   );

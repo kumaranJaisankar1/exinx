@@ -1,120 +1,154 @@
 "use client";
 
 import { siteConfig } from "@/lib/config";
-import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Product3DCanvas } from "@/components/Product3DModels";
 
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    }, { threshold: 0.1 });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-  return ref;
-}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+  },
+};
+
+const imageVariants = (index: number) => ({
+  hidden: { opacity: 0, x: index % 2 === 0 ? 50 : -50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+  },
+});
 
 export default function ProductSection() {
   return (
-    <section id="products" className="max-w-7xl mx-auto px-6 md:px-12 py-32">
-      <div className="text-center mb-20 space-y-4">
-        <div ref={useReveal()} className="reveal flex justify-center items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-accent">
-          <span className="w-10 h-px bg-accent" />
-          {siteConfig.products.label}
-          <span className="w-10 h-px bg-accent" />
-        </div>
-        <h2 ref={useReveal()} className="reveal font-syne font-extrabold text-[clamp(2.5rem,4vw,4rem)] leading-[1.1]">
-          Meet the <span className="bg-gradient-to-r from-nova via-orbis to-astra bg-clip-text text-transparent">EXINX Ecosystem</span>
-        </h2>
-        <p ref={useReveal()} className="reveal text-text-muted text-base max-w-xl mx-auto">
-          {siteConfig.products.subtitle}
-        </p>
+    <section id="products" className="relative overflow-hidden py-32 bg-background">
+      {/* Subtle Background Decoration */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.03] dark:opacity-[0.07]">
+        <div className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-accent blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-blue-500 blur-[120px]" />
       </div>
 
-      <div className="space-y-12">
-        {siteConfig.products.items.map((product, i) => (
-          <div 
-            key={product.id}
-            ref={useReveal()}
-            className={cn(
-              "reveal product-card flex flex-col lg:grid lg:grid-cols-2 gap-16 p-8 md:p-16 bg-surface border border-white/[0.04] relative overflow-hidden group transition-all hover:border-white/[0.08]",
-              i % 2 === 1 && "lg:direction-rtl"
-            )}
-          >
-            {/* Glow Overlay */}
-            <div 
-              className="absolute top-0 right-0 w-[40%] h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{ background: `radial-gradient(ellipse at right, ${product.color}0D, transparent 70%)` }}
-            />
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="text-center mb-24 space-y-4"
+        >
+          <motion.div className="flex justify-center items-center gap-4 text-[10px] uppercase tracking-[0.3em] mb-4">
+            <span className="w-12 h-px bg-gradient-to-r from-transparent to-accent" />
+            <span className="text-gradient-exinx font-black">{siteConfig.products.label}</span>
+            <span className="w-12 h-px bg-gradient-to-l from-transparent to-accent" />
+          </motion.div>
+          <motion.h2 className="font-syne font-extrabold text-[clamp(2.5rem,5vw,4.5rem)] leading-[1] tracking-tight">
+            Meet the <span className="text-gradient-exinx">Ecosystem</span>
+          </motion.h2>
+          <motion.p className="text-text-muted text-lg max-w-2xl mx-auto font-medium">
+            {siteConfig.products.subtitle}
+          </motion.p>
+        </motion.div>
 
-            <div className={cn("product-visual relative h-[350px] flex items-center justify-center", i % 2 === 1 && "lg:order-last")}>
-              <div className="relative w-48 h-48 flex items-center justify-center">
-                <div 
-                  className="absolute inset-[-20px] rounded-full blur-[40px] opacity-30"
-                  style={{ background: product.color }}
-                />
-                <div 
-                  className="absolute inset-[-20px] border border-dashed rounded-full animate-[spin_15s_linear_infinite]"
-                  style={{ borderColor: `${product.color}26` }}
-                />
-                
-                {/* Product Shapes */}
-                {product.id === "nova" && (
-                  <div 
-                    className="w-32 h-32 animate-[spin_12s_linear_infinite]"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${product.color}, #3090c0)`,
-                      clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)"
-                    }}
-                  />
-                )}
-                {product.id === "orbis" && (
-                  <div className="w-32 h-32 border-[3px] rounded-full relative" style={{ borderColor: product.color }}>
-                    <div className="absolute inset-4 border-2 rounded-full opacity-50" style={{ borderColor: product.color }} />
-                    <div className="absolute inset-8 rounded-full opacity-60" style={{ background: product.color }} />
-                  </div>
-                )}
-                {product.id === "astra" && (
-                  <div 
-                    className="w-32 h-32 animate-[spin_20s_linear_infinite_reverse]"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${product.color}, #c04030)`,
-                      clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)"
-                    }}
-                  />
-                )}
-              </div>
-            </div>
+        <div className="space-y-32 md:space-y-48">
+          {siteConfig.products.items.map((product, i) => (
+            <div
+              key={product.id}
+              className={cn(
+                "flex flex-col lg:flex-row items-center gap-12 lg:gap-24",
+                i % 2 === 1 && "lg:flex-row-reverse"
+              )}
+            >
+              {/* Product Content */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
 
-            <div className={cn("product-info space-y-6", i % 2 === 1 && "lg:text-left lg:direction-ltr")}>
-              <span className="inline-block py-1 px-3 border text-[10px] uppercase tracking-widest" style={{ color: product.color, borderColor: `${product.color}4D` }}>
-                {product.tag}
-              </span>
-              <h3 className="font-syne font-extrabold text-5xl tracking-tight">{product.name}</h3>
-              <p className="font-serif italic text-lg text-text-muted">{product.subtitle}</p>
-              <p className="text-[14px] leading-relaxed text-text-muted">{product.description}</p>
-              
-              <ul className="space-y-3">
-                {product.features.map((feat, index) => (
-                  <li key={index} className="flex items-center gap-3 text-[13px] text-text-muted py-2 border-b border-white/[0.04]">
-                    <span className="w-4.5 h-4.5 rounded-full flex items-center justify-center text-[9px] font-bold" style={{ background: `${product.color}26`, color: product.color }}>✓</span>
-                    {feat}
-                  </li>
-                ))}
-              </ul>
-
-              <button 
-                className="btn-primary !px-8 !py-3 flex items-center gap-3 group/btn mt-4"
-                style={{ background: product.color, color: i === 0 ? '#0a1520' : i === 1 ? '#0a0820' : '#1a0808' }}
+                className="flex-1 space-y-8"
               >
-                {product.cta}
-                <span className="transition-transform group-hover/btn:translate-x-1">→</span>
-              </button>
+                <div className="space-y-4">
+                  <span className="inline-block py-1.5 px-4 rounded-full border text-[11px] font-bold uppercase tracking-widest bg-surface/50 backdrop-blur-sm" style={{ color: product.color, borderColor: `${product.color}40` }}>
+                    {product.tag}
+                  </span>
+                  <h3 className="font-syne font-extrabold text-5xl md:text-6xl tracking-tighter text-text">
+                    {product.name}
+                  </h3>
+                  <p className="font-serif italic text-xl md:text-2xl text-text-muted opacity-80">
+                    {product.subtitle}
+                  </p>
+                </div>
+
+                <p className="text-base md:text-lg leading-relaxed text-text-muted max-w-xl">
+                  {product.description}
+                </p>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                  {product.features.map((feat, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 * index }}
+                      className="flex items-start gap-3 text-[14px] text-text-muted group"
+                    >
+                      <span className="mt-1 w-5 h-5 rounded-md flex items-center justify-center text-[10px] font-bold transition-colors" style={{ background: `${product.color}15`, color: product.color }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span className="group-hover:text-text transition-colors duration-300">{feat}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                <div className="pt-4">
+                  <button
+                    className="relative px-10 py-4 bg-surface border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 group/btn overflow-hidden rounded-xl"
+                  >
+                    <div className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" style={{ background: `linear-gradient(45deg, ${product.color}20, transparent)` }} />
+                    <span className="relative z-10 font-bold tracking-wide flex items-center gap-3" style={{ color: product.color }}>
+                      {product.cta}
+                      <span className="transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
+                    </span>
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* Product 3D Visual */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="flex-1 w-full aspect-square max-w-[500px] relative"
+              >
+                <div className="absolute inset-0 bg-surface/30 dark:bg-surface/10 rounded-3xl backdrop-blur-[2px] border border-white/[0.03] overflow-hidden">
+                  {/* Radial Glow behind 3D model */}
+                  <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ background: `radial-gradient(circle at center, ${product.color}50, transparent 70%)` }} />
+
+                  <Product3DCanvas id={product.id} />
+                </div>
+
+                {/* Floating Glass Element for depth */}
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hidden md:block animate-bounce-slow" />
+                <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/5 backdrop-blur-lg border border-white/10 rounded-full hidden md:block animate-pulse-slow" />
+              </motion.div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

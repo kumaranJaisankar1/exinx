@@ -2,14 +2,15 @@
 
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useTheme } from "next-themes";
 import { Float, Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { siteConfig } from "@/lib/config";
 
-function Particles({ mouse }: { mouse: React.MutableRefObject<[number, number]> }) {
+function Particles({ mouse, theme }: { mouse: React.MutableRefObject<[number, number]>, theme?: string }) {
   const ref = useRef<THREE.Points>(null!);
   const count = 2000;
-  
+
   const [positions, colors] = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const cols = new Float32Array(count * 3);
@@ -17,7 +18,7 @@ function Particles({ mouse }: { mouse: React.MutableRefObject<[number, number]> 
       new THREE.Color(siteConfig.colors.accent),
       new THREE.Color(siteConfig.colors.nova),
       new THREE.Color(siteConfig.colors.orbis),
-      new THREE.Color(siteConfig.colors.astra),
+      new THREE.Color(siteConfig.colors.iyotaPrep),
     ];
 
     for (let i = 0; i < count; i++) {
@@ -47,8 +48,8 @@ function Particles({ mouse }: { mouse: React.MutableRefObject<[number, number]> 
         size={0.08}
         sizeAttenuation={true}
         depthWrite={false}
-        opacity={0.6}
-        blending={THREE.AdditiveBlending}
+        opacity={theme === 'light' ? 0.2 : 0.6}
+        blending={theme === 'light' ? THREE.NormalBlending : THREE.AdditiveBlending}
       />
     </Points>
   );
@@ -76,7 +77,7 @@ function FloatingShape({ geometry, color, position, rotation }: any) {
   );
 }
 
-function Scene({ mouse }: { mouse: React.MutableRefObject<[number, number]> }) {
+function Scene({ mouse, theme }: { mouse: React.MutableRefObject<[number, number]>, theme?: string }) {
   const { camera } = useThree();
   const shapes = useMemo(() => {
     const items = [];
@@ -91,7 +92,7 @@ function Scene({ mouse }: { mouse: React.MutableRefObject<[number, number]> }) {
       siteConfig.colors.accent,
       siteConfig.colors.nova,
       siteConfig.colors.orbis,
-      siteConfig.colors.astra,
+      siteConfig.colors.iyotaPrep,
     ];
 
     for (let i = 0; i < 10; i++) {
@@ -117,7 +118,7 @@ function Scene({ mouse }: { mouse: React.MutableRefObject<[number, number]> }) {
 
   return (
     <>
-      <Particles mouse={mouse} />
+      <Particles mouse={mouse} theme={theme} />
       {shapes.map((s, i) => (
         <FloatingShape key={i} {...s} />
       ))}
@@ -127,8 +128,11 @@ function Scene({ mouse }: { mouse: React.MutableRefObject<[number, number]> }) {
 
 export default function BackgroundCanvas() {
   const mouse = useRef<[number, number]>([0, 0]);
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       mouse.current = [
         (e.clientX / window.innerWidth - 0.5) * 2,
@@ -139,10 +143,12 @@ export default function BackgroundCanvas() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  if (!mounted) return null;
+
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none bg-[#0a0a0f]">
+    <div className="fixed inset-0 z-0 pointer-events-none bg-background transition-colors duration-500">
       <Canvas camera={{ position: [0, 0, 30], fov: 75 }} dpr={[1, 2]}>
-        <Scene mouse={mouse} />
+        <Scene mouse={mouse} theme={theme} />
       </Canvas>
     </div>
   );

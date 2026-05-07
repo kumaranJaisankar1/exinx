@@ -28,8 +28,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'EXINX | Extended Intelligence • Nova • Orbis • Astra',
-  description: 'Extended Intelligence X-Factor (EXINX) - Pure EduTech Engineering featuring Nova, Orbis, and Astra ecosystems.',
+  title: 'EXINX | Extended Intelligence • Nova • Orbis • IyotaPrep',
+  description: 'Extended Intelligence X-Factor (EXINX) - Pure EduTech Engineering featuring Nova, Orbis, and IyotaPrep ecosystems.',
   icons: {
     icon: '/icon.svg',
   },
@@ -40,11 +40,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.variable} ${barlow.variable} ${instrumentSerif.variable} antialiased overflow-x-hidden selection:bg-accent/30 selection:text-accent`} suppressHydrationWarning>
         <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
+          attribute="class"
+          defaultTheme="light"
           disableTransitionOnChange
         >
           <SmoothScrollProvider>
+            <div className="relative z-50">
+              <Navbar />
+            </div>
             {children}
             <ScrollToTop />
             <VismeFormModal />

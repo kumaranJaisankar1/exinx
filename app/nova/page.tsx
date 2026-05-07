@@ -2,13 +2,11 @@
 
 import NovaHero from "@/components/sections/NovaHero";
 import ProblemSection from "@/components/nova/ProblemSection";
-import CognitionSection from "@/components/nova/CognitionSection";
 import ProcessTimeline from "@/components/nova/ProcessTimeline";
 import CapabilitiesSection from "@/components/nova/CapabilitiesSection";
 import IntelligenceEngine from "@/components/nova/IntelligenceEngine";
 import ComparisonSection from "@/components/nova/ComparisonSection";
 import CurriculumSection from "@/components/nova/CurriculumSection";
-import StudentExperience from "@/components/nova/StudentExperience";
 import PricingSection from "@/components/nova/PricingSection";
 import FAQSection from "@/components/nova/FAQSection";
 import FinalCTA from "@/components/nova/FinalCTA";
@@ -20,42 +18,45 @@ import Navbar from "@/components/Navbar";
 
 export default function NovaPage() {
   return (
-    <main className="relative">
+    <main className="relative [--primary:#D97706] [--accent:#D97706]">
       <CustomCursor />
-      <BackgroundCanvas />
-
+      
       <div className="relative z-10">
-        <Navbar />
         <NovaHero
           trustBadge={{
-            text: "Nova Core",
-            icons: ["⚡"]
+            text: "Nova Intelligence",
+            icons: ["🧠"]
           }}
           headline={{
             line1: "PERSONALIZED AI",
-            line2: "FOR YOUR IQ."
+            line2: "That Teaches You"
           }}
-          subtitle="Nova is a revolutionary AI that identifies your cognitive fingerprint and rewrites its teaching engine in real-time to match your unique intelligence."
+          subtitle="Nova is an adaptive AI-powered learning system that understands how you think, processes how you learn, and delivers explanations aligned to your cognitive ability."
+          description="Built for students who want more than just answers, Nova ensures every concept is understood the right way, at the right level, with the right depth."
           buttons={{
             primary: {
-              text: "Experience Nova",
-              onClick: () => console.log("Explore Nova")
+              text: "Start Learning Free",
+              onClick: () => window.dispatchEvent(new CustomEvent('open-signal-form'))
+            },
+            secondary: {
+              text: "Explore How It Works",
+              onClick: () => document.getElementById('problem-section')?.scrollIntoView({ behavior: 'smooth' })
             }
           }}
         />
-
-        <ProblemSection />
-        <CognitionSection />
-        <ProcessTimeline />
-        <CapabilitiesSection />
-        <IntelligenceEngine />
-        <ComparisonSection />
-        <CurriculumSection />
-        <StudentExperience />
-        <PricingSection />
-        <FAQSection />
-        <FinalCTA />
-        <Footer />
+        
+        <div className="bg-background">
+          <ProblemSection />
+          <ProcessTimeline />
+          <CapabilitiesSection />
+          <IntelligenceEngine />
+          <ComparisonSection />
+          <CurriculumSection />
+          <PricingSection />
+          <FAQSection />
+          <FinalCTA />
+          <Footer />
+        </div>
       </div>
     </main>
   );

@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
-import React, { useRef, useEffect } from 'react';
 import HeroSection from "@/components/sections/HeroSection";
 import Marquee from "@/components/sections/Marquee";
 import AboutSection from "@/components/sections/AboutSection";
@@ -15,6 +15,11 @@ import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
+  useEffect(() => {
+    document.body.classList.add("home-theme");
+    return () => document.body.classList.remove("home-theme");
+  }, []);
+
   return (
     <>
       <CustomCursor />
@@ -22,7 +27,6 @@ export default function Home() {
       <div className="noise-overlay" />
 
       <div className="relative z-10">
-        <Navbar />
 
         <main>
           <HeroSection />

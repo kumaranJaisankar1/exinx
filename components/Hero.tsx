@@ -55,7 +55,7 @@ export default function Hero() {
             <div className={cn(
               "w-1.5 h-1.5 rounded-full animate-pulse transition-colors duration-1000 shadow-[0_0_10px_currentColor]",
               activeProduct === 'Nova' ? "bg-accent text-accent" :
-                activeProduct === 'Astra' ? "bg-amber-400 text-amber-400" : "bg-slate-300 text-slate-300"
+                activeProduct === 'IyotaPrep' ? "bg-amber-400 text-amber-400" : "bg-slate-300 text-slate-300"
             )} />
 
             <span className="text-[9px] font-mono text-slate-500 tracking-[0.4em] uppercase">
@@ -87,7 +87,7 @@ export default function Hero() {
             <span className="relative z-10 transition-colors duration-500 group-hover:text-white">Initiate Ecosystem</span>
             <div className={cn(
               "absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500",
-              activeProduct === 'Nova' ? "bg-accent" : activeProduct === 'Astra' ? "bg-amber-500" : "bg-accent"
+              activeProduct === 'Nova' ? "bg-accent" : activeProduct === 'IyotaPrep' ? "bg-amber-500" : "bg-accent"
             )} />
 
           </button>
@@ -102,7 +102,7 @@ export default function Hero() {
       <motion.div
         animate={{
           backgroundColor: activeProduct === 'Nova' ? "rgba(0, 213, 190, 0.04)" :
-            activeProduct === 'Astra' ? "rgba(245, 158, 11, 0.04)" : "rgba(0, 213, 190, 0.04)"
+            activeProduct === 'IyotaPrep' ? "rgba(245, 158, 11, 0.04)" : "rgba(0, 213, 190, 0.04)"
         }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full rounded-full blur-[240px] pointer-events-none -z-10"
       />

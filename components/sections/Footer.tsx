@@ -21,7 +21,7 @@ export default function Footer() {
 
           {siteConfig.footer.columns.map((col, i) => (
             <div key={i} className="space-y-6">
-              <h5 className="font-syne font-semibold text-[13px] uppercase tracking-widest">{col.title}</h5>
+              <h5 className="font-extrabold text-[13px] uppercase tracking-widest text-foreground">{col.title}</h5>
               <ul className="space-y-3">
                 {col.links.map((link, j) => (
                   <li key={j}>
