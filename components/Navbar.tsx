@@ -48,7 +48,7 @@ export default function Navbar() {
                         : "text-white/60 hover:text-white")
                       : isOrbis
                         ? (isActive ? "text-[#0E76BD] font-semibold" : "text-slate-600 hover:text-slate-900")
-                        : (isActive ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground")
+                        : (isActive ? "text-[#FF0000] font-semibold" : "text-muted-foreground hover:text-foreground")
                   )}
                 >
                   {link.label}

@@ -22,10 +22,10 @@ export default function OrbisIntro() {
             </div>
             
             <div className="space-y-6">
-              <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light">
+              <p className="text-xl text-muted-foreground leading-relaxed font-light">
                 Orbis is a comprehensive institutional management platform designed to streamline every aspect of school and college operations. It replaces fragmented processes with a single, structured system that improves efficiency, transparency, and control.
               </p>
-              <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light">
+              <p className="text-xl text-muted-foreground leading-relaxed font-light">
                 Built on a scalable cloud architecture, Orbis eliminates maintenance overhead while delivering a clean and intuitive experience for administrators, educators, and parents.
               </p>
             </div>

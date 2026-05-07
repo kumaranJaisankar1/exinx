@@ -19,7 +19,7 @@ export default function OrbisClosing() {
             <span className="hero-title-bold text-5xl md:text-8xl text-[#0E76BD]">Strengthen Outcomes.</span>
           </h2>
 
-          <p className="text-xl md:text-2xl text-foreground/70 dark:text-white/60 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light leading-relaxed">
             Orbis empowers institutions to operate efficiently, communicate effectively, and scale with confidence through a unified and intelligent management system.
           </p>
 

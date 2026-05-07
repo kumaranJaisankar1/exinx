@@ -64,7 +64,7 @@ export default function OrbisModules() {
               <h3 className="text-2xl font-bold mb-4 text-foreground leading-tight">
                 {mod.title}
               </h3>
-              <p className="text-foreground/70 dark:text-white/60 leading-relaxed font-light">
+              <p className="text-muted-foreground leading-relaxed font-light">
                 {mod.content}
               </p>
             </motion.div>

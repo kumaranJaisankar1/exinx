@@ -17,7 +17,7 @@ export default function OrbisCoreValue() {
             <span className="hero-title-thin text-3xl md:text-4xl text-foreground">Designed to Simplify</span>
             <span className="hero-title-bold text-5xl md:text-7xl text-[#0E76BD]">Complex Systems</span>
           </h2>
-          <p className="text-xl md:text-2xl text-foreground/70 dark:text-white/60 leading-relaxed font-light">
+          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
             Institutions manage multiple workflows every day, from admissions and fee collection to academics and communication. Orbis brings all of these into one connected system, reducing manual effort and enabling seamless operations across the academic year.
           </p>
         </motion.div>

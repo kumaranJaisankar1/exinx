@@ -25,7 +25,7 @@ export default function OrbisExtended() {
               <span className="hero-title-thin text-3xl md:text-4xl text-foreground">Additional Modules and</span>
               <span className="hero-title-bold text-4xl md:text-6xl text-[#0E76BD]">Integrations</span>
             </h2>
-            <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light mb-10">
+            <p className="text-xl text-muted-foreground leading-relaxed font-light mb-10">
               Orbis extends beyond core operations with additional modules that enhance institutional management and supports integration with third party systems such as payroll, accounting, and external tools.
             </p>
 

@@ -17,10 +17,10 @@ export default function OrbisFlexibility() {
                 <span className="hero-title-thin text-3xl md:text-4xl text-foreground">Flexible and</span>
                 <span className="hero-title-bold text-4xl md:text-6xl text-[#0E76BD]">Configurable</span>
               </h2>
-              <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light">
+              <p className="text-xl text-muted-foreground leading-relaxed font-light">
                 Orbis allows institutions to enable or disable modules based on their needs. The platform can be configured at school or branch level, ensuring a clean and relevant interface for every user.
               </p>
-              <p className="text-xl text-foreground/70 dark:text-white/60 leading-relaxed font-light mt-6">
+              <p className="text-xl text-muted-foreground leading-relaxed font-light mt-6">
                 This flexibility ensures that institutions can scale and adapt the system as they grow.
               </p>
             </div>
