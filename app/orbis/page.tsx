@@ -6,7 +6,7 @@ import OrbisHero from "@/components/orbis/OrbisHero";
 import OrbisTrust from "@/components/orbis/OrbisTrust";
 import PlatformOverview from "@/components/orbis/PlatformOverview";
 import OrbisFeatureSection from "@/components/orbis/OrbisFeatureSection";
-import MobileAppShowcase from "@/components/orbis/MobileAppShowcase";
+import OrbisMobileEcosystem from "@/components/orbis/OrbisMobileEcosystem";
 import WhyOrbis from "@/components/orbis/WhyOrbis";
 import OrbisCTA from "@/components/orbis/OrbisCTA";
 import Footer from "@/components/sections/Footer";
@@ -18,7 +18,7 @@ export default function OrbisPage() {
   return (
     <main
       className="relative bg-background overflow-x-hidden transition-colors duration-500"
-      style={{ 
+      style={{
         '--primary': '#0E76BD',
         '--accent': '#0E76BD'
       } as React.CSSProperties}
@@ -35,7 +35,8 @@ export default function OrbisPage() {
 
         <div className="space-y-0 relative">
           {/* Smart Admissions */}
-          <OrbisFeatureSection 
+          <OrbisMobileEcosystem />
+          <OrbisFeatureSection
             heading="Smart Admissions Management"
             description="Digitize and streamline the complete admission lifecycle with intelligent onboarding workflows, application management, document handling, and centralized student records."
             features={[
@@ -48,7 +49,7 @@ export default function OrbisPage() {
           />
 
           {/* Fee & Finance */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Intelligent Fee & Finance Management"
             description="Simplify institutional finance operations with flexible fee structures, automated collections, payment tracking, and secure online payment integrations."
             features={[
@@ -61,7 +62,7 @@ export default function OrbisPage() {
           />
 
           {/* Operations Automation */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Institution Operations Automation"
             description="Automate daily administrative and academic workflows through an integrated operational intelligence system designed to improve institutional efficiency."
             features={[
@@ -74,7 +75,7 @@ export default function OrbisPage() {
           />
 
           {/* Parent Experience */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Connected Parent Experience"
             description="Keep parents informed and engaged through a real-time communication platform with instant academic updates, attendance tracking, and transport visibility."
             features={[
@@ -87,7 +88,7 @@ export default function OrbisPage() {
           />
 
           {/* Student Experience */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Digital Student Experience"
             description="A connected student platform designed to simplify academic engagement, assignment tracking, schedules, announcements, and performance visibility."
             features={[
@@ -98,7 +99,7 @@ export default function OrbisPage() {
           />
 
           {/* Teacher Productivity */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Teacher Productivity Platform"
             description="Empower educators with tools that simplify classroom management, assignment coordination, attendance workflows, and academic communication."
             features={[
@@ -109,7 +110,7 @@ export default function OrbisPage() {
           />
 
           {/* Academic Management */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Academic Management Suite"
             description="Streamline curriculum delivery, examination management, grading workflows, and academic monitoring through one connected academic system."
             features={[
@@ -121,7 +122,7 @@ export default function OrbisPage() {
           />
 
           {/* Administrative Management */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Administrative Management System"
             description="Centralize operational management with scalable tools for employee administration, documentation, institutional coordination, and asset monitoring."
             features={[
@@ -132,7 +133,7 @@ export default function OrbisPage() {
           />
 
           {/* Communication Hub */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Real-Time Communication Hub"
             description="Deliver instant institutional communication through a unified engagement platform built for collaboration and transparency."
             features={[
@@ -143,7 +144,7 @@ export default function OrbisPage() {
           />
 
           {/* Smart Transportation */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Smart Transportation Management"
             description="Enhance transportation operations through live GPS tracking, intelligent route management, and automated parent notifications."
             features={[
@@ -154,7 +155,7 @@ export default function OrbisPage() {
           />
 
           {/* Analytics & Insights */}
-          <OrbisFeatureSection 
+          <OrbisFeatureSection
             heading="Analytics & Institutional Insights"
             description="Enable data-driven decision-making through real-time analytics, performance monitoring, and operational reporting dashboards."
             features={[
@@ -166,7 +167,7 @@ export default function OrbisPage() {
           />
         </div>
 
-        <MobileAppShowcase />
+
         <WhyOrbis />
         <OrbisCTA />
 

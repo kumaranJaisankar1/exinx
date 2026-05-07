@@ -23,7 +23,7 @@ export const siteConfig = {
     links: [
       { label: "Nova", href: "/nova" },
       { label: "Orbis", href: "/orbis" },
-      { label: "IyotaPrep", href: "/iyotaprep" },
+      { label: "Iyota", href: "/iyota" },
     ],
     cta: "Signal Us",
   },
@@ -124,9 +124,9 @@ export const siteConfig = {
       {
         id: "iyotaprep",
         tag: "AI Assessment & Analytics",
-        name: "IyotaPrep",
+        name: "Iyota",
         subtitle: "Testing that measures understanding, not memorization.",
-        description: "IyotaPrep reimagines assessment. Instead of multiple-choice traps, it generates adaptive challenges that probe the depth of your understanding with real-time analytics.",
+        description: "Iyota reimagines assessment. Instead of multiple-choice traps, it generates adaptive challenges that probe the depth of your understanding with real-time analytics.",
         features: [
           "Adaptive difficulty",
           "Concept-level diagnostics",
@@ -154,13 +154,13 @@ export const siteConfig = {
         num: "02",
         icon: "🧠",
         title: "AI Maps Your Mind",
-        text: "Through a conversational assessment, IyotaPrep identifies your knowledge level and optimal challenge zone.",
+        text: "Through a conversational assessment, Iyota identifies your knowledge level and optimal challenge zone.",
       },
       {
         num: "03",
         icon: "⚡",
         title: "Learn, Connect, Grow",
-        text: "Nova teaches, Orbis connects you with peers, and IyotaPrep continuously refines your understanding.",
+        text: "Nova teaches, Orbis connects you with peers, and Iyota continuously refines your understanding.",
       },
       {
         num: "04",
@@ -189,7 +189,7 @@ export const siteConfig = {
         color: "orbis",
       },
       {
-        quote: "As a teacher, IyotaPrep has been revelatory. I can finally see exactly where each student's understanding breaks down. My class average went up 23% in one semester.",
+        quote: "As a teacher, Iyota has been revelatory. I can finally see exactly where each student's understanding breaks down. My class average went up 23% in one semester.",
         author: "Dr. Maya Patel",
         role: "High School Principal, Chicago",
         initials: "MP",
@@ -206,14 +206,14 @@ export const siteConfig = {
     note: "No credit card required · Early access pricing locked forever · Cancel anytime",
   },
   footer: {
-    description: "Building the intelligence layer for human learning. Nova, Orbis and IyotaPrep. One mission. Infinite potential for every mind on Earth.",
+    description: "Building the intelligence layer for human learning. Nova, Orbis and Iyota. One mission. Infinite potential for every mind on Earth.",
     columns: [
       {
         title: "Products",
         links: [
           { label: "Nova   AI Companion", href: "/nova" },
           { label: "Orbis   Knowledge Platform", href: "/orbis" },
-          { label: "IyotaPrep   Smart Assessment", href: "/iyotaprep" },
+          { label: "Iyota   Smart Assessment", href: "/iyotaprep" },
           { label: "Pricing", href: "#" },
         ],
       },

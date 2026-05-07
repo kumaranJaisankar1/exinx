@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function IyotaPrepCTA() {
   return (
-    <section className="py-32 relative overflow-hidden bg-background transition-colors duration-500">
+    <section className="py-32 relative overflow-hidden bg-white transition-colors duration-500">
       {/* Central red glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
@@ -56,7 +56,7 @@ export default function IyotaPrepCTA() {
               className="font-instrument-serif italic font-normal"
               style={{
                 color: '#FF0000',
-                textShadow: '0 0 60px rgba(255,0,0,0.3)',
+                textShadow: 'none',
               }}
             >
               the Right Way.

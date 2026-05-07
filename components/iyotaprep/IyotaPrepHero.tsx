@@ -85,7 +85,6 @@ export default function IyotaPrepHero() {
       <style jsx global>{`
         .iyota-btn-primary {
           background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%);
-          box-shadow: 0 0 40px rgba(255,0,0,0.3), 0 0 80px rgba(255,0,0,0.1);
           transition: all 0.3s ease;
         }
         .iyota-btn-primary:hover {
@@ -105,26 +104,13 @@ export default function IyotaPrepHero() {
           transform: translateY(-2px);
         }
         .hero-red-glow {
-          text-shadow: 0 0 40px rgba(255,0,0,0.15), 0 0 80px rgba(255,0,0,0.08);
+          text-shadow: none;
         }
       `}</style>
 
       {/* Background Video */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
-          style={{
-            opacity: videoOpacity,
-            filter: isDark ? 'blur(4px) brightness(0.9)' : 'blur(10px) brightness(1.1)'
-          }}
-        >
-          <source src="/videos/iyotaprep-hero.mp4" type="video/mp4" />
-        </video>
+
         {/* Cinematic Vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40 opacity-80 transition-colors duration-500" />
         <div className="absolute inset-0" style={{
@@ -168,7 +154,7 @@ export default function IyotaPrepHero() {
         >
           India's Most Powerful{' '}
           <span
-            className="font-instrument-serif italic font-normal block mt-1"
+            className="font-instrument-serif ital font-normal block mt-1"
             style={{ color: RED }}
           >
             Preparation Infrastructure

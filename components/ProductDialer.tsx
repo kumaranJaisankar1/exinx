@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 
-export type Product = 'X' | 'Orbis' | 'Nova' | 'IyotaPrep';
+export type Product = 'X' | 'Orbis' | 'Nova' | 'Iyota';
 
 interface ProductDialerProps {
   onProductChange: (product: Product) => void;
   className?: string;
 }
 
-const products: Product[] = ['X', 'Nova', 'Orbis', 'IyotaPrep'];
+const products: Product[] = ['X', 'Nova', 'Orbis', 'Iyota'];
 
 export default function ProductDialer({ onProductChange, className }: ProductDialerProps) {
   const [index, setIndex] = useState(0);
@@ -32,7 +32,7 @@ export default function ProductDialer({ onProductChange, className }: ProductDia
       case 'X': return 'text-gradient-exinx';
       case 'Nova': return 'text-nova-orange';
       case 'Orbis': return 'text-orbis-blue';
-      case 'IyotaPrep': return 'text-red-600';
+      case 'Iyota': return 'text-red-600';
       default: return '';
     }
   };

@@ -28,7 +28,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'EXINX | Extended Intelligence • Nova • Orbis • IyotaPrep',
+  title: 'EXINX | Extended Intelligence • Nova • Orbis • Iyota',
   description: 'Extended Intelligence X-Factor (EXINX) - Pure EduTech Engineering featuring Nova, Orbis, and IyotaPrep ecosystems.',
   icons: {
     icon: '/icon.svg',
