@@ -13,7 +13,7 @@ const cognitionCards = [
   },
   {
     title: "Persona Detection",
-    description: "Identifying unique learning styles—visual, auditory, or analytical.",
+    description: "Identifying unique learning styles visual, auditory, or analytical.",
     icon: Target,
     color: "from-purple-500/20 to-indigo-500/20",
     borderColor: "border-purple-500/20"
@@ -39,10 +39,10 @@ const CognitionSection = () => {
     <section className="py-32 overflow-hidden relative">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center mb-24">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -50,14 +50,14 @@ const CognitionSection = () => {
           >
             Built on <span className="text-blue-400">Cognitive Intelligence.</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-400 max-w-2xl mx-auto"
           >
-            Nova continuously refines how it teaches based on how you learn. 
+            Nova continuously refines how it teaches based on how you learn.
             It doesn't just deliver content; it builds an evolving model of your mind.
           </motion.p>
         </div>
@@ -66,7 +66,7 @@ const CognitionSection = () => {
           {/* Left: AI Visual Flow */}
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-3xl opacity-50 group-hover:opacity-100 transition-opacity" />
-            
+
             <div className="relative bg-white/[0.02] border border-white/10 rounded-3xl p-12 backdrop-blur-sm">
               <div className="flex flex-col gap-12">
                 {[
@@ -88,22 +88,22 @@ const CognitionSection = () => {
 
               {/* Decorative Brain/Node SVG */}
               <div className="absolute right-12 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none">
-                 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1" className="text-blue-500" />
-                    <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" className="text-white" />
-                    {[...Array(6)].map((_, i) => (
-                      <motion.circle
-                        key={i}
-                        cx={100 + Math.cos(i * 60 * Math.PI / 180) * 80}
-                        cy={100 + Math.sin(i * 60 * Math.PI / 180) * 80}
-                        r="3"
-                        fill="currentColor"
-                        className="text-blue-400"
-                        animate={{ opacity: [0.2, 1, 0.2] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                      />
-                    ))}
-                 </svg>
+                <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1" className="text-blue-500" />
+                  <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" className="text-white" />
+                  {[...Array(6)].map((_, i) => (
+                    <motion.circle
+                      key={i}
+                      cx={100 + Math.cos(i * 60 * Math.PI / 180) * 80}
+                      cy={100 + Math.sin(i * 60 * Math.PI / 180) * 80}
+                      r="3"
+                      fill="currentColor"
+                      className="text-blue-400"
+                      animate={{ opacity: [0.2, 1, 0.2] }}
+                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                    />
+                  ))}
+                </svg>
               </div>
             </div>
           </div>

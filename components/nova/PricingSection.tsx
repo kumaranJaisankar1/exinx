@@ -1,77 +1,89 @@
 "use client";
-
+import React from 'react';
 import { motion } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const PricingSection = () => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   return (
-    <section className="py-32 relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="text-center mb-20">
+    <section id="pricing-section" className="py-32 relative bg-background transition-colors duration-500">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-5xl mx-auto px-8 relative z-10 text-center">
+        <div className="mb-16">
+          <span className="section-label">Pricing</span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold font-syne mb-6"
+            className="text-3xl md:text-5xl font-light text-foreground uppercase tracking-[0.15em] mb-6"
           >
-            Simple <span className="text-orange-400">Premium Pricing.</span>
+            Accessible Learning, <br />
+            <span className="font-extrabold block mt-2 text-primary tracking-[0.05em]">Designed for Every Student</span>
           </motion.h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Experience Nova with a risk-free trial. Full access to the adaptive 
-            intelligence core and all cognitive modules.
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto font-light">
+            Start with a 7-day free trial. No payment required.
           </p>
         </div>
 
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-md mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative p-12 rounded-[40px] bg-white/[0.03] border border-white/10 backdrop-blur-xl overflow-hidden group"
+            className="p-10 bg-secondary/30 dark:bg-white/[0.02] border border-border dark:border-white/10 rounded-[2rem] shadow-2xl backdrop-blur-xl relative overflow-hidden"
           >
-            {/* Background Glow */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-orange-500/20 blur-[80px] rounded-full group-hover:bg-orange-500/30 transition-colors" />
-            
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-10">
-                <div>
-                   <h3 className="text-2xl font-bold text-white mb-2">Nova Access</h3>
-                   <span className="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs font-mono tracking-widest uppercase">7-Day Free Trial</span>
-                </div>
-                <Sparkles className="text-orange-400" />
+            {/* Glow effect */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" />
+
+            <div className="flex items-center justify-between mb-8 relative z-10">
+              <div className="text-left">
+                 <h3 className="text-sm font-extrabold text-foreground uppercase tracking-widest mb-1">Nova Access</h3>
+                 <span className="inline-block px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-[9px] font-bold uppercase tracking-widest">
+                   7-Day Free Trial
+                 </span>
               </div>
-
-              <div className="flex items-baseline gap-2 mb-10">
-                <span className="text-6xl font-bold text-white font-syne">₹999</span>
-                <span className="text-gray-500 text-xl">/month</span>
-              </div>
-
-              <ul className="space-y-6 mb-12">
-                {[
-                  "Personalized Intelligence Core",
-                  "All Curriculum Support",
-                  "24/7 AI Study Companion",
-                  "Deep Cognitive Analytics",
-                  "Unlimited Growth Tracking",
-                  "Cross-Device Synchronization"
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-4 text-gray-300">
-                    <div className="w-5 h-5 rounded-full bg-orange-500/20 flex items-center justify-center flex-shrink-0">
-                       <Check size={12} className="text-orange-400" />
-                    </div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <button className="w-full py-5 bg-orange-500 hover:bg-orange-600 text-black font-bold text-lg rounded-2xl transition-all shadow-[0_0_40px_rgba(249,115,22,0.2)] hover:shadow-[0_0_60px_rgba(249,115,22,0.4)] hover:scale-[1.02]">
-                Start Learning Free
-              </button>
-              
-              <p className="mt-6 text-center text-sm text-gray-500 font-medium">
-                No credit card required for trial. Cancel anytime.
-              </p>
+              <Sparkles className="text-primary" size={20} />
             </div>
+
+            <div className="flex items-baseline gap-1 mb-8 justify-start relative z-10">
+              <span className="text-5xl font-bold text-foreground">₹999</span>
+              <span className="text-foreground/40 text-sm">/month</span>
+            </div>
+
+            <ul className="space-y-4 mb-10 text-left relative z-10">
+              {[
+                "Personalized Intelligence Core",
+                "All Curriculum Support",
+                "24/7 AI Study Companion",
+                "Deep Cognitive Analytics",
+                "Unlimited Growth Tracking"
+              ].map((feature, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm text-foreground/60">
+                  <Check size={14} className="text-primary shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-signal-form'))}
+              className="w-full py-5 bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(217,119,6,0.3)] active:scale-95 relative z-10"
+              style={{
+                background: 'var(--primary)',
+                boxShadow: '0 10px 30px -5px rgba(217, 119, 6, 0.3)'
+              }}
+            >
+              Start Learning Free
+            </button>
+            
+            <p className="mt-6 text-center text-[10px] text-foreground/30 uppercase tracking-widest relative z-10">
+              No credit card required. Cancel anytime.
+            </p>
           </motion.div>
         </div>
       </div>

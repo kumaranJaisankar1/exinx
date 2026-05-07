@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 
-export type Product = 'X' | 'Orbis' | 'Nova' | 'Astra';
+export type Product = 'X' | 'Orbis' | 'Nova' | 'IyotaPrep';
 
 interface ProductDialerProps {
   onProductChange: (product: Product) => void;
   className?: string;
 }
 
-const products: Product[] = ['X', 'Orbis', 'Nova', 'Astra'];
+const products: Product[] = ['X', 'Nova', 'Orbis', 'IyotaPrep'];
 
 export default function ProductDialer({ onProductChange, className }: ProductDialerProps) {
   const [index, setIndex] = useState(0);
@@ -27,21 +27,28 @@ export default function ProductDialer({ onProductChange, className }: ProductDia
 
   const currentProduct = products[index];
 
+  const getProductClass = (product: Product) => {
+    switch (product) {
+      case 'X': return 'text-gradient-exinx';
+      case 'Nova': return 'text-nova-orange';
+      case 'Orbis': return 'text-orbis-blue';
+      case 'IyotaPrep': return 'text-red-600';
+      default: return '';
+    }
+  };
+
   return (
-    <div className={cn("inline-flex flex-col h-[1.3em] overflow-hidden align-top pb-1", className)}>
+    <div className={cn("inline-flex flex-col h-[1.3em] overflow-hidden align-top pb-1 min-w-[200px]", className)}>
       <AnimatePresence mode="wait">
         <motion.span
           key={currentProduct}
-          initial={{ y: "100%" }}
-          animate={{ y: "0%" }}
-          exit={{ y: "-100%" }}
-          transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+          initial={{ x: "20%", opacity: 0 }}
+          animate={{ x: "0%", opacity: 1 }}
+          exit={{ x: "-20%", opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className={cn(
-            "inline-block whitespace-nowrap bg-clip-text text-transparent drop-shadow-sm",
-            currentProduct === 'X' && "bg-gradient-to-r from-accent via-accent-secondary to-nova",
-            currentProduct === 'Nova' && "bg-gradient-to-r from-accent via-accent-secondary to-nova",
-            currentProduct === 'Astra' && "bg-gradient-to-br from-accent via-accent-secondary to-nova",
-            currentProduct === 'Orbis' && "bg-gradient-to-tr from-accent via-accent-secondary to-nova"
+            "inline-block whitespace-nowrap",
+            getProductClass(currentProduct)
           )}
         >
           {currentProduct}

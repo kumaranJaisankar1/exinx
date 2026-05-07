@@ -14,7 +14,7 @@ export const siteConfig = {
     accentSecondary: "#e06040",
     nova: "#60d0f0",
     orbis: "#a070f0",
-    astra: "#f07050",
+    iyotaPrep: "#f07050",
     text: "#f0ede6",
     textMuted: "#8a8698",
     textDim: "#5a5668",
@@ -23,7 +23,7 @@ export const siteConfig = {
     links: [
       { label: "Nova", href: "/nova" },
       { label: "Orbis", href: "/orbis" },
-      { label: "Astra", href: "/astra" },
+      { label: "IyotaPrep", href: "/iyotaprep" },
     ],
     cta: "Signal Us",
   },
@@ -34,7 +34,7 @@ export const siteConfig = {
       line2: "Learning is",
       line3: "Already Here.",
     },
-    description: "EXINX builds AI-native educational products that don't just teach — they think with you. Three tools. One mission. Infinite potential. Welcome to the platform that adapts to how your mind actually works.",
+    description: "EXINX builds AI-native educational products that don't just teach   they think with you. Three tools. One mission. Infinite potential. Welcome to the platform that adapts to how your mind actually works.",
     actions: {
       primary: "Explore Products →",
       secondary: "Learn More",
@@ -58,8 +58,8 @@ export const siteConfig = {
   about: {
     label: "Our Philosophy",
     title: "Education shouldn't be one-size-fits-all. It should be one-size-fits-you.",
-    description1: "EXINX was born from a frustration: despite billions spent on edtech, most platforms still deliver static content wrapped in gamification. We asked a different question — what if the AI didn't just deliver content, but truly understood how you learn?",
-    description2: "Our founding team of AI researchers, cognitive scientists, and educators spent two years building the neural architecture that powers Nova, Orbis, and Astra. Not chatbots with education prompts — purpose-built intelligence designed from the ground up for learning.",
+    description1: "EXINX was born from a frustration: despite billions spent on edtech, most platforms still deliver static content wrapped in gamification. We asked a different question   what if the AI didn't just deliver content, but truly understood how you learn?",
+    description2: "Our founding team of AI researchers, cognitive scientists, and educators spent two years building the neural architecture that powers Nova, Orbis, and Astra. Not chatbots with education prompts   purpose-built intelligence designed from the ground up for learning.",
     description3: "The result? Three products that work independently yet amplify each other. A learning companion that knows you. A knowledge platform that connects minds. An assessment engine that measures what matters. Together, they form the most intelligent education ecosystem ever built.",
     philosophy: [
       {
@@ -80,7 +80,7 @@ export const siteConfig = {
       {
         num: "04",
         title: "Privacy First",
-        text: "Your learning data belongs to you. We process, adapt, and personalize — without ever selling or sharing your information.",
+        text: "Your learning data belongs to you. We process, adapt, and personalize   without ever selling or sharing your information.",
       },
     ],
   },
@@ -122,11 +122,11 @@ export const siteConfig = {
         color: "#a070f0",
       },
       {
-        id: "astra",
+        id: "iyotaprep",
         tag: "AI Assessment & Analytics",
-        name: "Astra",
+        name: "IyotaPrep",
         subtitle: "Testing that measures understanding, not memorization.",
-        description: "Astra reimagines assessment. Instead of multiple-choice traps, it generates adaptive challenges that probe the depth of your understanding with real-time analytics.",
+        description: "IyotaPrep reimagines assessment. Instead of multiple-choice traps, it generates adaptive challenges that probe the depth of your understanding with real-time analytics.",
         features: [
           "Adaptive difficulty",
           "Concept-level diagnostics",
@@ -148,19 +148,19 @@ export const siteConfig = {
         num: "01",
         icon: "🎯",
         title: "Tell Us Your Goal",
-        text: "Preparing for an exam? Exploring a new field? Sharing what you want to learn — Nova listens.",
+        text: "Preparing for an exam? Exploring a new field? Sharing what you want to learn   Nova listens.",
       },
       {
         num: "02",
         icon: "🧠",
         title: "AI Maps Your Mind",
-        text: "Through a conversational assessment, Astra identifies your knowledge level and optimal challenge zone.",
+        text: "Through a conversational assessment, IyotaPrep identifies your knowledge level and optimal challenge zone.",
       },
       {
         num: "03",
         icon: "⚡",
         title: "Learn, Connect, Grow",
-        text: "Nova teaches, Orbis connects you with peers, and Astra continuously refines your understanding.",
+        text: "Nova teaches, Orbis connects you with peers, and IyotaPrep continuously refines your understanding.",
       },
       {
         num: "04",
@@ -182,18 +182,18 @@ export const siteConfig = {
         color: "nova",
       },
       {
-        quote: "Orbis changed how our entire study group learns. The knowledge graphs it builds are insane — we discovered connections between chemistry and music theory we never would have found.",
+        quote: "Orbis changed how our entire study group learns. The knowledge graphs it builds are insane   we discovered connections between chemistry and music theory we never would have found.",
         author: "James Kimathi",
         role: "Medical Student, Stanford",
         initials: "JK",
         color: "orbis",
       },
       {
-        quote: "As a teacher, Astra has been revelatory. I can finally see exactly where each student's understanding breaks down. My class average went up 23% in one semester.",
+        quote: "As a teacher, IyotaPrep has been revelatory. I can finally see exactly where each student's understanding breaks down. My class average went up 23% in one semester.",
         author: "Dr. Maya Patel",
         role: "High School Principal, Chicago",
         initials: "MP",
-        color: "astra",
+        color: "iyotaPrep",
       },
     ],
   },
@@ -201,19 +201,19 @@ export const siteConfig = {
     label: "The Wait Is Almost Over",
     title: "Ready to learn the way your mind was built to?",
     description: "Join 12,000+ curious minds on the EXINX waitlist. Early access members get lifetime benefits and locked-in pricing forever.",
-    primary: "Join the Waitlist — It's Free →",
+    primary: "Join the Waitlist   It's Free →",
     secondary: "See Products First",
     note: "No credit card required · Early access pricing locked forever · Cancel anytime",
   },
   footer: {
-    description: "Building the intelligence layer for human learning. Nova, Orbis and Astra. One mission. Infinite potential for every mind on Earth.",
+    description: "Building the intelligence layer for human learning. Nova, Orbis and IyotaPrep. One mission. Infinite potential for every mind on Earth.",
     columns: [
       {
         title: "Products",
         links: [
-          { label: "Nova — AI Companion", href: "/nova" },
-          { label: "Orbis — Knowledge Platform", href: "/orbis" },
-          { label: "Astra — Smart Assessment", href: "/astra" },
+          { label: "Nova   AI Companion", href: "/nova" },
+          { label: "Orbis   Knowledge Platform", href: "/orbis" },
+          { label: "IyotaPrep   Smart Assessment", href: "/iyotaprep" },
           { label: "Pricing", href: "#" },
         ],
       },
