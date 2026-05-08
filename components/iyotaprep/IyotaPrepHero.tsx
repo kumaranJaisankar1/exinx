@@ -125,12 +125,13 @@ export default function IyotaPrepHero() {
             India's Most Powerful
           </span>
           <span
-            className="font-instrument-serif  text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] tracking-tighter"
+            className="font-instrument-serif  text-[clamp(2.5rem,5vw,4rem)] leading-[0.95] tracking-tighter"
             style={{ color: RED }}
           >
-            Preparation Infrastructure
+            Preparation<br /> Infrastructure
           </span>
-          <span className="text-muted-foreground text-[clamp(1.2rem,3vw,2.5rem)] font-light mt-2 tracking-normal">
+
+          <span className="text-[clamp(1.5rem,4vw,3rem)] font-light tracking-[0.05em] leading-tight">
             for JEE Mains &amp; NEET
           </span>
         </motion.h1>
