@@ -30,8 +30,7 @@ export default function HeroSection() {
             {...fadeUp}
             className="inline-flex items-center gap-2 px-3 py-1 border border-accent/20 rounded-full text-[10px] uppercase tracking-[0.2em] mb-6"
           >
-            <span className="w-1.5 h-1.5 bg-[#46e0ff] rounded-full animate-pulse" />
-            <span className="text-gradient-exinx font-bold">{siteConfig.hero.badge}</span>
+            <span className="text-gradient-exinx font-bold">AI-Powered Education Platform</span>
           </motion.div>
 
           <motion.h1
@@ -53,7 +52,7 @@ export default function HeroSection() {
             transition={{ ...fadeUp.transition, delay: 0.4 }}
             className="text-text-muted text-sm md:text-base leading-[1.6] max-w-lg mb-6"
           >
-            {siteConfig.hero.description}
+            ExInX is an AI powered education platform that transforms how individuals learn, institutions operate, and outcomes are achieved through adaptive intelligence.
           </motion.p>
 
           <motion.div
@@ -61,8 +60,8 @@ export default function HeroSection() {
             transition={{ ...fadeUp.transition, delay: 0.6 }}
             className="flex flex-wrap gap-4 mb-0"
           >
-            <button className="btn-primary  !px-10">{siteConfig.hero.actions.primary}</button>
-            <button className="btn-ghost !px-10">{siteConfig.hero.actions.secondary}</button>
+            <button className="btn-primary  !px-10">Explore the Platform</button>
+            <button className="btn-ghost !px-10">See How It Works</button>
           </motion.div>
 
           {/* Stats */}
@@ -93,23 +92,23 @@ export default function HeroSection() {
           className="relative flex justify-center items-center h-[30vh] sm:h-[40vh] lg:h-[70vh] w-full order-first lg:order-last"
         >
           <motion.div
-            animate={{ 
+            animate={{
               y: [0, -20, 0],
             }}
-            transition={{ 
-              duration: 4, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
             className="relative w-full h-full flex justify-center items-center"
           >
-            <Image 
-              src="/hero-visual.png" 
-              alt="EXINX Visual" 
+            <Image
+              src="/hero-visual.png"
+              alt="EXINX Visual"
               fill
               className="object-contain drop-shadow-[0_0_60px_rgba(249,115,22,0.3)] scale-110 lg:scale-125"
               priority
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 80vw"
             />
           </motion.div>
         </motion.div>

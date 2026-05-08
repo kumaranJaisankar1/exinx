@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AlertCircle, CheckCircle2, Scissors, Clock, FileWarning, Search, TrendingDown, BookX } from "lucide-react";
+import { AlertCircle, CheckCircle2, Scissors, Clock, FileWarning, Search, TrendingDown, BookX, TrendingUp, Target, Zap } from "lucide-react";
 
 const institutionProblems = [
   { text: "Manual question paper preparation", icon: <Scissors className="w-4 h-4" /> },
@@ -23,10 +23,31 @@ const solutions = [
   { title: "Scalable", desc: "Automated end-to-end workflows" },
   { title: "Outcome-driven", desc: "Built for measurable growth" },
 ];
+const workflows = [
+  {
+    icon: <Zap className="w-8 h-8" />,
+    title: "Automate Exams & Workflows",
+    desc: "Streamline exam creation with intelligent automation. Manage question banks, scheduling, and reporting in one unified platform.",
+    tag: "01"
+  },
+  {
+    icon: <Target className="w-8 h-8" />,
+    title: "Syllabus Practice",
+    desc: "Enable students to prepare effectively with targeted practice aligned to their ongoing syllabus.",
+    tag: "02"
+  },
+  {
+    icon: <TrendingUp className="w-8 h-8" />,
+    title: "Progressive Path",
+    desc: "Build strong foundations and advance step-by-step toward full exam readiness.",
+    tag: "03"
+  }
+];
+
 
 export default function IyotaPrepDichotomy() {
   return (
-    <section className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
+    <section className="py-32 relative bg-white overflow-hidden transition-colors duration-500">
       {/* Background ambiance */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -61,7 +82,7 @@ export default function IyotaPrepDichotomy() {
                 className="italic font-instrument-serif font-normal"
                 style={{
                   color: '#FF0000',
-                  textShadow: '0 0 40px rgba(255,0,0,0.25)',
+                  textShadow: 'none',
                 }}
               >
                 Preparation Methods Fail
@@ -223,7 +244,7 @@ export default function IyotaPrepDichotomy() {
                 className="font-instrument-serif italic font-normal"
                 style={{
                   color: '#FF0000',
-                  textShadow: '0 0 60px rgba(255,0,0,0.2)',
+                  textShadow: 'none',
                 }}
               >
                 Standardize Preparation.
@@ -251,6 +272,82 @@ export default function IyotaPrepDichotomy() {
                 }}
               >
                 {sol.title}
+              </motion.div>
+            ))}
+          </div>
+          {/* Feature Cards */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            {workflows.map((flow, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.15 }}
+                whileHover={{ y: -6 }}
+                className="group p-10 rounded-[2px] relative overflow-hidden transition-all duration-500 cursor-default"
+                style={{
+                  background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.02)',
+                  border: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.06)',
+                  backdropFilter: 'blur(16px)',
+                }}
+              >
+                {/* Hover Glow */}
+                <div
+                  className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'rgba(255,0,0,0.08)',
+                    filter: 'blur(40px)',
+                    transform: 'translate(30%, -30%)',
+                  }}
+                />
+
+                {/* Red spotlight on hover */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: 'linear-gradient(to right, transparent, #FF0000, transparent)' }}
+                />
+
+                {/* Tag */}
+                <span
+                  className="text-xs font-mono tracking-[0.3em] mb-8 block"
+                  style={{ color: 'rgba(255,0,0,0.4)' }}
+                >
+                  FEATURE {flow.tag}
+                </span>
+
+                {/* Icon */}
+                <div
+                  className="mb-8 group-hover:scale-110 transition-transform duration-500 origin-left"
+                  style={{ color: '#FF0000' }}
+                >
+                  {flow.icon}
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="text-2xl font-bold text-foreground mb-5 leading-tight group-hover:text-[#FF0000] transition-colors"
+                >
+                  {flow.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-foreground/70 leading-relaxed font-light text-sm">
+                  {flow.desc}
+                </p>
+
+                {/* Bottom line */}
+                <div className="mt-10 pt-8 flex items-center gap-4 group-hover:gap-6 transition-all"
+                  style={{ borderTop: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.05)' }}
+                >
+                  <div className="w-6 h-px" style={{ background: 'rgba(255,0,0,0.5)' }} />
+                  <span
+                    className="text-[10px] font-mono uppercase tracking-[0.3em]"
+                    style={{ color: 'rgba(255,0,0,0.5)' }}
+                  >
+                    Core Layer
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>

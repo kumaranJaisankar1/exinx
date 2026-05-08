@@ -16,6 +16,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const isNova = pathname === "/nova";
+  const isOrbis = pathname === "/orbis";
 
   useEffect(() => {
     setMounted(true);
@@ -27,6 +28,7 @@ export default function Navbar() {
         <Link href="/" className="scale-110">
           <Logo
             className={cn("w-auto h-8 md:h-10", isNova && "brightness-0 invert")}
+            color={isOrbis ? "#0f172a" : undefined}
           />
         </Link>
 
@@ -44,7 +46,9 @@ export default function Navbar() {
                       ? (isActive
                         ? (pathname === "/nova" ? "text-[#D97706] font-semibold" : "text-[#0E76BD] font-semibold")
                         : "text-white/60 hover:text-white")
-                      : (isActive ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground")
+                      : isOrbis
+                        ? (isActive ? "text-[#0E76BD] font-semibold" : "text-slate-600 hover:text-slate-900")
+                        : (isActive ? "text-[#FF0000] font-semibold" : "text-muted-foreground hover:text-foreground")
                   )}
                 >
                   {link.label}
@@ -67,7 +71,9 @@ export default function Navbar() {
                 "px-6 py-2 border text-[12px] transition-all rounded-[2px]",
                 isNova
                   ? "border-white/20 text-white hover:bg-white/10"
-                  : "border-border text-foreground hover:bg-foreground/5"
+                  : isOrbis
+                    ? "border-slate-200 text-slate-900 hover:bg-slate-50"
+                    : "border-border text-foreground hover:bg-foreground/5"
               )}
             >
               Signal Us
@@ -84,17 +90,17 @@ export default function Navbar() {
           >
             <span className={cn(
               "w-6 h-0.5 transition-all",
-              isNova && !isMenuOpen ? "bg-white" : "bg-foreground",
+              isNova && !isMenuOpen ? "bg-white" : isOrbis && !isMenuOpen ? "bg-slate-900" : "bg-foreground",
               isMenuOpen && "rotate-45 translate-y-2"
             )} />
             <span className={cn(
               "w-6 h-0.5 transition-all",
-              isNova && !isMenuOpen ? "bg-white" : "bg-foreground",
+              isNova && !isMenuOpen ? "bg-white" : isOrbis && !isMenuOpen ? "bg-slate-900" : "bg-foreground",
               isMenuOpen && "opacity-0"
             )} />
             <span className={cn(
               "w-6 h-0.5 transition-all",
-              isNova && !isMenuOpen ? "bg-white" : "bg-foreground",
+              isNova && !isMenuOpen ? "bg-white" : isOrbis && !isMenuOpen ? "bg-slate-900" : "bg-foreground",
               isMenuOpen && "-rotate-45 -translate-y-2"
             )} />
           </button>

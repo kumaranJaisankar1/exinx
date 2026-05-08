@@ -58,7 +58,7 @@ const ProcessTimeline = () => {
   const x = useTransform(smoothProgress, [0, 1], [0, -scrollWidth]);
 
   return (
-    <section id="process-section" ref={targetRef} className="relative h-[400vh] bg-secondary/30">
+    <section id="process-section" ref={targetRef} className="relative h-[400vh] bg-secondary/30 py-25">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         <div className="px-6 md:px-12 max-w-7xl mx-auto w-full mb-12">
           <motion.div
@@ -67,9 +67,9 @@ const ProcessTimeline = () => {
             viewport={{ once: true }}
           >
             <span className="section-label">Process</span>
-            <h2 className="text-4xl md:text-6xl font-bold font-serif mb-6 text-foreground">
+            <h2 className="text-4xl md:text-6xl mb-8 flex flex-col items-start hero-title-thin">
               A Structured Approach to <br />
-              <span className="italic text-primary font-instrument-serif">Personalized Learning</span>
+              <span className="hero-title-bold italic text-primary font-instrument-serif">Personalized Learning</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl font-light leading-relaxed">
               Nova follows a structured learning cycle designed to maximize understanding and retention.
@@ -79,14 +79,14 @@ const ProcessTimeline = () => {
 
         {/* Desktop: Horizontal Scroll */}
         <div className="hidden lg:block">
-          <motion.div 
+          <motion.div
             ref={containerRef}
-            style={{ x }} 
+            style={{ x }}
             className="flex gap-12 px-12 items-center w-max"
           >
             {steps.map((step, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="flex-shrink-0 w-[420px] aspect-[16/11] card-surface flex flex-col justify-between group"
               >
                 <div>
@@ -102,9 +102,9 @@ const ProcessTimeline = () => {
                     {step.description}
                   </p>
                 </div>
-                
+
                 <div className="relative h-1 w-full bg-border rounded-full overflow-hidden mt-8">
-                  <motion.div 
+                  <motion.div
                     className={`absolute inset-y-0 left-0 bg-primary/40`}
                     animate={{ x: ["-100%", "200%"] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: i * 0.5 }}
@@ -117,21 +117,21 @@ const ProcessTimeline = () => {
             {/* Final Call to Action Card */}
             <div className="flex-shrink-0 w-[450px] aspect-[16/11] relative group mr-12">
               <div className="relative h-full w-full bg-primary text-primary-foreground rounded-[40px] p-12 flex flex-col justify-center items-center text-center shadow-2xl">
-                 <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-8">
-                    <ArrowRight size={32} className="text-white" />
-                 </div>
-                 <h3 className="text-3xl font-serif mb-4">Ready to Begin?</h3>
-                 <p className="text-sm text-white/80 font-light mb-8 max-w-xs leading-tight">
-                   Start your personalized learning journey with Nova today.
-                 </p>
-                 <motion.button 
-                   whileHover={{ scale: 1.05 }}
-                   whileTap={{ scale: 0.95 }}
-                   className="px-8 py-3 bg-white text-primary rounded-full font-bold text-xs uppercase tracking-widest shadow-xl"
-                   onClick={() => window.dispatchEvent(new CustomEvent('open-signal-form'))}
-                 >
-                   Start Free Trial
-                 </motion.button>
+                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-8">
+                  <ArrowRight size={32} className="text-white" />
+                </div>
+                <h3 className="text-3xl font-serif mb-4">Ready to Begin?</h3>
+                <p className="text-sm text-white/80 font-light mb-8 max-w-xs leading-tight">
+                  Start your personalized learning journey with Nova today.
+                </p>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 bg-white text-primary rounded-full font-bold text-xs uppercase tracking-widest shadow-xl"
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-signal-form'))}
+                >
+                  Start Free Trial
+                </motion.button>
               </div>
             </div>
           </motion.div>
@@ -140,8 +140,8 @@ const ProcessTimeline = () => {
         {/* Mobile: Stacked Cards */}
         <div className="lg:hidden px-6 space-y-8 overflow-y-auto max-h-[60vh] pb-20">
           {steps.map((step, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="card-surface p-8"
             >
               <div className={`w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 ${step.color}`}>

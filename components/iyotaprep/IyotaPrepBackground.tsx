@@ -7,7 +7,7 @@ export default function IyotaPrepBackground() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
   return (
-    <div className="fixed inset-0 z-[-1] bg-background overflow-hidden pointer-events-none transition-colors duration-500">
+    <div className="fixed inset-0 z-[-1] bg-white overflow-hidden pointer-events-none transition-colors duration-500">
       {/* Base Grid Layer */}
       <div
         className="absolute inset-0 transition-opacity duration-500"

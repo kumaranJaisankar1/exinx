@@ -12,11 +12,11 @@ const PricingSection = () => {
     <section id="pricing-section" className="py-32 relative bg-background transition-colors duration-500">
       {/* Background Decor */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-      
+
       <div className="max-w-5xl mx-auto px-8 relative z-10 text-center">
         <div className="mb-16">
           <span className="section-label">Pricing</span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -42,18 +42,15 @@ const PricingSection = () => {
 
             <div className="flex items-center justify-between mb-8 relative z-10">
               <div className="text-left">
-                 <h3 className="text-sm font-extrabold text-foreground uppercase tracking-widest mb-1">Nova Access</h3>
-                 <span className="inline-block px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-[9px] font-bold uppercase tracking-widest">
-                   7-Day Free Trial
-                 </span>
+                <h3 className="text-sm font-extrabold text-foreground uppercase tracking-widest mb-1">Nova Access</h3>
+                <span className="inline-block px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-[9px] font-bold uppercase tracking-widest">
+                  7-Day Free Trial
+                </span>
               </div>
               <Sparkles className="text-primary" size={20} />
             </div>
 
-            <div className="flex items-baseline gap-1 mb-8 justify-start relative z-10">
-              <span className="text-5xl font-bold text-foreground">₹999</span>
-              <span className="text-foreground/40 text-sm">/month</span>
-            </div>
+
 
             <ul className="space-y-4 mb-10 text-left relative z-10">
               {[
@@ -70,7 +67,7 @@ const PricingSection = () => {
               ))}
             </ul>
 
-            <button 
+            <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-signal-form'))}
               className="w-full py-5 bg-primary text-white font-bold text-xs tracking-widest uppercase rounded-full transition-all hover:scale-[1.02] hover:shadow-[0_20px_40px_-10px_rgba(217,119,6,0.3)] active:scale-95 relative z-10"
               style={{
@@ -80,7 +77,7 @@ const PricingSection = () => {
             >
               Start Learning Free
             </button>
-            
+
             <p className="mt-6 text-center text-[10px] text-foreground/30 uppercase tracking-widest relative z-10">
               No credit card required. Cancel anytime.
             </p>

@@ -1,102 +1,50 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from '../Navbar';
 import { useTheme } from "next-themes";
 
 const RED = '#FF0000';
-const RED_GLOW = 'rgba(255, 0, 0, 0.25)';
 
 export default function IyotaPrepHero() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoOpacity, setVideoOpacity] = useState(0);
-  const fadeRequestId = useRef<number | null>(null);
-  const fadingOutRef = useRef(false);
   const containerRef = useRef(null);
-
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 600], [0, 80]);
-
-  const animateOpacity = (target: number, duration: number, callback?: () => void) => {
-    if (fadeRequestId.current) cancelAnimationFrame(fadeRequestId.current);
-    const startTime = performance.now();
-    const startOpacity = videoOpacity;
-    const step = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const nextOpacity = startOpacity + (target - startOpacity) * progress;
-      setVideoOpacity(nextOpacity);
-      if (progress < 1) {
-        fadeRequestId.current = requestAnimationFrame(step);
-      } else {
-        fadeRequestId.current = null;
-        if (callback) callback();
-      }
-    };
-    fadeRequestId.current = requestAnimationFrame(step);
-  };
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.play().catch(err => console.log("Autoplay blocked", err));
-    const handleLoadedData = () => animateOpacity(1, 400);
-    const safetyTimeout = setTimeout(() => {
-      if (videoOpacity === 0) animateOpacity(1, 400);
-    }, 1000);
-    const handleTimeUpdate = () => {
-      const timeLeft = video.duration - video.currentTime;
-      if (timeLeft <= 0.55 && !fadingOutRef.current) {
-        fadingOutRef.current = true;
-        animateOpacity(0, 500);
-      }
-    };
-    const handleEnded = () => {
-      setVideoOpacity(0);
-      setTimeout(() => {
-        if (video) {
-          video.currentTime = 0;
-          video.play().catch(() => { });
-          fadingOutRef.current = false;
-          animateOpacity(1, 400);
-        }
-      }, 50);
-    };
-    video.addEventListener('loadeddata', handleLoadedData);
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    video.addEventListener('ended', handleEnded);
-    return () => {
-      clearTimeout(safetyTimeout);
-      video.removeEventListener('loadeddata', handleLoadedData);
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      video.removeEventListener('ended', handleEnded);
-      if (fadeRequestId.current) cancelAnimationFrame(fadeRequestId.current);
-    };
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => console.log("Video play failed:", err));
+    }
   }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen flex flex-col overflow-hidden bg-background text-foreground transition-colors duration-500"
+      className="relative h-[100vh] w-full overflow-hidden bg-background flex flex-col items-start transition-colors duration-500 pt-20"
     >
       <style jsx global>{`
         .iyota-btn-primary {
           background: linear-gradient(135deg, #FF0000 0%, #cc0000 100%);
-          box-shadow: 0 0 40px rgba(255,0,0,0.3), 0 0 80px rgba(255,0,0,0.1);
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .iyota-btn-primary:hover {
-          box-shadow: 0 0 60px rgba(255,0,0,0.5), 0 0 120px rgba(255,0,0,0.2);
+          box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
           transform: translateY(-2px);
         }
         .iyota-btn-ghost {
           background: rgba(var(--foreground-rgb, 255, 255, 255), 0.04);
           backdrop-filter: blur(12px);
           border: 1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.15);
-          box-shadow: inset 0 1px 1px rgba(var(--foreground-rgb, 255, 255, 255), 0.08);
           transition: all 0.3s ease;
         }
         .iyota-btn-ghost:hover {
@@ -104,124 +52,130 @@ export default function IyotaPrepHero() {
           border-color: rgba(255, 0, 0, 0.3);
           transform: translateY(-2px);
         }
-        .hero-red-glow {
-          text-shadow: 0 0 40px rgba(255,0,0,0.15), 0 0 80px rgba(255,0,0,0.08);
-        }
       `}</style>
 
-      {/* Background Video */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video
           ref={videoRef}
           autoPlay
           muted
+          loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 dark:opacity-50 pointer-events-none"
           style={{
-            opacity: videoOpacity,
-            filter: isDark ? 'blur(4px) brightness(0.9)' : 'blur(10px) brightness(1.1)'
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            willChange: 'opacity, transform'
           }}
         >
-          <source src="/videos/iyotaprep-hero.mp4" type="video/mp4" />
+          <source src="/videos/iyota_hero.mp4" type="video/mp4" />
         </video>
-        {/* Cinematic Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40 opacity-80 transition-colors duration-500" />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,0,0,0.06) 0%, transparent 60%)'
-        }} />
+
+        {/* Cinematic Gradient Overlay - Left side focus like Orbis */}
+        <div className="absolute inset-y-0 left-0 w-[70%] bg-gradient-to-r from-background via-background/90 to-transparent z-[1]" />
+
+        {/* Bottom fade */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent z-[1]" />
+
+        {/* Dynamic Pattern Overlay - adapted from Orbis but with Iyota Red */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, ${RED} 1px, transparent 0)`,
+            backgroundSize: '40px 40px',
+            maskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
+          }}
+        />
       </div>
 
       {/* Navbar */}
-      <div className="relative z-20">
+      {/* <div className="relative z-30 w-full">
         <Navbar />
-      </div>
+      </div> */}
 
-      {/* Hero Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 py-8 md:py-10">
-
-        {/* Badge */}
+      <motion.div
+        style={{ y: y1, opacity: contentOpacity }}
+        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full h-full flex flex-col justify-center items-start text-left"
+      >
+        {/* Badge / Eyebrow */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-6"
+          className="mb-8"
         >
-          <span
-            className="inline-flex items-center gap-2 text-[10px] md:text-[11px] font-mono tracking-[0.5em] uppercase text-foreground px-5 py-1.5 rounded-full border backdrop-blur-md"
-            style={{
-              background: 'rgba(255,0,0,0.12)',
-              borderColor: 'rgba(255,0,0,0.35)',
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF0000] animate-pulse" />
-            Preparation Infrastructure
+          <span className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-red-500/5 border border-red-500/10 backdrop-blur-md">
+            <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-foreground/80 font-black">
+              Preparation Infrastructure
+            </span>
           </span>
         </motion.div>
 
-        {/* Main Heading */}
+        {/* Main Heading - Preserving fonts and colors */}
         <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="hero-red-glow text-[clamp(2.2rem,6vw,5rem)] font-bold leading-[1.0] tracking-tight mb-6 max-w-4xl"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-8 text-foreground max-w-4xl flex flex-col items-start gap-2"
         >
-          India's Most Powerful{' '}
+          <span className="text-[clamp(1.5rem,4vw,3rem)] font-light tracking-[0.05em] leading-tight">
+            India's Most Powerful
+          </span>
           <span
-            className="font-instrument-serif italic font-normal block mt-1"
+            className="font-instrument-serif  text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] tracking-tighter"
             style={{ color: RED }}
           >
             Preparation Infrastructure
           </span>
-          <span className="block text-foreground/80 text-[clamp(1.6rem,4vw,3.5rem)] font-light mt-2 tracking-normal">
+          <span className="text-muted-foreground text-[clamp(1.2rem,3vw,2.5rem)] font-light mt-2 tracking-normal">
             for JEE Mains &amp; NEET
           </span>
         </motion.h1>
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.35 }}
-          className="text-base md:text-lg  max-w-xl leading-relaxed mb-8 font-light"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-12 font-light"
         >
           Transforming competitive exam preparation with a structured database of 1M+ questions mapped for extreme precision.
         </motion.p>
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          className="flex flex-wrap items-center justify-center gap-5"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-wrap items-center gap-6"
         >
-          <button
-            className="iyota-btn-primary px-10 py-4 text-white font-extrabold text-[10px] uppercase tracking-[0.25em] rounded-[3px]"
-          >
+          <button className="iyota-btn-primary px-12 py-4 text-white rounded-[3px] font-black text-[12px] uppercase tracking-[0.3em] shadow-2xl active:scale-95">
             For Institutions
           </button>
-          <button
-            className="iyota-btn-ghost px-10 py-4 text-black dark:text-white font-extrabold text-[10px] uppercase tracking-[0.25em] rounded-[3px]"
-          >
+          <button className="iyota-btn-ghost px-12 py-4 text-foreground rounded-[3px] font-black text-[12px] uppercase tracking-[0.3em] shadow-2xl active:scale-95">
             For Students
           </button>
         </motion.div>
+      </motion.div>
 
-        {/* Scroll indicator */}
+      {/* Decorative Indicators (from Orbis style) */}
+      <div className="absolute bottom-8 left-12 hidden lg:flex flex-col gap-2 opacity-30">
+        <div className="flex items-center gap-3">
+          <div className="w-1 h-1 rounded-full bg-[#FF0000]" />
+          <span className="font-mono text-[8px] tracking-widest uppercase text-foreground/50">Core Sync Active</span>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-20">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-[9px] uppercase tracking-[0.4em] text-muted-foreground/30 font-mono">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-10"
-            style={{ background: 'linear-gradient(to bottom, rgba(255,0,0,0.6), transparent)' }}
-          />
-        </motion.div>
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-px h-10 bg-gradient-to-b from-red-500 to-transparent"
+        />
       </div>
 
       {/* Side decorative lines */}

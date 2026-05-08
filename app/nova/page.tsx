@@ -20,12 +20,12 @@ export default function NovaPage() {
   return (
     <main className="relative [--primary:#D97706] [--accent:#D97706]">
       <CustomCursor />
-      
+
       <div className="relative z-10">
         <NovaHero
           trustBadge={{
             text: "Nova Intelligence",
-            icons: ["🧠"]
+            icons: [""]
           }}
           headline={{
             line1: "PERSONALIZED AI",
@@ -44,7 +44,7 @@ export default function NovaPage() {
             }
           }}
         />
-        
+
         <div className="bg-background">
           <ProblemSection />
           <ProcessTimeline />

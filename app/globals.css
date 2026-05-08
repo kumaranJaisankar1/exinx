@@ -56,7 +56,7 @@
 }
 
 :root {
-  --background: #fdfcf8;
+  --background: #ffffff;
   --bg-rgb: 253, 252, 248;
   --foreground: #0a0a0f;
   --fg-rgb: 10, 10, 15;
@@ -227,6 +227,19 @@
   .text-nova-orange { color: #f97316; }
   .text-orbis-blue { color: #3b82f6; }
   .text-astra-red { color: #ef4444; }
+
+  .hero-title-thin {
+    font-family: var(--font-montserrat), sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero-title-bold {
+    font-family: var(--font-montserrat), sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
 }
 
 /* Custom Scrollbar */

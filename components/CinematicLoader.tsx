@@ -13,6 +13,13 @@ export function CinematicLoader() {
   const { theme } = useTheme();
   const pathname = usePathname();
 
+  const brandInfo = useMemo(() => {
+    if (pathname.includes('/nova')) return { name: 'Nova', color: '#f97316' };
+    if (pathname.includes('/orbis')) return { name: 'Orbis', color: '#0E76BD' };
+    if (pathname.includes('/iyota')) return { name: 'Iyota', color: '#FF0000' };
+    return null;
+  }, [pathname]);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -119,7 +126,7 @@ export function CinematicLoader() {
 
           {/* Central EXINX Text Formation & Morph */}
           <motion.div
-            className="absolute z-10 flex items-center justify-center"
+            className="absolute z-10 flex flex-col items-center justify-center"
             initial={{
               top: "50%",
               left: "50%",
@@ -285,6 +292,24 @@ export function CinematicLoader() {
                 </motion.g>
               </motion.svg>
             </div>
+            {/* Brand Reveal Name */}
+            {brandInfo && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: step >= 1 ? 1 : 0,
+                  y: step >= 1 ? 0 : 20
+                }}
+                transition={{ duration: 1.2, delay: 2.2, ease: "easeOut" }}
+                className="mt-8 text-3xl font-light tracking-[0.5em] uppercase text-center"
+                style={{
+                  color: brandInfo.color,
+                  textShadow: `0 0 40px ${brandInfo.color}33`
+                }}
+              >
+                {brandInfo.name}
+              </motion.div>
+            )}
           </motion.div>
 
         </motion.div>
