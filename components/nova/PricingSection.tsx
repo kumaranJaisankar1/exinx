@@ -10,8 +10,10 @@ const PricingSection = () => {
 
   return (
     <section id="pricing-section" className="py-32 relative bg-background transition-colors duration-500">
-      {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Background Decor Contained */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full" />
+      </div>
 
       <div className="max-w-5xl mx-auto px-8 relative z-10 text-center">
         <div className="mb-16">

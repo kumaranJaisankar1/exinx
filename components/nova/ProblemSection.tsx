@@ -168,7 +168,7 @@ const ProblemSection = () => {
 
         {/* Right Side: Premium Neural Core Visualization */}
         {/* Increased camera distance and reduced scale to ensure an "enlarged" yet unclipped view */}
-        <div className="w-full lg:w-1/2 h-screen relative group flex items-center justify-center">
+        <div className="w-full lg:w-1/2 h-screen relative group flex items-center justify-center overflow-hidden lg:overflow-visible">
           <div className="absolute inset-0 pointer-events-none -mr-[20vw] lg:-mr-[10vw]"> {/* Allow slight bleed to the right */}
             <Canvas camera={{ position: [0, 0, 22], fov: 45 }} gl={{ alpha: true }} dpr={[1, 1.5]}>
               <ambientLight intensity={0.2} />

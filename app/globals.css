@@ -118,12 +118,30 @@
 }
 
 @layer base {
+  html, body {
+    @apply w-full;
+    position: relative;
+  }
+
+  /* 
+     Fix for mobile overflow while preserving desktop sticky positioning.
+     Sticky context requires overflow to be visible (default) on all ancestors.
+     Since the sticky layout is only active on lg screens, we can safely
+     hide overflow on smaller screens.
+  */
+  @media (max-width: 1023px) {
+    html, body {
+      @apply w-full;
+    position: relative;
+      overflow-x: hidden;
+    }
+  }
+
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
     font-family: var(--font-montserrat);
     font-weight: 600;
     letter-spacing: 0.08em;
-    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
