@@ -28,7 +28,7 @@ export default function Navbar() {
         <Link href="/" className="scale-110">
           <Logo
             className={cn("w-auto h-8 md:h-10", isNova && "brightness-0 invert")}
-            color={isOrbis ? "#0f172a" : undefined}
+          // color={isOrbis ? "#0f172a" : undefined}
           />
         </Link>
 
@@ -47,7 +47,7 @@ export default function Navbar() {
                         ? (pathname === "/nova" ? "text-[#D97706] font-semibold" : "text-[#0E76BD] font-semibold")
                         : "text-white/60 hover:text-white")
                       : isOrbis
-                        ? (isActive ? "text-[#0E76BD] font-semibold" : "text-slate-600 hover:text-slate-900")
+                        ? (isActive ? "text-[#0E76BD] font-semibold" : "text-muted-foreground hover:text-foreground")
                         : (isActive ? "text-[#FF0000] font-semibold" : "text-muted-foreground hover:text-foreground")
                   )}
                 >
@@ -71,9 +71,7 @@ export default function Navbar() {
                 "px-6 py-2 border text-[12px] transition-all rounded-[2px]",
                 isNova
                   ? "border-white/20 text-white hover:bg-white/10"
-                  : isOrbis
-                    ? "border-slate-200 text-slate-900 hover:bg-slate-50"
-                    : "border-border text-foreground hover:bg-foreground/5"
+                  : "border-black dark:border-white/20 text-foreground hover:bg-foreground/5"
               )}
             >
               Signal Us

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@variant dark (&:where(.dark, .dark *));
+
 @keyframes onloadopacity {
   24% { opacity: 0; }
   100% { opacity: 1; }
@@ -62,7 +64,7 @@
   --fg-rgb: 10, 10, 15;
   --primary: #f97316;
   --primary-foreground: #ffffff;
-  --secondary: #f4f2ee;
+  --secondary: #ffffff;
   --secondary-foreground: #0a0a0f;
   --muted: #f4f2ee;
   --muted-foreground: #64748b;
@@ -82,18 +84,18 @@
 .dark {
   --background: #0a0a0f;
   --bg-rgb: 10, 10, 15;
-  --foreground: #f0ede6;
+  --foreground: #ffffff;
   --fg-rgb: 240, 237, 230;
   --primary: #f97316;
   --primary-foreground: #000000;
   --secondary: #141420;
-  --secondary-foreground: #f0ede6;
+  --secondary-foreground: #ffffff;
   --muted: #1c1c2e;
   --muted-foreground: #8a8698;
   --accent: #f0a030;
   --accent-foreground: #000000;
   --destructive: #7f1d1d;
-  --destructive-foreground: #f0ede6;
+  --destructive-foreground: #ffffff;
   --border: #1c1c2e;
   --input: #1c1c2e;
   --ring: #f0a030;

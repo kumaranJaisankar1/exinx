@@ -47,7 +47,7 @@ const workflows = [
 
 export default function IyotaPrepDichotomy() {
   return (
-    <section className="py-32 relative bg-white overflow-hidden transition-colors duration-500">
+    <section className="py-32 relative bg-background overflow-hidden transition-colors duration-500">
       {/* Background ambiance */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -109,11 +109,7 @@ export default function IyotaPrepDichotomy() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="p-10 rounded-[2px] backdrop-blur-xl relative overflow-hidden"
-              style={{
-                background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.02)',
-                border: '1px solid rgba(255,0,0,0.15)',
-              }}
+              className="p-10 rounded-[2px] backdrop-blur-xl relative overflow-hidden bg-secondary/50 dark:bg-white/[0.02] border border-red-500/15"
             >
               {/* Corner accent */}
               <div className="absolute top-0 left-0 w-16 h-16"
@@ -132,8 +128,7 @@ export default function IyotaPrepDichotomy() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-4 p-4 rounded-[2px] group"
-                    style={{ border: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.04)' }}
+                    className="flex items-center gap-4 p-4 rounded-[2px] group border border-foreground/5 dark:border-white/5"
                     whileHover={{
                       backgroundColor: 'rgba(255,0,0,0.06)',
                       borderColor: 'rgba(255,0,0,0.25)',
@@ -158,11 +153,7 @@ export default function IyotaPrepDichotomy() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="p-10 rounded-[2px] backdrop-blur-xl relative overflow-hidden"
-              style={{
-                background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.02)',
-                border: '1px solid rgba(255,0,0,0.15)',
-              }}
+              className="p-10 rounded-[2px] backdrop-blur-xl relative overflow-hidden bg-secondary/50 dark:bg-white/[0.02] border border-red-500/15"
             >
               <div className="absolute top-0 right-0 w-16 h-16"
                 style={{
@@ -180,8 +171,7 @@ export default function IyotaPrepDichotomy() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-4 p-4 rounded-[2px] group"
-                    style={{ border: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.04)' }}
+                    className="flex items-center gap-4 p-4 rounded-[2px] group border border-foreground/5 dark:border-white/5"
                     whileHover={{
                       backgroundColor: 'rgba(255,0,0,0.06)',
                       borderColor: 'rgba(255,0,0,0.25)',
@@ -285,12 +275,7 @@ export default function IyotaPrepDichotomy() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.15 }}
                 whileHover={{ y: -6 }}
-                className="group p-10 rounded-[2px] relative overflow-hidden transition-all duration-500 cursor-default"
-                style={{
-                  background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.02)',
-                  border: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.06)',
-                  backdropFilter: 'blur(16px)',
-                }}
+                className="group p-10 rounded-[2px] relative overflow-hidden transition-all duration-500 cursor-default bg-secondary/50 dark:bg-white/[0.02] border border-foreground/5 dark:border-white/10 backdrop-blur-xl"
               >
                 {/* Hover Glow */}
                 <div
@@ -337,8 +322,7 @@ export default function IyotaPrepDichotomy() {
                 </p>
 
                 {/* Bottom line */}
-                <div className="mt-10 pt-8 flex items-center gap-4 group-hover:gap-6 transition-all"
-                  style={{ borderTop: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.05)' }}
+                <div className="mt-10 pt-8 flex items-center gap-4 group-hover:gap-6 transition-all border-t border-foreground/5 dark:border-white/5"
                 >
                   <div className="w-6 h-px" style={{ background: 'rgba(255,0,0,0.5)' }} />
                   <span

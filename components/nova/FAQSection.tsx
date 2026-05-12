@@ -31,7 +31,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-serif text-foreground mb-4"
+            className="text-3xl md:text-4xl font-serif hero-title-bold text-foreground mb-4"
           >
             Frequently Asked Questions
           </motion.h2>

@@ -34,7 +34,7 @@ export default function Home() {
         <main>
           <HeroSection />
           <Marquee />
-          
+
           <BrandIntro />
           <ExInXProcess />
           <CorePillars />

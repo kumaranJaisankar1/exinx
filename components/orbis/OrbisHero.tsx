@@ -30,7 +30,7 @@ export default function OrbisHero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100vh] w-full overflow-hidden bg-[#fdfcf8] flex flex-col items-start transition-colors duration-500 pt-20"
+      className="relative h-[100vh] w-full overflow-hidden bg-background flex flex-col items-start transition-colors duration-500 pt-20"
     >
       <style jsx global>{`
         .orbis-btn-primary {
@@ -64,11 +64,11 @@ export default function OrbisHero() {
         </video>
 
         {/* Cinematic White Gradient Overlay */}
-        <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#fdfcf8] via-[#fdfcf8]/80 to-transparent z-[1]" />
+        <div className="absolute inset-y-0 left-0 w-[70%] bg-gradient-to-r from-background via-background/90 to-transparent z-[1]" />
 
         {/* Dynamic Satellite Grid Overlay */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, ${ORBIS_BLUE} 1px, transparent 0)`,
             backgroundSize: '40px 40px',
@@ -98,7 +98,7 @@ export default function OrbisHero() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8 text-slate-900 max-w-4xl flex flex-col items-start gap-2"
+          className="mb-8 text-foreground max-w-4xl flex flex-col items-start gap-2"
         >
           <span className="hero-title-thin text-[clamp(1.5rem,4vw,3rem)] tracking-[0.05em]">Run Institutions with</span>
           <span className="hero-title-bold text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] tracking-tighter text-[#0E76BD]">
@@ -111,7 +111,7 @@ export default function OrbisHero() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed mb-12 font-light"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-12 font-light"
         >
           Orbis is a unified school and college management platform that simplifies admissions, operations, academics, and communication through a powerful cloud based system.
         </motion.p>
@@ -128,7 +128,7 @@ export default function OrbisHero() {
           <button className="orbis-btn-primary px-12 py-4 text-white rounded-full font-black text-[12px] uppercase tracking-[0.3em] shadow-2xl active:scale-95">
             Explore Orbis
           </button>
-          <button className=" px-12 py-4 text-slate-900 rounded-full font-black text-[12px] uppercase tracking-[0.3em] shadow-2xl active:scale-95">
+          <button className=" px-12 py-4 text-slate-900 rounded-full font-black dark:text-white bg-transparent dark:bg-slate-900/40 text-[12px]  uppercase tracking-[0.3em] shadow-2xl active:scale-95">
             Request Demo
           </button>
         </motion.div>

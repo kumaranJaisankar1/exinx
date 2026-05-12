@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function IyotaPrepCTA() {
   return (
-    <section className="py-32 relative overflow-hidden bg-white transition-colors duration-500">
+    <section className="py-32 relative overflow-hidden bg-background transition-colors duration-500">
       {/* Central red glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
@@ -30,12 +30,7 @@ export default function IyotaPrepCTA() {
 
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         <div
-          className="p-16 md:p-24 relative overflow-hidden rounded-[2px] text-center"
-          style={{
-            background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.02)',
-            border: '1px solid rgba(255,0,0,0.2)',
-            backdropFilter: 'blur(20px)',
-          }}
+          className="p-16 md:p-24 relative overflow-hidden rounded-[2px] text-center bg-secondary/50 dark:bg-white/[0.02] border border-red-500/20 backdrop-blur-3xl"
         >
           {/* Corner accents */}
           <div className="absolute top-0 left-0 w-20 h-20"
@@ -99,12 +94,7 @@ export default function IyotaPrepCTA() {
               Explore Institutions
             </button>
             <button
-              className="px-12 py-5 text-black dark:text-white font-bold text-sm rounded-[2px] tracking-widest uppercase transition-all hover:-translate-y-1 hover:bg-foreground/[0.06]"
-              style={{
-                border: '1px solid rgba(var(--foreground-rgb, 255, 255, 255), 0.2)',
-                background: 'rgba(var(--foreground-rgb, 255, 255, 255), 0.02)',
-                backdropFilter: 'blur(12px)',
-              }}
+              className="px-12 py-5 text-foreground font-bold text-sm rounded-[2px] tracking-widest uppercase transition-all hover:-translate-y-1 bg-secondary/50 dark:bg-white/[0.05] border border-foreground/10 hover:bg-foreground/[0.06] backdrop-blur-xl"
             >
               Get Started Now
             </button>

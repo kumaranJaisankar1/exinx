@@ -55,7 +55,7 @@ const CapabilitiesSection = () => {
           <span className="section-label">Features</span>
           <h2 className="text-3xl md:text-5xl mb-8 flex flex-col items-start">
             <span className="hero-title-thin">Core</span>
-            <span className="hero-title-bold text-gradient-exinx">Capabilities</span>
+            <span className="hero-title-bold text-primary">Capabilities</span>
           </h2>
           <p className="text-lg text-foreground/70 leading-relaxed max-w-2xl font-light">
             Nova provides a comprehensive set of capabilities designed to empower every learner
