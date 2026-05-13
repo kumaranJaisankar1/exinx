@@ -23,7 +23,14 @@ export default function OrbisClosing() {
             Orbis empowers institutions to operate efficiently, communicate effectively, and scale with confidence through a unified and intelligent management system.
           </p>
 
-          <button className="orbis-btn-primary px-16 py-6 text-white rounded-full font-black text-[14px] uppercase tracking-[0.4em] shadow-2xl active:scale-95 transition-transform">
+          <button 
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('open-orbis-signal-form', { bubbles: true }));
+              }
+            }}
+            className="orbis-btn-primary px-16 py-6 text-white rounded-full font-black text-[14px] uppercase tracking-[0.4em] shadow-2xl active:scale-95 transition-transform"
+          >
             Get Started with Orbis
           </button>
         </motion.div>

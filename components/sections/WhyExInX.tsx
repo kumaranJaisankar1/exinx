@@ -7,7 +7,7 @@ export default function WhyExInX() {
     <section className="py-24 md:py-32 bg-background relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-start">
-          
+
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}

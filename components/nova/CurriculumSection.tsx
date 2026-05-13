@@ -13,14 +13,14 @@ const CurriculumSection = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-12">
           <div className="max-w-md">
             <span className="section-label">Curriculum Support</span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-serif mb-6 text-foreground"
+              className="text-3xl md:text-4xl font-light text-foreground uppercase tracking-[0.15em] mb-6"
             >
               Mapping Concepts to <br />
-              <span className="italic text-primary font-instrument-serif">Any Syllabus</span>
+              <span className="text-primary font-extrabold">Any Syllabus</span>
             </motion.h2>
           </div>
 
@@ -43,11 +43,11 @@ const CurriculumSection = () => {
         {/* Subtle Horizontal Scroll Text */}
         <div className="mt-20 relative opacity-5 select-none">
           <div className="flex gap-12 animate-marquee-slow whitespace-nowrap">
-             {[...Array(10)].map((_, i) => (
-               <span key={i} className="text-4xl font-syne font-black tracking-widest text-foreground uppercase">
-                 SYLLABUS SYNC • CONCEPT MAPPING • ADAPTIVE NODES • 
-               </span>
-             ))}
+            {[...Array(10)].map((_, i) => (
+              <span key={i} className="text-4xl font-syne font-black tracking-widest text-foreground uppercase">
+                SYLLABUS SYNC • CONCEPT MAPPING • ADAPTIVE NODES •
+              </span>
+            ))}
           </div>
         </div>
       </div>

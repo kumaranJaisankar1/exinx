@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 export default function VisionSection() {
   return (
-    <section className="relative py-32 md:py-48 bg-[#0a0a0f] text-white overflow-hidden flex items-center justify-center text-center">
-      {/* Background Neural Particles / Glow */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative py-32 md:py-48 bg-[#0a0a0f] text-white flex items-center justify-center text-center">
+      {/* Background Neural Particles / Glow - Contained */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div 
           animate={{ 
             scale: [1, 1.2, 1],

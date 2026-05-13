@@ -39,7 +39,7 @@ const NovaHero: React.FC<NovaHeroProps> = ({
 }) => {
   return (
     <section className={cn(
-      "relative w-full h-[100svh] overflow-hidden flex items-center justify-center pt-20",
+      "relative w-full min-h-[100svh] overflow-hidden flex items-center justify-center pt-32 md:pt-20",
       "bg-[#07080a] dark:bg-[#07080a]",
       className
     )}>
@@ -55,7 +55,7 @@ const NovaHero: React.FC<NovaHeroProps> = ({
         {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background dark:via-[#07080a]/80 dark:to-[#07080a]" /> */}
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 flex flex-col items-center text-center">
+      <div className="w-full max-w-7xl relative z-10 mx-auto px-6 flex flex-col items-center text-center">
         {/* Trust Badge */}
         {trustBadge && (
           <motion.div
@@ -78,9 +78,9 @@ const NovaHero: React.FC<NovaHeroProps> = ({
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="max-w-5xl"
+          className="max-w-5xl px-2"
         >
-          <h1 className="text-[clamp(2.2rem,6vw,4.5rem)] leading-[1.1] mb-8 text-white dark:text-white tracking-[0.1em] font-light uppercase">
+          <h1 className="text-[clamp(1.8rem,7vw,4.5rem)] leading-[1.1] mb-8 text-white dark:text-white tracking-[0.1em] font-light uppercase break-words">
             {headline.line1}<br />
             <span className="font-extrabold block mt-2 tracking-[0.05em] text-[#D97706]">
               {headline.line2}
@@ -96,7 +96,7 @@ const NovaHero: React.FC<NovaHeroProps> = ({
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-2xl space-y-6"
         >
-          <p className="text-lg md:text-xl text-slate-400 dark:text-slate-400 font-light leading-relaxed">
+          <p className="text-base md:text-xl text-slate-400 dark:text-slate-400 font-light leading-relaxed">
             {subtitle}
           </p>
           {/* {description && (

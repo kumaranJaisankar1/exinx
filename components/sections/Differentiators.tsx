@@ -39,12 +39,12 @@ export default function Differentiators() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-6 p-8 rounded-[2rem] bg-secondary/30 dark:bg-white/[0.02] border border-border/50 group hover:border-primary/30 transition-all duration-500"
+                className="flex items-start gap-4 md:gap-6 p-6 md:p-8 rounded-[2rem] bg-secondary/30 dark:bg-white/[0.02] border border-border/50 group hover:border-primary/30 transition-all duration-500"
               >
-                <div className="mt-1 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <CheckCircle2 className="w-5 h-5" />
+                <div className="mt-1 w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
-                <p className="text-xl font-medium tracking-tight text-foreground group-hover:text-primary transition-colors">
+                <p className="text-lg md:text-xl font-medium tracking-tight text-foreground group-hover:text-primary transition-colors">
                   {text}
                 </p>
               </motion.div>

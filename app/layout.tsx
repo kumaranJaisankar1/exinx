@@ -5,6 +5,7 @@ import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvide
 import ScrollToTop from '@/components/ScrollToTop';
 import Navbar from '@/components/Navbar';
 import VismeFormModal from '@/components/ui/VismeFormModal';
+import OrbisSignalModal from '@/components/ui/OrbisSignalModal';
 import './globals.css';
 
 
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
             <ScrollToTop />
             <VismeFormModal />
+            <OrbisSignalModal />
           </SmoothScrollProvider>
         </ThemeProvider>
 

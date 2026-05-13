@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@variant dark (&:where(.dark, .dark *));
+
 @keyframes onloadopacity {
   24% { opacity: 0; }
   100% { opacity: 1; }
@@ -14,6 +16,17 @@
 @keyframes onloadbgb {
   0% { translate: 0 70%; opacity: 0.3; }
   100% { translate: 0 64%; opacity: 0.8; }
+}
+
+@keyframes gradient-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-shimmer {
+  background-size: 200% 200%;
+  animation: gradient-shimmer 3s linear infinite;
 }
 
 @layer base {
@@ -62,7 +75,7 @@
   --fg-rgb: 10, 10, 15;
   --primary: #f97316;
   --primary-foreground: #ffffff;
-  --secondary: #f4f2ee;
+  --secondary: #ffffff;
   --secondary-foreground: #0a0a0f;
   --muted: #f4f2ee;
   --muted-foreground: #64748b;
@@ -82,18 +95,18 @@
 .dark {
   --background: #0a0a0f;
   --bg-rgb: 10, 10, 15;
-  --foreground: #f0ede6;
+  --foreground: #ffffff;
   --fg-rgb: 240, 237, 230;
   --primary: #f97316;
   --primary-foreground: #000000;
   --secondary: #141420;
-  --secondary-foreground: #f0ede6;
+  --secondary-foreground: #ffffff;
   --muted: #1c1c2e;
   --muted-foreground: #8a8698;
   --accent: #f0a030;
   --accent-foreground: #000000;
   --destructive: #7f1d1d;
-  --destructive-foreground: #f0ede6;
+  --destructive-foreground: #ffffff;
   --border: #1c1c2e;
   --input: #1c1c2e;
   --ring: #f0a030;
@@ -116,12 +129,30 @@
 }
 
 @layer base {
+  html, body {
+    @apply w-full;
+    position: relative;
+  }
+
+  /* 
+     Fix for mobile overflow while preserving desktop sticky positioning.
+     Sticky context requires overflow to be visible (default) on all ancestors.
+     Since the sticky layout is only active on lg screens, we can safely
+     hide overflow on smaller screens.
+  */
+  @media (max-width: 1023px) {
+    html, body {
+      @apply w-full;
+    position: relative;
+      overflow-x: hidden;
+    }
+  }
+
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
     font-family: var(--font-montserrat);
     font-weight: 600;
     letter-spacing: 0.08em;
-    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

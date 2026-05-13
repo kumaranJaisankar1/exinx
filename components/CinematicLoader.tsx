@@ -10,6 +10,7 @@ export function CinematicLoader() {
   const [step, setStep] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { theme } = useTheme();
   const pathname = usePathname();
 
@@ -22,6 +23,10 @@ export function CinematicLoader() {
 
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const assemblyParticles = useMemo(() => {
@@ -151,10 +156,10 @@ export function CinematicLoader() {
                 letterSpacing: "0.3em",
                 transition: { duration: 0.7, ease: "easeInOut" }
               } : step >= 3 ? {
-                top: "40px",
-                left: "40px",
-                x: "0%",
-                y: "0%",
+                top: isMobile ? "50%" : "40px",
+                left: isMobile ? "50%" : "40px",
+                x: isMobile ? "-50%" : "0%",
+                y: isMobile ? "-50%" : "0%",
                 scale: 0.3,
                 opacity: [1, 0], // Fade out while moving
                 filter: "blur(4px)",
@@ -295,19 +300,24 @@ export function CinematicLoader() {
             {/* Brand Reveal Name */}
             {brandInfo && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{
                   opacity: step >= 1 ? 1 : 0,
-                  y: step >= 1 ? 0 : 20
+                  y: step >= 1 ? 0 : 10
                 }}
                 transition={{ duration: 1.2, delay: 2.2, ease: "easeOut" }}
-                className="mt-8 text-3xl font-light tracking-[0.5em] uppercase text-center"
+                className="w-full flex mt-0.5"
                 style={{
                   color: brandInfo.color,
                   textShadow: `0 0 40px ${brandInfo.color}33`
                 }}
               >
-                {brandInfo.name}
+                <div className="w-[32%]" />
+                <div className="flex-1 flex justify-center overflow-visible">
+                  <span className="text-2xl md:text-3xl font-medium tracking-[0.8em] uppercase whitespace-nowrap -mr-[0.8em]">
+                    {brandInfo.name}
+                  </span>
+                </div>
               </motion.div>
             )}
           </motion.div>
