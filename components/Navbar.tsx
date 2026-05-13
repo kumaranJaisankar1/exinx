@@ -12,7 +12,7 @@ export default function Navbar() {
     return <NovaNavbar />;
   }
 
-  if (pathname === "/orbis") {
+  if (pathname === "/orbis" || pathname.startsWith("/orbis")) {
     return <OrbisNavbar />;
   }
 

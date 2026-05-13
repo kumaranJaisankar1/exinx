@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "../ui/ThemeToggle";
 import { Logo } from "../Logo";
+import { NovaLogo } from "../NovaLogo";
 import { ArrowRight, Sparkles, Globe, Target } from "lucide-react";
 
 const ecosystem = [
@@ -56,19 +57,8 @@ export default function NovaNavbar() {
   return (
     <nav className="absolute top-0 left-0 right-0 z-[100] py-6 px-6 md:py-10 md:px-10 bg-transparent w-full">
       <div className="max-w-[1400px] w-full mx-auto flex justify-between items-center">
-        <Link href="/" className="flex flex-col group relative">
-          <Logo className="w-auto h-8 md:h-10 brightness-0 invert group-hover:scale-105 transition-transform" />
-          <div className="flex w-full mt-[-4px]">
-            <div className="w-[28%] md:w-[31%]" /> {/* Spacer to align with text part of logo */}
-            <div className="flex-1 flex justify-center">
-              <span
-                className="text-[10px] md:text-[11px] font-medium tracking-[0.8em] text-[#D97706] uppercase whitespace-nowrap -mr-[0.8em]"
-                style={{ fontFamily: 'Syne, sans-serif' }}
-              >
-                Nova
-              </span>
-            </div>
-          </div>
+        <Link href="/nova" className="flex flex-col group relative">
+          <NovaLogo className="w-auto h-8 md:h-10 group-hover:scale-[1.02] transition-transform" />
         </Link>
 
 
@@ -108,12 +98,29 @@ export default function NovaNavbar() {
           </button>
 
           <button
-            className="flex flex-col gap-1.5 p-2 group"
+            className="flex flex-col gap-1.5 p-3 group relative transition-all duration-300 hover:scale-110 active:scale-95"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle Menu"
+            aria-expanded={isMenuOpen}
           >
-            <span className={cn("w-6 h-0.5 transition-all bg-white", isMenuOpen ? "rotate-45 translate-y-2" : "group-hover:w-8")} />
-            <span className={cn("w-8 h-0.5 transition-all bg-white", isMenuOpen && "opacity-0")} />
-            <span className={cn("w-6 h-0.5 transition-all bg-white self-end", isMenuOpen ? "-rotate-45 -translate-y-2 w-6" : "group-hover:w-8")} />
+            <span 
+              className={cn(
+                "w-6 h-[0.2rem] rounded-full transition-all duration-300 animate-gradient-shimmer",
+                isMenuOpen ? "rotate-45 translate-y-2 bg-white" : "bg-gradient-to-r from-[#D97706] via-[#FFD700] to-[#D97706] shadow-[0_0_8px_rgba(217,119,6,0.4)] group-hover:w-8"
+              )} 
+            />
+            <span 
+              className={cn(
+                "w-8 h-[0.2rem] rounded-full transition-all duration-300 animate-gradient-shimmer",
+                isMenuOpen ? "opacity-0" : "bg-gradient-to-r from-[#D97706] via-[#FFD700] to-[#D97706] shadow-[0_0_8px_rgba(217,119,6,0.4)]"
+              )} 
+            />
+            <span 
+              className={cn(
+                "w-6 h-[0.2rem] rounded-full self-end transition-all duration-300 animate-gradient-shimmer",
+                isMenuOpen ? "-rotate-45 -translate-y-2 w-6 bg-white" : "bg-gradient-to-r from-[#D97706] via-[#FFD700] to-[#D97706] shadow-[0_0_8px_rgba(217,119,6,0.4)] group-hover:w-8"
+              )} 
+            />
           </button>
         </div>
       </div>

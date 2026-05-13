@@ -300,19 +300,24 @@ export function CinematicLoader() {
             {/* Brand Reveal Name */}
             {brandInfo && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{
                   opacity: step >= 1 ? 1 : 0,
-                  y: step >= 1 ? 0 : 20
+                  y: step >= 1 ? 0 : 10
                 }}
                 transition={{ duration: 1.2, delay: 2.2, ease: "easeOut" }}
-                className="mt-8 text-3xl font-light tracking-[0.5em] uppercase text-center"
+                className="w-full flex mt-0.5"
                 style={{
                   color: brandInfo.color,
                   textShadow: `0 0 40px ${brandInfo.color}33`
                 }}
               >
-                {brandInfo.name}
+                <div className="w-[32%]" />
+                <div className="flex-1 flex justify-center overflow-visible">
+                  <span className="text-2xl md:text-3xl font-medium tracking-[0.8em] uppercase whitespace-nowrap -mr-[0.8em]">
+                    {brandInfo.name}
+                  </span>
+                </div>
               </motion.div>
             )}
           </motion.div>

@@ -14,6 +14,7 @@ import OrbisClosing from "@/components/orbis/OrbisClosing";
 import OrbisMobileEcosystem from "@/components/orbis/OrbisMobileEcosystem";
 import Footer from "@/components/sections/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import OrbisFooter from "@/components/sections/OrbisFooter";
 import OrbisBackgroundCanvas from "@/components/orbis/OrbisBackgroundCanvas";
 
 export default function OrbisPage() {
@@ -29,14 +30,20 @@ export default function OrbisPage() {
       <OrbisBackgroundCanvas />
 
       <div className="relative z-10">
-        <Navbar />
+        {/* <Navbar /> */}
         <OrbisHero />
 
         <div className="bg-background relative z-20">
-          <OrbisIntro />
+          <div id="orbis-intro">
+            <OrbisIntro />
+          </div>
           <OrbisCoreValue />
-          <OrbisMobileEcosystem />
-          <OrbisModules />
+          <div id="orbis-modules">
+            <OrbisModules />
+          </div>
+          <div id="orbis-mobile">
+            <OrbisMobileEcosystem />
+          </div>
           <OrbisExtended />
           <OrbisFlexibility />
           <OrbisBenefits />
@@ -44,7 +51,7 @@ export default function OrbisPage() {
           <OrbisClosing />
         </div>
 
-        <Footer tagline="A Complete System for Modern Education Management" />
+        <OrbisFooter />
       </div>
     </main>
   );

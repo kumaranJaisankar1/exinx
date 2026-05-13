@@ -10,6 +10,7 @@ import IyotaPrepAudiences from "@/components/iyotaprep/IyotaPrepAudiences";
 import IyotaPrepProcess from "@/components/iyotaprep/IyotaPrepProcess";
 import IyotaPrepCTA from "@/components/iyotaprep/IyotaPrepCTA";
 import Footer from "@/components/sections/Footer";
+import IyotaFooter from "@/components/sections/IyotaFooter";
 import CustomCursor from "@/components/CustomCursor";
 import IyotaPrepDataCore from "@/components/iyotaprep/IyotaPrepDataCore";
 import TransformativeSection from "@/components/iyotaprep/TransformativeSection";
@@ -58,7 +59,7 @@ export default function IyotaPrepPage() {
                     <IyotaPrepCTA />
                 </TransformativeSection>
 
-                <Footer />
+                <IyotaFooter />
             </div>
         </main>
     );
