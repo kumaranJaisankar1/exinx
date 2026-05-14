@@ -7,7 +7,7 @@ const capabilities = [
   {
     icon: <Brain className="w-8 h-8" />,
     title: "Adaptive Intelligence",
-    desc: "Personalizes learning based on individual patterns and cognitive behavior",
+    desc: "Personalizes learning based on individual learning behaviors and cognitive patterns",
     color: "primary"
   },
   {
@@ -19,7 +19,7 @@ const capabilities = [
   {
     icon: <Target className="w-8 h-8" />,
     title: "Precision Systems",
-    desc: "Optimize performance through continuous analysis and feedback",
+    desc: "Optimises performance through continuous analysis and feedback",
     color: "nova"
   }
 ];
@@ -52,7 +52,7 @@ export default function ExInXProcess() {
         <div className="grid md:grid-cols-3 gap-8 relative">
           {/* Connection Lines (Desktop) */}
           <div className="hidden md:block absolute top-1/2 left-1/4 right-1/4 h-px border-t border-dashed border-primary/20 -z-10" />
-          
+
           {capabilities.map((cap, i) => (
             <motion.div
               key={i}
@@ -75,7 +75,7 @@ export default function ExInXProcess() {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

@@ -34,7 +34,7 @@ export default function WhyExInX() {
             <div className="grid gap-8">
               {[
                 { title: "Institutional Clarity", content: "It enables institutions to operate with clarity and efficiency" },
-                { title: "Learner Empowerment", content: "It empowers learners with personalized and evolving learning experiences" },
+                { title: "Learner Empowerment", content: "It empowers learners with personalized and constant evolving learning experiences" },
                 { title: "Measurable Growth", content: "It delivers measurable outcomes through continuous optimization" }
               ].map((item, i) => (
                 <div key={i} className="flex gap-8 group">

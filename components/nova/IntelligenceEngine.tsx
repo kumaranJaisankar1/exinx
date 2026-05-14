@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { Network, Search, Layers, Gauge, RefreshCcw } from "lucide-react";
 
 const adjustmentItems = [
-  { label: "Cognitive Adaptation", icon: Layers, color: "text-blue-500" },
   { label: "IQ Estimation", icon: Search, color: "text-primary" },
   { label: "Persona Detection", icon: Network, color: "text-orange-500" },
   { label: "Pace Calibration", icon: Gauge, color: "text-green-500" },
+  { label: "Cognitive Adaptation", icon: Layers, color: "text-blue-500" },
   { label: "Depth Adjustment", icon: RefreshCcw, color: "text-cyan-500" }
 ];
 
@@ -28,7 +28,7 @@ const IntelligenceEngine = () => {
                 <span className="font-extrabold text-primary block mt-2">Not Just Content</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl font-light">
-                Nova uses psychometric inputs and interaction data to continuously refine how it teaches. 
+                Nova uses psychometric inputs and interaction data to continuously refine how it teaches.
                 It adapts explanation depth, pace, and structure based on how the student learns.
               </p>
             </motion.div>
@@ -49,7 +49,7 @@ const IntelligenceEngine = () => {
                   <span className="text-sm font-medium text-foreground">{item.label}</span>
                   <div className="ml-auto flex gap-1">
                     {[...Array(4)].map((_, j) => (
-                      <div 
+                      <div
                         key={j}
                         className={`h-1 w-6 rounded-full ${j <= i ? 'bg-primary/60' : 'bg-border'}`}
                       />
@@ -62,28 +62,28 @@ const IntelligenceEngine = () => {
 
           {/* Right: Neural System Animation */}
           <div className="relative h-[400px] flex items-center justify-center">
-            <motion.div 
+            <motion.div
               className="absolute w-[300px] h-[300px] border border-primary/10 rounded-full"
               animate={{ rotate: 360 }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             />
-            <motion.div 
+            <motion.div
               className="absolute w-[220px] h-[220px] border border-primary/5 rounded-full"
               animate={{ rotate: -360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
 
             <div className="relative z-10 w-40 h-40 bg-background border border-border rounded-3xl flex items-center justify-center overflow-hidden shadow-2xl group">
-               <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent" />
-               <motion.div 
-                 className="relative z-10 flex flex-col items-center"
-                 animate={{ y: [0, -5, 0] }}
-                 transition={{ duration: 4, repeat: Infinity }}
-               >
-                 <span className="font-mono text-[9px] text-primary mb-2 tracking-[0.3em] uppercase">Processing</span>
-                 <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-primary/40 to-transparent mb-3" />
-                 <span className="text-xl font-bold text-foreground tracking-widest uppercase">NOVA-X</span>
-               </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent" />
+              <motion.div
+                className="relative z-10 flex flex-col items-center"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              >
+                <span className="font-mono text-[9px] text-primary mb-2 tracking-[0.3em] uppercase">Processing</span>
+                <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-primary/40 to-transparent mb-3" />
+                <span className="text-xl font-bold text-foreground tracking-widest uppercase">NOVA-X</span>
+              </motion.div>
             </div>
           </div>
         </div>

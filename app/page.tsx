@@ -37,7 +37,7 @@ export default function Home() {
 
           <BrandIntro />
           <ExInXProcess />
-          <CorePillars />
+          {/* <CorePillars /> */}
           <WhyExInX />
           <PlatformImpact />
           <ProductSection />

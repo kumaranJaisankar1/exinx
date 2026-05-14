@@ -16,8 +16,8 @@ export default function FinalCTA() {
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50" />
 
           <h2 className="text-4xl md:text-7xl mb-8 leading-tight flex flex-col items-center">
-            <span className="hero-title-thin">The Future of</span>
-            <span className="hero-title-bold text-gradient-exinx">Education is Intelligent</span>
+            <span className="hero-title-thin">The Future of Education is</span>
+            <span className="hero-title-bold text-gradient-exinx"> Extended Intelligence</span>
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto font-light">
@@ -31,11 +31,11 @@ export default function FinalCTA() {
           </div>
 
           {/* Tagline for the bottom of CTA area */}
-          <div className="mt-16 pt-12 border-t border-white/5">
+          {/* <div className="mt-16 pt-12 border-t border-white/5">
             <p className="font-serif italic text-2xl text-foreground/40 tracking-tight">
               Extending Intelligence Across Education
             </p>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>
