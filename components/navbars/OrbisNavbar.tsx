@@ -214,7 +214,9 @@ export default function OrbisNavbar() {
               >
                 {/* Header */}
                 <div className="flex justify-between items-center mb-8">
-                  <Logo className="w-auto h-8" />
+                  <Link href="/">
+                    <Logo className="w-auto h-8" />
+                  </Link>
                   <div className="flex items-center gap-8">
                     <ThemeToggle />
                     <button
