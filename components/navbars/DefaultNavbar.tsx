@@ -12,6 +12,16 @@ import { Logo } from "../Logo";
 export default function DefaultNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const labelProductColor = (label: string) => {
+    if (label.toLocaleLowerCase() === "iyota") {
+      return "hover:text-[#FF0000]";
+    } else if (label.toLocaleLowerCase() === "orbis") {
+      return "hover:text-[#0E76BD]";
+    } else if (label.toLocaleLowerCase() === "nova") {
+      return "hover:text-[#D97706]";
+    }
+    return "hover:text-muted-foreground";
+  }
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-[100] py-6 px-6 md:py-10 md:px-10 bg-transparent">
@@ -30,9 +40,9 @@ export default function DefaultNavbar() {
                   href={link.href}
                   className={cn(
                     "text-[14px] transition-colors",
-                    isActive 
-                      ? "text-primary font-semibold" 
-                      : "text-muted-foreground hover:text-foreground"
+                    isActive
+                      ? "text-primary font-semibold"
+                      : `text-muted-foreground ${labelProductColor(link.label)}`
                   )}
                 >
                   {link.label}

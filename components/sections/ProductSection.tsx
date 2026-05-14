@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const products = [
   {
@@ -76,13 +77,14 @@ export default function ProductSection() {
               </p>
 
               <div className="pt-6 border-t border-border/30">
-                <button
+                <Link
+                  href={`/${product.name.toLowerCase()}`}
                   className="text-xs font-bold tracking-widest uppercase flex items-center gap-2 group/btn"
                   style={{ color: product.color }}
                 >
                   Explore {product.name}
                   <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}
