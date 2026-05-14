@@ -81,11 +81,11 @@ const NovaHero: React.FC<NovaHeroProps> = ({
           className="max-w-5xl px-2"
         >
           <h1 className="text-[clamp(1.8rem,7vw,4.5rem)] leading-[1.1] mb-8 text-white dark:text-white tracking-[0.1em] font-light uppercase break-words">
-            {headline.line1}<br />
+            Personalized AI<br />
             <span className="font-extrabold block mt-2 tracking-[0.05em] text-[#D97706]">
-              {headline.line2}
+              That Adapts to the
             </span>
-            Based on Your IQ
+            Way You Learn
           </h1>
         </motion.div>
 

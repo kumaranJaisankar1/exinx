@@ -142,7 +142,7 @@ const ProblemSection = () => {
             label="Product"
             title="A Learning System That"
             highlight="Thinks Like You Do."
-            description="Traditional learning systems are designed around content. Nova is designed around the student."
+            description="Traditional learning systems are built around content. Nova is built around the student."
             opacity={opacity1}
             y={y1}
           />
@@ -158,9 +158,9 @@ const ProblemSection = () => {
 
           <NarrativeBlock
             label="Personalized Layer"
-            title="Meaningful"
+            title="Rooted"
             highlight="Understanding."
-            description="Instead of forcing a uniform explanation, Nova builds a personalized learning layer around each student. It understands your pace, response patterns, and clarity, refining its teaching accordingly."
+            description="Instead of forcing a uniform explanation, Nova builds a personalized learning layer around each student. It understands your pace, response patterns, and comprehension level, refining its teaching accordingly"
             opacity={opacity3}
             y={y3}
           />

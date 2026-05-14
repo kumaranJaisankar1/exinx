@@ -6,25 +6,25 @@ import { UserSearch, Zap, CheckCircle2, TrendingUp, Trophy, ArrowRight } from "l
 
 const steps = [
   {
-    title: "Understand Your Learning Profile",
+    title: "Understands Your Learning Profile",
     description: "A short psychometric assessment determines your cognitive ability and learning persona.",
     icon: UserSearch,
     color: "text-blue-500"
   },
   {
-    title: "Deliver Adaptive Learning",
+    title: "Delivers Adaptive Learning",
     description: "Ask any question and receive explanations tailored to your level.",
     icon: Zap,
     color: "text-primary"
   },
   {
-    title: "Validate Understanding",
+    title: "Validates Understanding",
     description: "Nova tests your readiness and identifies gaps.",
     icon: CheckCircle2,
     color: "text-green-500"
   },
   {
-    title: "Assess and Measure",
+    title: "Assessments and Measures",
     description: "Structured assessments provide detailed performance insights.",
     icon: TrendingUp,
     color: "text-purple-500"
