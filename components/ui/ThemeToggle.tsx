@@ -24,7 +24,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
         />
         <span className="slider">
           <span className="slider-icon shadow-sm flex items-center justify-center relative">
-            <Sun className="icon sun-icon text-[#f59e0b]" strokeWidth={2.5} />
+            <Sun className="icon sun-icon text-black" strokeWidth={2.5} />
             <Moon className="icon moon-icon text-[#f1f5f9]" strokeWidth={2.5} />
           </span>
         </span>
@@ -46,7 +46,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
           background-color: transparent;
           border-radius: 13px;
           cursor: pointer;
-          border: 2px solid var(--dark);
+          border: 1px solid var(--dark);
         }
 
         .checkbox {

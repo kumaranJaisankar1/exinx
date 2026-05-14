@@ -26,7 +26,7 @@ const capabilities = [
 
 export default function ExInXProcess() {
   return (
-    <section className="py-24 md:py-32 bg-secondary/5 dark:bg-white/[0.01] relative overflow-hidden">
+    <section id="process" className="py-24 md:py-32 bg-secondary/5 dark:bg-white/[0.01] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 

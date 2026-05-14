@@ -60,8 +60,8 @@ export default function HeroSection() {
             transition={{ ...fadeUp.transition, delay: 0.6 }}
             className="flex flex-wrap gap-4 mb-0"
           >
-            <button className="btn-primary  !px-10">Explore the Platform</button>
-            <button className="btn-ghost !px-10">See How It Works</button>
+            <button onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })} className="btn-primary  !px-10">Explore the Platform</button>
+            <button onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })} className="btn-ghost !px-10">See How It Works</button>
           </motion.div>
 
           {/* Stats */}
