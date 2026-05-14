@@ -9,34 +9,10 @@ import { cn } from "@/lib/utils";
 import ThemeToggle from "../ui/ThemeToggle";
 import { Logo } from "../Logo";
 import { IyotaLogo } from "../IyotaLogo";
-import { ArrowRight, Sparkles, Globe, Target } from "lucide-react";
+import { ArrowRight, Sparkles, Globe, Target, X } from "lucide-react";
+import { EcosystemShowcase } from "./EcosystemShowcase";
 
-const ecosystem = [
-  {
-    name: "Nova",
-    href: "/nova",
-    color: "#D97706",
-    tag: "Intelligence Engine",
-    desc: "Personalized AI that adapts to your cognition.",
-    icon: Sparkles
-  },
-  {
-    name: "Orbis",
-    href: "/orbis",
-    color: "#0E76BD",
-    tag: "Institutional System",
-    desc: "Unified ecosystem for modern education.",
-    icon: Globe
-  },
-  {
-    name: "Iyota",
-    href: "/iyota",
-    color: "#FF0000",
-    tag: "Precision Prep",
-    desc: "Advanced assessment & performance analytics.",
-    icon: Target
-  }
-];
+// Ecosystem data moved to EcosystemShowcase.tsx
 
 const iyotaLinks = [
   { label: "Home", href: "/iyota" },
@@ -48,7 +24,7 @@ const iyotaLinks = [
 export default function IyotaNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isInstitutionsPage = pathname === "/iyota/institutions";
+  const isInstitutionsPage = pathname === "/iyota/institutions" || pathname === "/iyota/students";
 
   // Scroll Locking
   useEffect(() => {
@@ -115,7 +91,7 @@ export default function IyotaNavbar() {
             <Link
               href={`${siteConfigUrl.iyota.baseUrl}`}
               className={cn(
-                "px-5 py-2 text-[12px] transition-all rounded-[2px] font-bold tracking-widest uppercase",
+                "px-5 py-2 text-[12px] transition-all  font-bold tracking-widest uppercase",
                 isInstitutionsPage
                   ? "text-white hover:bg-white/10 border border-white/20"
                   : "text-foreground hover:bg-foreground/5 border border-black dark:border-white"
@@ -125,7 +101,7 @@ export default function IyotaNavbar() {
             </Link>
             <Link
               href={`${siteConfigUrl.iyota.baseUrl}`}
-              className="px-5 py-2 bg-[#FF0000] text-white hover:bg-[#D90000] text-[12px] transition-all rounded-[2px] font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(255,0,0,0.2)]"
+              className="px-5 py-2 bg-[#FF0000] text-white hover:bg-[#D90000] text-[12px] transition-all  font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(255,0,0,0.2)]"
             >
               Sign Up
             </Link>
@@ -139,19 +115,19 @@ export default function IyotaNavbar() {
           >
             <span
               className={cn(
-                "w-6 h-[0.2rem] rounded-full transition-all duration-300 animate-gradient-shimmer",
+                "w-6 h-[0.2rem]  transition-all duration-300 animate-gradient-shimmer",
                 isMenuOpen ? "rotate-45 translate-y-2 bg-foreground" : cn(isInstitutionsPage ? "bg-white" : "bg-gradient-to-r from-[#FF0000] via-[#FFB3B3] to-[#FF0000] shadow-[0_0_8px_rgba(255,0,0,0.4)]", "group-hover:w-8")
               )}
             />
             <span
               className={cn(
-                "w-8 h-[0.2rem] rounded-full transition-all duration-300 animate-gradient-shimmer",
+                "w-8 h-[0.2rem]  transition-all duration-300 animate-gradient-shimmer",
                 isMenuOpen ? "opacity-0" : cn(isInstitutionsPage ? "bg-white" : "bg-gradient-to-r from-[#FF0000] via-[#FFB3B3] to-[#FF0000] shadow-[0_0_8px_rgba(255,0,0,0.4)]")
               )}
             />
             <span
               className={cn(
-                "w-6 h-[0.2rem] rounded-full self-end transition-all duration-300 animate-gradient-shimmer",
+                "w-6 h-[0.2rem]  self-end transition-all duration-300 animate-gradient-shimmer",
                 isMenuOpen ? "-rotate-45 -translate-y-2 w-6 bg-foreground" : cn(isInstitutionsPage ? "bg-white" : "bg-gradient-to-r from-[#FF0000] via-[#FFB3B3] to-[#FF0000] shadow-[0_0_8px_rgba(255,0,0,0.4)]", "group-hover:w-8")
               )}
             />
@@ -184,7 +160,7 @@ export default function IyotaNavbar() {
                 data-lenis-prevent
               >
                 {/* Header */}
-                <div className="flex justify-between items-center mb-16">
+                <div className="flex justify-between items-center mb-8">
                   <Link href="/">
                     <Logo className="w-auto h-8" />
                   </Link>
@@ -194,7 +170,7 @@ export default function IyotaNavbar() {
                       onClick={() => setIsMenuOpen(false)}
                       className="text-muted-foreground hover:text-foreground transition-colors uppercase text-[10px] tracking-[0.2em] font-bold"
                     >
-                      Close X
+                      <X />
                     </button>
                   </div>
                 </div>
@@ -245,58 +221,7 @@ export default function IyotaNavbar() {
                 </div>
 
                 {/* Ecosystem Showcase */}
-                <div className="flex flex-col gap-12">
-                  <div>
-                    <Link href="/" className="flex justify-center">                    <button className="cursor-pointer text-[16px] uppercase tracking-[0.5em] text-muted-foreground font-bold mb-8 block hover:text-primary">EXINX</button>
-                    </Link>
-                    {/* <span className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground font-bold mb-8 block">Product Ecosystem</span> */}
-                    <div className="grid gap-4">
-                      {ecosystem.map((product, i) => (
-                        <motion.div
-                          key={product.name}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + i * 0.1 }}
-                        >
-                          <Link
-                            href={product.href}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="group relative block p-8 rounded-3xl bg-secondary/30 dark:bg-white/[0.02] border border-border hover:border-primary/20 transition-all overflow-hidden"
-                          >
-                            <div
-                              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                              style={{ background: `radial-gradient(circle at top right, ${product.color}15, transparent)` }}
-                            />
-
-                            <div className="relative z-10 flex justify-between items-start">
-                              <div>
-                                <span className="text-[10px] font-mono tracking-widest uppercase mb-2 block" style={{ color: product.color }}>
-                                  {product.tag}
-                                </span>
-                                <h3 className="text-3xl font-bold text-foreground mb-2 tracking-tight group-hover:translate-x-1 transition-transform">
-                                  {product.name}
-                                </h3>
-                                <p className="text-sm text-muted-foreground font-light max-w-[240px] leading-relaxed">
-                                  {product.desc}
-                                </p>
-                              </div>
-                              <div
-                                className="p-4 rounded-2xl bg-background border border-border text-foreground group-hover:scale-110 transition-all duration-500"
-                                style={{ color: product.color }}
-                              >
-                                <product.icon size={24} />
-                              </div>
-                            </div>
-
-                            <div className="mt-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground group-hover:text-foreground transition-colors">
-                              Explore {product.name} <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                            </div>
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <EcosystemShowcase onLinkClick={() => setIsMenuOpen(false)} />
 
                 {/* Footer */}
                 <div className="mt-auto pt-16 flex flex-col gap-8">
@@ -307,10 +232,8 @@ export default function IyotaNavbar() {
                         window.location.href = `${siteConfigUrl.iyota.baseUrl}`;
                       }}
                       className={cn(
-                        "w-full py-4 font-bold text-xs rounded-full uppercase tracking-[0.2em] transition-all border",
-                        isInstitutionsPage
-                          ? "bg-transparent border-white/20 text-white"
-                          : "bg-background border-border text-foreground"
+                        "w-full py-4 font-bold text-xs uppercase tracking-[0.2em] transition-all border",
+
                       )}
                     >
                       Login
@@ -320,7 +243,7 @@ export default function IyotaNavbar() {
                         setIsMenuOpen(false);
                         window.location.href = `${siteConfigUrl.iyota.baseUrl}`;
                       }}
-                      className="w-full py-4 font-bold text-xs rounded-full uppercase tracking-[0.2em] bg-[#FF0000] text-white shadow-xl"
+                      className="w-full py-4 font-bold text-xs  uppercase tracking-[0.2em] bg-[#FF0000] text-white shadow-xl"
                     >
                       Sign Up
                     </button>
