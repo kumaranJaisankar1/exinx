@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "../ui/ThemeToggle";
 import { Logo } from "../Logo";
+import { EcosystemShowcase } from "./EcosystemShowcase";
 
 export default function DefaultNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -100,8 +101,9 @@ export default function DefaultNavbar() {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-[80%] z-[105] bg-background/95 backdrop-blur-3xl md:hidden flex flex-col p-6 pt-32 overflow-hidden border-l border-white/10"
             >
+              <EcosystemShowcase onLinkClick={() => setIsMenuOpen(false)} />
               <ul className="flex flex-col gap-8 text-right list-none px-4">
-                {siteConfig.nav.links.map((link) => {
+                {/* {siteConfig.nav.links.map((link) => {
                   const isActive = pathname === link.href;
                   return (
                     <li key={link.label}>
@@ -117,7 +119,7 @@ export default function DefaultNavbar() {
                       </Link>
                     </li>
                   );
-                })}
+                })} */}
                 <li className="pt-4">
                   <button
                     className="w-full px-6 py-4 bg-primary text-primary-foreground font-bold text-xs rounded-full uppercase tracking-widest whitespace-nowrap"
