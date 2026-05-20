@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/config";
+import { siteConfigUrl } from "@/lib/siteConfigUrl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -14,9 +15,27 @@ import { EcosystemShowcase } from "./EcosystemShowcase";
 
 // Ecosystem data moved to EcosystemShowcase.tsx
 
+const novaLinks = [
+  { label: "How it Works", href: "#process" },
+  { label: "Curriculum", href: "#curriculum" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Signal Us", href: "#signal", isAction: true },
+];
+
 export default function NovaNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
+    if (href.startsWith("#") && pathname === "/nova") {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsMenuOpen(false);
+    }
+  };
 
   // Scroll Locking
   useEffect(() => {
@@ -44,17 +63,27 @@ export default function NovaNavbar() {
           {/* Desktop Links - Visible only on large screens */}
           <div className="hidden xl:flex items-center gap-12">
             <ul className="flex gap-8 list-none">
-              {siteConfig.nav.links.map((link) => {
-                const isActive = pathname === link.href;
+              {novaLinks.map((link) => {
+                if (link.isAction) {
+                  return (
+                    <button
+                      key={link.label}
+                      onClick={() => {
+                        if (typeof window !== 'undefined') {
+                          window.dispatchEvent(new CustomEvent('open-signal-form', { bubbles: true, detail: { from: 'navbar' } }));
+                        }
+                      }}
+                      className="text-[14px] transition-colors text-white/60 hover:text-[#D97706] font-normal bg-transparent border-none p-0 cursor-pointer"
+                    >
+                      {link.label}
+                    </button>
+                  );
+                }
                 return (
                   <Link key={link.label}
-                    href={link.href}
-                    className={cn(
-                      "text-[14px] transition-colors",
-                      isActive
-                        ? (pathname === "/nova" ? "text-[#D97706] font-semibold" : "text-[#0E76BD] font-semibold")
-                        : "text-white/60 hover:text-white"
-                    )}
+                    href={pathname === "/nova" ? link.href : `/nova${link.href}`}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="text-[14px] transition-colors text-white/60 hover:text-[#D97706]"
                   >
                     {link.label}
                   </Link>
@@ -62,16 +91,12 @@ export default function NovaNavbar() {
               })}
             </ul>
           </div>
-          <button
-            onClick={() => {
-              if (typeof window !== 'undefined') {
-                window.dispatchEvent(new CustomEvent('open-signal-form', { bubbles: true, detail: { from: 'navbar' } }));
-              }
-            }}
-            className="hidden sm:block px-6 py-2 border border-white/20 text-white hover:bg-white/10 text-[12px] transition-all rounded-[2px] font-medium tracking-widest uppercase"
+          <Link
+            href={siteConfigUrl.nova.baseUrl}
+            className="hidden sm:block px-6 py-2 bg-gradient-to-r from-[#D97706] to-[#FFD700] text-black hover:opacity-90 text-[12px] transition-all rounded-[2px] font-bold tracking-widest uppercase shadow-md shadow-[#D97706]/20"
           >
-            Signal Us
-          </button>
+            Login
+          </Link>
 
           <button
             className="flex flex-col gap-1.5 p-3 group relative transition-all duration-300 hover:scale-110 active:scale-95"
@@ -145,20 +170,34 @@ export default function NovaNavbar() {
                 <div className="mb-12 xl:hidden">
                   <span className="text-[10px] uppercase tracking-[0.5em] text-muted-foreground font-bold mb-8 block">Navigation</span>
                   <ul className="grid grid-cols-2 gap-y-6">
-                    {['Nova', 'Orbis', 'Iyota'].map((item, i) => (
+                    {novaLinks.map((link, i) => (
                       <motion.li
-                        key={item}
+                        key={link.label}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 + i * 0.05 }}
                       >
-                        <Link
-                          href={`/${item.toLowerCase()}`}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="text-base text-muted-foreground hover:text-primary transition-colors font-medium"
-                        >
-                          {item}
-                        </Link>
+                        {link.isAction ? (
+                          <button
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              if (typeof window !== 'undefined') {
+                                window.dispatchEvent(new CustomEvent('open-signal-form', { bubbles: true }));
+                              }
+                            }}
+                            className="text-base text-muted-foreground hover:text-[#D97706] transition-colors font-medium bg-transparent border-none p-0 cursor-pointer"
+                          >
+                            {link.label}
+                          </button>
+                        ) : (
+                          <Link
+                            href={pathname === "/nova" ? link.href : `/nova${link.href}`}
+                            onClick={(e) => handleScroll(e, link.href)}
+                            className="text-base text-muted-foreground hover:text-[#D97706] transition-colors font-medium"
+                          >
+                            {link.label}
+                          </Link>
+                        )}
                       </motion.li>
                     ))}
                   </ul>
@@ -168,17 +207,15 @@ export default function NovaNavbar() {
                 <EcosystemShowcase onLinkClick={() => setIsMenuOpen(false)} />
 
                 {/* Footer */}
-                <div className="mt-auto pt-16 flex flex-col gap-8">
-                  <button
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      window.dispatchEvent(new CustomEvent('open-signal-form'));
-                    }}
-                    className="w-full py-5 bg-primary text-primary-foreground font-bold text-xs rounded-full uppercase tracking-[0.2em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all"
+                <div className="mt-auto pt-16 flex flex-col gap-4">
+                  <Link
+                    href={siteConfigUrl.nova.baseUrl}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="w-full py-5 border border-white/20 hover:bg-white/10 text-white text-center font-bold text-xs rounded-full uppercase tracking-[0.2em] transition-all block"
                   >
-                    Signal Us
-                  </button>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center">
+                    Login
+                  </Link>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest text-center mt-4">
                     © 2025 EXINX Technologies
                   </p>
                 </div>

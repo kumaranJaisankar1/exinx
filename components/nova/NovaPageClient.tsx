@@ -11,11 +11,11 @@ import PricingSection from "@/components/nova/PricingSection";
 import FAQSection from "@/components/nova/FAQSection";
 import FinalCTA from "@/components/nova/FinalCTA";
 import CustomCursor from "@/components/CustomCursor";
-import Footer from "@/components/sections/Footer";
+import NovaFooter from "@/components/sections/NovaFooter";
 
 export default function NovaPageClient() {
   return (
-    <main className="relative [--primary:#D97706] [--accent:#D97706]">
+    <main className="relative max-lg:overflow-x-hidden [--primary:#D97706] [--accent:#D97706]">
       <CustomCursor />
 
       <div className="relative z-10">
@@ -46,15 +46,21 @@ export default function NovaPageClient() {
           <div id="problem-section">
             <ProblemSection />
           </div>
-          <ProcessTimeline />
+          <div id="process">
+            <ProcessTimeline />
+          </div>
           <CapabilitiesSection />
           <IntelligenceEngine />
           <ComparisonSection />
-          <CurriculumSection />
-          <PricingSection />
+          <div id="curriculum">
+            <CurriculumSection />
+          </div>
+          <div id="pricing">
+            <PricingSection />
+          </div>
           <FAQSection />
           <FinalCTA />
-          <Footer />
+          <NovaFooter />
         </div>
       </div>
     </main>
