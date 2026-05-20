@@ -1,4 +1,7 @@
 export const siteConfigUrl = {
+  nova: {
+    baseUrl: "https://nova.exinx.ai",
+  },
   iyota: {
     baseUrl: "https://iyotaprep.vannadev.com/usertype",
   },

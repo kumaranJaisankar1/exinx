@@ -46,12 +46,18 @@ export default function NovaPageClient() {
           <div id="problem-section">
             <ProblemSection />
           </div>
-          <ProcessTimeline />
+          <div id="process">
+            <ProcessTimeline />
+          </div>
           <CapabilitiesSection />
           <IntelligenceEngine />
           <ComparisonSection />
-          <CurriculumSection />
-          <PricingSection />
+          <div id="curriculum">
+            <CurriculumSection />
+          </div>
+          <div id="pricing">
+            <PricingSection />
+          </div>
           <FAQSection />
           <FinalCTA />
           <Footer />
