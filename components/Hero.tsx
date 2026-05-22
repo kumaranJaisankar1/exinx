@@ -32,7 +32,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden bg-black">
       <Navbar />
 
       {/* GLSL Hills Background - Absolute Full Width/Height */}

@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 
-const curriculums = [
-  "CBSE", "ICSE", "SSC", "NCERT", "Undergraduate Programs"
-];
+const curriculums = ["CBSE", "ICSE", "SSC", "Undergraduate Programs"];
 
 const CurriculumSection = () => {
   return (
-    <section id="curriculum-section" className="py-24 bg-secondary/30 border-t border-border overflow-hidden">
+    <section
+      id="curriculum-section"
+      className="py-24 bg-secondary/30 border-t border-border overflow-hidden"
+    >
       <div className="max-w-5xl mx-auto px-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-12">
           <div className="max-w-md">
@@ -44,7 +45,10 @@ const CurriculumSection = () => {
         <div className="mt-20 relative opacity-5 select-none">
           <div className="flex gap-12 animate-marquee-slow whitespace-nowrap">
             {[...Array(10)].map((_, i) => (
-              <span key={i} className="text-4xl font-syne font-black tracking-widest text-foreground uppercase">
+              <span
+                key={i}
+                className="text-4xl font-syne font-black tracking-widest text-foreground uppercase"
+              >
                 SYLLABUS SYNC • CONCEPT MAPPING • ADAPTIVE NODES •
               </span>
             ))}
@@ -54,8 +58,12 @@ const CurriculumSection = () => {
 
       <style jsx>{`
         @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
         }
         .animate-marquee-slow {
           animation: marquee 60s linear infinite;

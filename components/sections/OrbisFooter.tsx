@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Logo } from "../Logo";
+import { OrbisLogo } from "../OrbisLogo";
 import { Twitter, Instagram, Linkedin, Github } from "lucide-react";
 
 export default function OrbisFooter() {
@@ -13,16 +13,8 @@ export default function OrbisFooter() {
           {/* Brand Info */}
           <div className="space-y-8">
             <div className="flex flex-col gap-2">
-              <Link href="/" className="flex flex-col group relative">
-                <Logo className="w-auto h-8 md:h-10" />
-                <div className="flex w-full mt-[-4px]">
-                  <span
-                    className="text-[10px] md:text-[11px] font-medium tracking-[0.8em] text-[#0E76BD] uppercase whitespace-nowrap ml-14"
-                    style={{ fontFamily: 'Syne, sans-serif' }}
-                  >
-                    Orbis
-                  </span>
-                </div>
+              <Link href="/orbis" className="group">
+                <OrbisLogo className="w-auto h-8 md:h-10 group-hover:scale-[1.02] transition-transform" />
               </Link>
               <p className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase leading-tight max-w-[200px]">
                 Unified Institutional Intelligence

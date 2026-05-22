@@ -1,27 +1,29 @@
 "use client";
 
-import React from 'react';
+import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-const ORBIS_BLUE = '#0E76BD';
+const ORBIS_BLUE = "#0E76BD";
 
 export default function OrbisHero() {
   const { theme } = useTheme();
-  const isDark = theme === 'dark';
+  const isDark = theme === "dark";
   const containerRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(err => console.log("Video play failed:", err));
+      videoRef.current
+        .play()
+        .catch((err) => console.log("Video play failed:", err));
     }
   }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
@@ -30,7 +32,7 @@ export default function OrbisHero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100vh] w-full overflow-hidden bg-background flex flex-col items-start transition-colors duration-500 pt-20"
+      className="relative min-h-[100svh] w-full overflow-hidden bg-background flex flex-col items-start transition-colors duration-500 pt-20 md:pt-32"
     >
       <style jsx global>{`
         .orbis-btn-primary {
@@ -55,9 +57,9 @@ export default function OrbisHero() {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover opacity-40 dark:opacity-40 pointer-events-none"
           style={{
-            transform: 'translateZ(0)',
-            backfaceVisibility: 'hidden',
-            willChange: 'opacity, transform'
+            transform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+            willChange: "opacity, transform",
           }}
         >
           <source src="/videos/orbis_hero.mp4" type="video/mp4" />
@@ -71,21 +73,21 @@ export default function OrbisHero() {
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, ${ORBIS_BLUE} 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-            maskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent 85%)',
+            backgroundSize: "40px 40px",
+            maskImage:
+              "radial-gradient(ellipse at center, black, transparent 85%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, black, transparent 85%)",
           }}
         />
       </div>
 
       <motion.div
         style={{ y: y1, opacity }}
-        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full h-full flex flex-col justify-center items-start text-left"
+        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex-1 flex flex-col justify-center items-start text-left"
       >
         {/* Eyebrow */}
-        <div
-
-        >
+        <div>
           <span className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-[#0E76BD]/5 border border-[#0E76BD]/10 backdrop-blur-md">
             <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-[#0E76BD] font-black">
               Institutional ERP Intelligence
@@ -100,7 +102,9 @@ export default function OrbisHero() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8 text-foreground max-w-4xl flex flex-col items-start gap-2"
         >
-          <span className="hero-title-thin text-[clamp(1.5rem,4vw,3rem)] tracking-[0.05em]">Run Institutions with</span>
+          <span className="hero-title-thin text-[clamp(1.5rem,4vw,3rem)] tracking-[0.05em]">
+            Run Institutions with
+          </span>
           <span className="hero-title-bold text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.95] tracking-tighter text-[#0E76BD]">
             Clarity & Control
           </span>
@@ -113,10 +117,10 @@ export default function OrbisHero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-12 font-light"
         >
-          Orbis is a unified school and college management platform that simplifies admissions, operations, academics, and communication through a powerful cloud based system.
+          Orbis is a unified school and college management platform that
+          simplifies admissions, operations, academics, and communication
+          through a powerful cloud based system.
         </motion.p>
-
-
 
         {/* CTA Buttons */}
         <motion.div
@@ -132,16 +136,15 @@ export default function OrbisHero() {
             Request Demo
           </button>
         </motion.div>
-
       </motion.div>
 
       {/* Simplified Decorative Indicators */}
-      <div className="absolute bottom-8 left-8 hidden lg:flex flex-col gap-2 opacity-20">
+      {/* <div className="absolute bottom-8 left-8 hidden lg:flex flex-col gap-2 opacity-20">
         <div className="flex items-center gap-3">
           <div className="w-1 h-1 rounded-full bg-[#0E76BD]" />
           <span className="font-mono text-[8px] tracking-widest uppercase text-slate-900">Core Sync Active</span>
         </div>
-      </div>
+      </div> */}
 
       {/* Minimal Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-10">

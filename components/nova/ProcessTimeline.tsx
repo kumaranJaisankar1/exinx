@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { UserSearch, Zap, CheckCircle2, TrendingUp, Trophy, ArrowRight } from "lucide-react";
+import { UserSearch, Zap, CheckCircle2, TrendingUp, ArrowRight } from "lucide-react";
 
 const steps = [
   {
@@ -37,11 +37,22 @@ const ProcessTimeline = () => {
   const [scrollWidth, setScrollWidth] = useState(0);
 
   useEffect(() => {
-    if (containerRef.current) {
-      const width = containerRef.current.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      setScrollWidth(width - viewportWidth);
-    }
+    const measure = () => {
+      if (containerRef.current) {
+        setScrollWidth(containerRef.current.scrollWidth - window.innerWidth);
+      }
+    };
+
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    if (containerRef.current) ro.observe(containerRef.current);
+    window.addEventListener("resize", measure);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -58,16 +69,19 @@ const ProcessTimeline = () => {
   const x = useTransform(smoothProgress, [0, 1], [0, -scrollWidth]);
 
   return (
-    <section id="process-section" ref={targetRef} className="relative h-auto lg:h-[400vh] bg-secondary/30 py-16 lg:py-25">
-      <div className="relative lg:sticky lg:top-0 h-auto lg:h-screen flex flex-col justify-start lg:justify-center overflow-visible lg:overflow-hidden">
-        <div className="px-6 md:px-12 max-w-7xl mx-auto w-full mb-12">
+    <section id="process-section" ref={targetRef} className="relative bg-secondary/30 h-auto lg:h-[400vh]">
+      {/* Sticky panel — top-aligned so header is never cropped, overflow-hidden only on the card strip */}
+      <div className="relative lg:sticky lg:top-0 h-auto lg:h-screen flex flex-col">
+
+        {/* Header */}
+        <div className="px-6 md:px-12 max-w-7xl mx-auto w-full pt-12 md:pt-16 pb-6 md:pb-8 shrink-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <span className="section-label">Process</span>
-            <h2 className="text-3xl md:text-6xl mb-8 flex flex-col items-start hero-title-thin">
+            <h2 className="text-3xl md:text-6xl mb-6 flex flex-col items-start hero-title-thin">
               A Structured Approach to <br className="hidden lg:block" />
               <span className="hero-title-bold italic text-primary font-instrument-serif">Personalized Learning</span>
             </h2>
@@ -77,8 +91,8 @@ const ProcessTimeline = () => {
           </motion.div>
         </div>
 
-        {/* Desktop: Horizontal Scroll */}
-        <div className="hidden lg:block">
+        {/* Desktop: Horizontal scroll strip — overflow-hidden scoped only here */}
+        <div className="hidden lg:flex flex-1 min-h-0 overflow-hidden items-center">
           <motion.div
             ref={containerRef}
             style={{ x }}
@@ -105,7 +119,7 @@ const ProcessTimeline = () => {
 
                 <div className="relative h-1 w-full bg-border rounded-none overflow-hidden mt-8">
                   <motion.div
-                    className={`absolute inset-y-0 left-0 bg-primary/40`}
+                    className="absolute inset-y-0 left-0 bg-primary/40"
                     animate={{ x: ["-100%", "200%"] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: i * 0.5 }}
                     style={{ width: "50%" }}
@@ -128,7 +142,7 @@ const ProcessTimeline = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-3 bg-white text-primary rounded-none font-bold text-xs uppercase tracking-widest shadow-xl"
-                  onClick={() => window.dispatchEvent(new CustomEvent('open-signal-form'))}
+                  onClick={() => window.dispatchEvent(new CustomEvent("open-signal-form"))}
                 >
                   Start Free Trial
                 </motion.button>
@@ -169,13 +183,14 @@ const ProcessTimeline = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-2.5 bg-white text-primary rounded-none font-bold text-[10px] uppercase tracking-widest shadow-md"
-                onClick={() => window.dispatchEvent(new CustomEvent('open-signal-form'))}
+                onClick={() => window.dispatchEvent(new CustomEvent("open-signal-form"))}
               >
                 Start Free Trial
               </motion.button>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

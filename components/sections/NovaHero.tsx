@@ -155,7 +155,7 @@ const NovaHero: React.FC<NovaHeroProps> = ({
               { name: "CBSE", desc: "Central Board" },
               { name: "ICSE", desc: "Indian Certificate" },
               { name: "SSC", desc: "State Board" },
-              { name: "NCERT", desc: "National Standards" },
+              // { name: "NCERT", desc: "National Standards" },
               { name: "Undergrad", desc: "College Programs" },
             ].map((cur, i) => (
               <div
