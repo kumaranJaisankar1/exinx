@@ -21,8 +21,8 @@ export default function HeroSection() {
   const orbY = useTransform(scrollY, [0, 1000], [0, 150]);
 
   return (
-    <section ref={containerRef} className="relative min-h-[100svh] lg:h-[100svh] flex items-center px-6 md:px-12 pt-24 lg:pt-16 pb-12 lg:pb-0 overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center h-full py-8 lg:py-0 mt-8 lg:mt-0">
+    <section ref={containerRef} className="relative min-h-[100svh] flex items-center px-6 md:px-12 pt-28 md:pt-36 pb-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-8">
 
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center">

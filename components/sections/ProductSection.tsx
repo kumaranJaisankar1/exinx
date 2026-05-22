@@ -8,28 +8,33 @@ const products = [
   {
     name: "Nova",
     tag: "Intelligence Engine",
-    description: "An AI driven intelligence engine that personalizes learning based on user behavior, cognition, and performance.",
-    color: "#f97316"
+    description:
+      "An AI driven intelligence engine that personalizes learning based on user behavior, cognition, and performance.",
+    color: "#f97316",
   },
   {
     name: "Orbis",
     tag: "Institutional System",
-    description: "A comprehensive institutional system that connects administration, academics, and operations into a unified ecosystem.",
-    color: "#3b82f6"
+    description:
+      "A comprehensive institutional system that connects administration, academics, and operations into a unified ecosystem.",
+    color: "#3b82f6",
   },
   {
     name: "Iyota",
     tag: "Precision Prep",
-    description: "A precision focused preparation system designed to optimize performance for competitive examinations.",
-    color: "#ef4444"
-  }
+    description:
+      "A precision focused preparation system designed to optimize performance for competitive examinations.",
+    color: "#ef4444",
+  },
 ];
 
 export default function ProductSection() {
   return (
-    <section id="products" className="py-24 md:py-32 bg-transparent relative overflow-hidden">
+    <section
+      id="products"
+      className="py-24 md:py-32 bg-transparent relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -40,10 +45,13 @@ export default function ProductSection() {
             <span className="section-label">Product Ecosystem</span>
             <h2 className="text-4xl md:text-6xl mb-8 flex flex-col items-start">
               <span className="hero-title-thin">Powered by</span>
-              <span className="hero-title-bold text-gradient-exinx">Intelligent Systems</span>
+              <span className="hero-title-bold text-gradient-exinx">
+                Intelligent Systems
+              </span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed font-light">
-              ExInX is built on a set of specialized systems designed to address every layer of education.
+              ExInX is built on a set of specialized systems designed to address
+              every layer of education.
             </p>
           </motion.div>
         </div>
@@ -64,7 +72,10 @@ export default function ProductSection() {
               />
 
               <div className="mb-6">
-                <span className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity" style={{ color: product.color }}>
+                <span
+                  className="text-[10px] font-mono tracking-[0.3em] uppercase opacity-40 group-hover:opacity-100 transition-opacity"
+                  style={{ color: product.color }}
+                >
                   {product.tag}
                 </span>
                 <h3 className="text-3xl font-bold mt-2 tracking-tight group-hover:text-primary transition-colors">
@@ -83,7 +94,9 @@ export default function ProductSection() {
                   style={{ color: product.color }}
                 >
                   Explore {product.name}
-                  <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
+                  <span className="group-hover/btn:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </Link>
               </div>
             </motion.div>
@@ -98,7 +111,8 @@ export default function ProductSection() {
           className="mt-20 text-center"
         >
           <p className="text-muted-foreground italic text-lg font-light max-w-3xl mx-auto">
-            "Each system is powerful on its own. Together, they create a complete intelligence driven education platform."
+            &quot;Each system is powerful on its own. Together, they create a
+            complete intelligence driven education platform.&quot;
           </p>
         </motion.div>
       </div>

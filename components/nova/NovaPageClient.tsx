@@ -3,6 +3,7 @@
 import NovaHero from "@/components/sections/NovaHero";
 import ProblemSection from "@/components/nova/ProblemSection";
 import ProcessTimeline from "@/components/nova/ProcessTimeline";
+import NovaUseCaseSection from "@/components/nova/NovaUseCaseSection";
 import CapabilitiesSection from "@/components/nova/CapabilitiesSection";
 import IntelligenceEngine from "@/components/nova/IntelligenceEngine";
 import ComparisonSection from "@/components/nova/ComparisonSection";
@@ -22,23 +23,27 @@ export default function NovaPageClient() {
         <NovaHero
           trustBadge={{
             text: "Nova Intelligence",
-            icons: [""]
+            icons: [""],
           }}
           headline={{
             line1: "PERSONALIZED AI",
-            line2: "That Teaches You"
+            line2: "That Teaches You",
           }}
-          subtitle="Nova is an adaptive AI-powered learning system that understands how you think, processes how you learn, and delivers explanations aligned to your cognitive ability."
+          subtitle="Nova is an adaptive AI-powered learning system that understands your learning patterns and delivers personalized content aligned with your cognitive ability."
           description="Built for students who want more than just answers, Nova ensures every concept is understood the right way, at the right level, with the right depth."
           buttons={{
             primary: {
               text: "Start Learning Free",
-              onClick: () => window.dispatchEvent(new CustomEvent('open-signal-form'))
+              onClick: () =>
+                window.dispatchEvent(new CustomEvent("open-signal-form")),
             },
             secondary: {
               text: "Explore How It Works",
-              onClick: () => document.getElementById('problem-section')?.scrollIntoView({ behavior: 'smooth' })
-            }
+              onClick: () =>
+                document
+                  .getElementById("problem-section")
+                  ?.scrollIntoView({ behavior: "smooth" }),
+            },
           }}
         />
 
@@ -49,6 +54,7 @@ export default function NovaPageClient() {
           <div id="process">
             <ProcessTimeline />
           </div>
+          <NovaUseCaseSection />
           <CapabilitiesSection />
           <IntelligenceEngine />
           <ComparisonSection />

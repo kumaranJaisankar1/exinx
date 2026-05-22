@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Logo } from "../Logo";
+import { IyotaLogo } from "../IyotaLogo";
 import { Twitter, Instagram, Linkedin, Github } from "lucide-react";
 
 export default function IyotaFooter() {
@@ -13,22 +13,9 @@ export default function IyotaFooter() {
           {/* Brand Info */}
           <div className="space-y-8">
             <div className="flex flex-col gap-2">
-              <div className="flex flex-col group">
-                <Link href="/" className="flex flex-col group relative">
-                  <Logo className="w-auto h-8 md:h-10" />
-                  <div className="flex w-full mt-[-4px]">
-                    {/* <div className="w-[28%] md:w-[31%]" /> */}
-                    {/* <div className="flex-1 flex justify-left"> */}
-                    <span
-                      className="text-[10px] md:text-[11px] font-medium tracking-[0.8em] text-[#FF0000] uppercase whitespace-nowrap ml-14"
-                      style={{ fontFamily: 'Syne, sans-serif' }}
-                    >
-                      Iyota
-                    </span>
-                    {/* </div> */}
-                  </div>
-                </Link>
-              </div>
+              <Link href="/iyota" className="group">
+                <IyotaLogo className="w-auto h-8 md:h-10 group-hover:scale-[1.02] transition-transform" />
+              </Link>
               <p className="text-[10px] font-bold tracking-[0.2em] max-w-xs text-muted-foreground uppercase leading-tight max-w-[200px]">
                 Competitive Exam Preparation Infrastructure
               </p>
