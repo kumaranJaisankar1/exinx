@@ -150,7 +150,7 @@ const NovaHero: React.FC<NovaHeroProps> = ({
             Curriculum Support
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
             {[
               { name: "CBSE", desc: "Central Board" },
               { name: "ICSE", desc: "Indian Certificate" },

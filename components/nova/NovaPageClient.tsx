@@ -16,7 +16,7 @@ import NovaFooter from "@/components/sections/NovaFooter";
 
 export default function NovaPageClient() {
   return (
-    <main className="relative max-lg:overflow-x-hidden [--primary:#D97706] [--accent:#D97706]">
+    <main className="relative overflow-x-clip [--primary:#D97706] [--accent:#D97706]">
       <CustomCursor />
 
       <div className="relative z-10">

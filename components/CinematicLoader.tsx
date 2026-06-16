@@ -132,38 +132,39 @@ export function CinematicLoader() {
           {/* Central EXINX Text Formation & Morph */}
           <motion.div
             className="absolute z-10 flex flex-col items-center justify-center"
-            initial={{
+            style={{
               top: "50%",
               left: "50%",
+              willChange: "transform, opacity",
+            }}
+            initial={{
               x: "-50%",
               y: "-50%",
               scale: 0.8,
               opacity: 0,
               filter: "blur(10px)",
-              letterSpacing: "0.1em"
             }}
             animate={
               step === 1 ? {
+                x: "-50%",
+                y: "-50%",
                 scale: 1,
                 opacity: 1,
                 filter: "blur(0px)",
-                letterSpacing: "0.3em",
                 transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] }
               } : step === 2 ? {
+                x: "-50%",
+                y: "-50%",
                 scale: 1.05,
                 opacity: 1,
                 filter: "blur(0px)",
-                letterSpacing: "0.3em",
                 transition: { duration: 0.7, ease: "easeInOut" }
               } : step >= 3 ? {
-                top: isMobile ? "50%" : "40px",
-                left: isMobile ? "50%" : "40px",
-                x: isMobile ? "-50%" : "0%",
-                y: isMobile ? "-50%" : "0%",
+                x: isMobile ? "-50%" : "calc(-50vw + 40px)",
+                y: isMobile ? "-50%" : "calc(-50vh + 40px)",
                 scale: 0.3,
                 opacity: [1, 0], // Fade out while moving
                 filter: "blur(4px)",
-                letterSpacing: "0em",
                 transition: {
                   duration: 0.8,
                   ease: [0.76, 0, 0.24, 1],
@@ -248,7 +249,7 @@ export function CinematicLoader() {
               <motion.svg
                 viewBox="0 0 3876 1088"
                 className={cn(
-                  "w-[280px] md:w-[600px] h-auto transition-all duration-1000",
+                  "w-[280px] md:w-[600px] h-auto",
                   isDark ? "drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]" : "drop-shadow-[0_0_30px_rgba(0,0,0,0.1)]"
                 )}
                 initial="hidden"
